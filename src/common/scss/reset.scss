@@ -60,6 +60,10 @@ i{
 font-style: normal;
 }
 /* 以下是字体和css公共设置 */
+// @font-face { 
+//     font-family: Han-Body;
+//     src: url('./../fonts/hanBody.TTF'); 
+// }
 html {
     font-family: "PingFangSC-Medium", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
     -webkit-text-size-adjust: 100%;
