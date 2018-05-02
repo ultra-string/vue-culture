@@ -10,7 +10,7 @@ import store from './store/index'
 
 Vue.config.productionTip = false
 
-import '@/common/scss/index.scss'
+require ('@/common/scss/index.scss')
 
 // post 请求使用 this.$post
 Vue.prototype.$post = post;

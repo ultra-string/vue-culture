@@ -4,6 +4,10 @@
     <aside>我是一个骄傲的aside</aside>
     <div class="btn">我是桂胖子，点我点我</div>
     <div>sessionID: {{sessionId}}</div>
+    <img src="~@/common/images/demo.png" alt="">
+    <div>
+      <div class="bg"></div>
+    </div>
   </div>
 </template>
 
@@ -65,6 +69,12 @@ aside{
     line-height:1rem;
     height: 1rem;
     @include border5px;
+  }
+  .bg{
+    width:746px;
+    height:716px;
+    background:url(~@/common/images/demo.png);
+    background-size: 100% 100%;
   }
   .btn{
     @include buttonType();
