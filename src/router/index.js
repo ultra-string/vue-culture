@@ -6,15 +6,16 @@ Vue.use(Router)
 
 //vue异步组件和webpack的【代码分块点】功能结合，实现了按需加载
 const HelloWorld = () => import('@/components/HelloWorld');
-const Login = () => import('@/containers/Login')
+const Index = () => import('@/containers/Index');
+const Login = () => import('@/containers/Login');
 
 export default new Router({
   mode: routerMode ? routerMode : 'history',
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Index',
+      component: Index
     },
     {
       path: '/login',

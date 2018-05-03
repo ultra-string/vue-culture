@@ -1,20 +1,17 @@
 <template>
-  <div class="index">
-    <el-button type="primary" round>圆角按钮</el-button>
+  <div class="top-nav">
     {{msg}}
   </div>
 </template>
 
 <script>
-import api from "./../axios/api";
 import { mapGetters } from 'vuex';
 
-
 export default {
-  name: 'Index',
+  name: 'TopNav',
   data () {
     return {
-      msg: 'Login Component'
+      msg: '我是吸顶条'
     }
   },
   computed: {
@@ -29,5 +26,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-
+.top-nav{
+  background: rgb(252,252,252);
+  width:100%;
+  line-height:40px;
+  border-top: 2px solid red;
+  border-bottom: 2px solid rgb(238,238,240);
+}
 </style>
