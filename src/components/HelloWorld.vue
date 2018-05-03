@@ -4,7 +4,7 @@
     <aside>我是一个骄傲的aside</aside>
     <div class="btn">我是桂胖子，点我点我</div>
     <div>sessionID: {{sessionId}}</div>
-    <img src="~@/common/images/demo.png" alt="">
+    <img src="@/common/images/demo.png" alt="">
     <div>
       <div class="bg"></div>
     </div>
