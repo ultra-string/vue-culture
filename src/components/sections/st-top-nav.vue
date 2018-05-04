@@ -1,17 +1,23 @@
 <template>
   <div class="top-nav">
     <div class="nav clearfix">
-      <div class="home-page fl">设置为首页</div>
-      <div class="down-select clearfix fl" @click.stop="newMediaList">
-        <div class="fl">新媒体</div>
-        <span class="fr" :class="newMediaListShow ? 'icon-top' : 'icon-bottom' "></span> 
-        <transition name="fade">
-          <ul class="list" v-show="newMediaListShow">
-            <li v-for="(val, key) in options" key="val.value">{{val.label}}</li>
-          </ul>
-        </transition>
+      <div class="clearfix fl">
+        <div class="home-page fl">设置为首页</div>
+        <div class="down-select clearfix fl" @click.stop="newMediaList">
+          <div class="fl">新媒体</div>
+          <span class="fr" :class="newMediaListShow ? 'icon-top' : 'icon-bottom' "></span> 
+          <transition name="fade">
+            <ul class="list" v-show="newMediaListShow">
+              <li v-for="(val, key) in options" :key="key">{{val.label}}</li>
+            </ul>
+          </transition>
+        </div>
       </div>
-      
+      <div class="fr clearfix">
+        <div class="fl">登录</div>
+        <div class="fl">注册</div>
+        <div class="fl">网站导航</div>
+      </div>
     </div>
   </div>
 </template>
@@ -73,6 +79,9 @@ export default {
       margin:0 auto;
       min-width: 1000px;
       width:expression(document.body.clientWidth < 1000? "1000px": "auto" ); 
+      .home-page{
+        color: $font-hot;
+      }
       .down-select{
         position: relative;
         margin-left: 19px;
@@ -112,7 +121,9 @@ export default {
           background: #fff;
         }
       }
-      
   }
+  .nav > div + div > div{
+    margin-left: 25px;
+  }  
 }
 </style>

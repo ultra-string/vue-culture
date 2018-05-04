@@ -10,7 +10,7 @@ const Index = () => import('@/containers/Index');
 const Login = () => import('@/containers/Login');
 
 export default new Router({
-  mode: routerMode ? routerMode : 'history',
+  mode: routerMode || routerMode == '' ? routerMode : 'history',
   routes: [
     {
       path: '/',
