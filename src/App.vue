@@ -2,7 +2,7 @@
   <div id="app">
   	<top-nav></top-nav>
   	<div class="root-view">
-  		<router-view />
+  		<router-view></router-view>
   	</div>
   </div>
 </template>
@@ -20,13 +20,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-#app{
-	.root-view{
-		background: skyblue;
-	    width:1000px;
-	    margin:0 auto;
-	    min-width: 1000px; 
-    	width:expression(document.body.clientWidth < 1000? "1000px": "auto" ); 
-	}
+.root-view{
+	background: skyblue;
+    width:1000px;
+    margin:0 auto;
+    min-width: 1000px; 
+	width:expression(document.body.clientWidth < 1000? "1000px": "auto" ); 
 }
 </style>

@@ -4,6 +4,7 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 import App from './App'
 import 'element-ui/lib/theme-chalk/index.css';
+import '@/common/scss/element-variables.scss'
 import router from './router'
 // axios封装引入
 import { fetch, post } from '@/axios/api'
@@ -18,7 +19,7 @@ require ('@/common/scss/index.scss')
 
 // post 请求使用 this.$post
 Vue.prototype.$post = post;
-// git 请求使用 this.$get
+// get 请求使用 this.$get
 Vue.prototype.$get = fetch;
 
 /* eslint-disable no-new */
