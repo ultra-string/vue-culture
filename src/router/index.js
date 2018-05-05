@@ -5,9 +5,15 @@ import { routerMode } from '@/config/env'
 Vue.use(Router)
 
 //vue异步组件和webpack的【代码分块点】功能结合，实现了按需加载
-const HelloWorld = () => import('@/components/HelloWorld');
 const Index = () => import('@/containers/Index');
-const CultureNews = () => import('@/containers/CultureNews');
+/*
+*   文旅资讯相关路由
+*/
+const CultureNewsIndex = () => import('@/containers/CultureNewsIndex');
+const CultureNews = () => import('@/containers/culture-news/CultureNews');
+const ImportantNews = () => import('@/containers/culture-news/ImportantNews');
+const ExhibitionNews = () => import('@/containers/culture-news/ExhibitionNews');
+const Policy = () => import('@/containers/culture-news/Policy');
 
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
@@ -18,9 +24,30 @@ export default new Router({
       component: Index
     },
     {
-      path: '/CultureNews',
-      name: 'CultureNews',
-      component: CultureNews
+      path: '/CultureNewsIndex',
+      component: CultureNewsIndex,
+      children: [
+        {
+          path: '',
+          name: 'CultureNews',
+          component: CultureNews
+        },
+        {
+          path: 'ImportantNews',
+          name: 'ImportantNews',
+          component: ImportantNews
+        },
+        {
+          path: 'ExhibitionNews',
+          name: 'ExhibitionNews',
+          component: ExhibitionNews
+        },
+        {
+          path: 'Policy',
+          name: 'Policy',
+          component: Policy
+        }
+      ]
     }
   ]
 })

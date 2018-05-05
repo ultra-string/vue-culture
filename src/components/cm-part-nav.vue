@@ -12,41 +12,17 @@
 export default {
   name: 'CmPartNav',
   props: {
-      
+      navTree: Array
   },
   data() {
       return {
           selectedKey: 0,
-          navTree: [{
-            name: '文旅资讯',
-            route: '/',
-            url: '',
-            nowPage: false,
-            isOuter: false
-        },{
-            name: '要闻',
-            route: '/cultureNews',
-            url: '',
-            nowPage: true,
-            isOuter: false
-        },{
-            name: '展讯',
-            route: '/cultureNews',
-            url: '',
-            nowPage: true,
-            isOuter: false
-        },{
-            name: '政治法规',
-            route: '/cultureNews',
-            url: '',
-            nowPage: true,
-            isOuter: false
-        }]
       }
   },
   methods: {
       chooseNav: function(key) {
           this.selectedKey = key;
+          this.$router.push({name: this.navTree[key].path});
       }
   }
 }
