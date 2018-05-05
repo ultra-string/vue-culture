@@ -1,7 +1,6 @@
 <template>
   <div class="index">
-    <el-button type="primary" round>圆角按钮</el-button>
-    {{msg}}
+    
   </div>
 </template>
 
@@ -9,12 +8,10 @@
 import api from "./../axios/api";
 import { mapGetters } from 'vuex';
 
-
 export default {
   name: 'Index',
   data () {
     return {
-      msg: 'Login Component'
     }
   },
   computed: {
