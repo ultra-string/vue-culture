@@ -3,6 +3,9 @@
   	<st-top-nav></st-top-nav>
   	<div class="root-view">
       <st-top-logo></st-top-logo>
+      <cm-top-nav
+      :options="options"
+      ></cm-top-nav>
   		<router-view></router-view>
   	</div>
   </div>
@@ -11,12 +14,28 @@
 <script>
 import StTopNav from '@/components/sections/st-top-nav';
 import StTopLogo from '@/components/sections/st-top-logo';
+import CmTopNav from '@/components/cm-top-nav';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      options: [{
+          value: '选项1',
+          label: '新闻'
+        }, {
+          value: '选项2',
+          label: '娱乐'
+        }, {
+          value: '选项3',
+          label: 'happy'
+        }],
+    }
+  },
   components: {
     StTopNav,
-    StTopLogo
+    StTopLogo,
+    CmTopNav
   },
 }
 </script>

@@ -2,17 +2,20 @@
   <div class="st-top-logo clearfix">
     <h1 class="fl">中国手艺网</h1>
     <div class="fr">
-        <div class="clearfix serchInput">
-            <!-- 下拉框组件 -->
-            <cm-select 
-            class="fl"
-            style="marginLeft:19px,lineHeight:38px;padding:0 8px"
-            :selectValue="selectValue"
-            :options="options"
-            :width="46"
-            ></cm-select>
-            <span class="fl"></span>
-            <input type="text" class="fl">
+        <div class="clearfix">
+            <div class="clearfix serchInput fl">
+                <!-- 下拉框组件 -->
+                <cm-select 
+                class="fl"
+                style="marginLeft:19px,lineHeight:38px;padding:0 8px"
+                :selectValue="selectValue"
+                :options="options"
+                :width="46"
+                ></cm-select>
+                <span class="fl"></span>
+                <input type="text" value="我是输入框" class="fl">
+            </div>
+            <img src="@/common/images/index/search-hot.png" alt="搜索按钮">
         </div>
     </div>
   </div>
@@ -57,15 +60,27 @@ export default {
         background: url(~@/common/images/index/culture-logo.png);
         background-size:100% 100%;
     }
-    .serchInput{
-        border: 1px solid $color-border-input;
-        border-radius: 2px;
-        padding-left: 6px;
-        >span{
-            width:1px;
-            height:34px;
-            border-left: 1px solid $color-border-input;
-            margin:2px auto;
+    div {
+        .serchInput{
+            border: 1px solid $color-border-input;
+            border-radius: 2px 0 0 2px;
+            padding-left: 6px;
+            >span{
+                width:1px;
+                height:34px;
+                border-left: 1px solid $color-border-input;
+                margin:2px auto;
+            }
+            input{
+                width: 254px;
+                padding:0 4px;
+                line-height: 38px;
+                font-size: 16px;
+            }
+        }
+        ~img {
+            padding: 2px 0;
+            background: rgb(178,48,35);
         }
     }
 }
