@@ -77,8 +77,8 @@ export default {
 .culture-news-view{
   position: relative;
   .culture-view {
+    width: 750px;
     margin-left: 30px;
-    background: aqua;
   }
 }
 </style>

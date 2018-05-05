@@ -1,16 +1,47 @@
 <template>
   <div class="">
-      我是政策法规页面
+      <cm-news-list
+      :newsList="newsList"
+      ></cm-news-list>
   </div>
 </template>
 
 <script>
+import CmNewsList from '@/components/cm-news-list';
 
 export default {
   name: 'Policy',
   data () {
     return {
+      newsList: [{
+        title: '我是政策法规的标题啊！',
+        date: '2018-7-20'
+      },{
+        title: '我是政策法规的标题啊！',
+        date: '2018-7-20'
+      },{
+        title: '我是政策法规的标题啊！',
+        date: '2018-7-20'
+      },{
+        title: '我是政策法规的标题啊！',
+        date: '2018-7-20'
+      },{
+        title: '我是政策法规的标题啊！',
+        date: '2018-7-20'
+      },{
+        title: '我是政策法规的标题啊！',
+        date: '2018-7-20'
+      },{
+        title: '我是政策法规的标题啊！',
+        date: '2018-7-20'
+      },{
+        title: '我是政策法规的标题啊！',
+        date: '2018-7-20'
+      }]
     }
+  },
+  components: {
+    CmNewsList
   }
 }
 </script>
