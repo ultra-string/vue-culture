@@ -1,27 +1,29 @@
 <template>
-  <div class="">
-      <div>
-        <cm-thumbnail></cm-thumbnail>
-      </div>
+  <div class="cm-thumbnail" :style="{width: width+'px',height: height+'px' }">
+      
   </div>
 </template>
 
 <script>
-import CmThumbnail from '@/components/cm-thumbnail'
 
 export default {
-  name: 'ExhibitionNews',
+  name: 'CmThumbnail',
+  props: {
+      width: Number,
+      height: Number
+  },
   data () {
     return {
     }
   },
-  components: {
-    CmThumbnail
+  methods: {
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+.cm-thumbnail{
 
+}
 </style>
