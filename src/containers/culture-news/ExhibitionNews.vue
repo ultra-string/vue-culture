@@ -1,13 +1,11 @@
 <template>
-  <div class="">
-      <div>
-        <cm-thumbnail></cm-thumbnail>
-      </div>
+  <div class="exhibition-news">
+      <st-video-item></st-video-item>
   </div>
 </template>
 
 <script>
-import CmThumbnail from '@/components/cm-thumbnail'
+import StVideoItem from '@/components/sections/st-video-item';
 
 export default {
   name: 'ExhibitionNews',
@@ -16,12 +14,14 @@ export default {
     }
   },
   components: {
-    CmThumbnail
+    StVideoItem
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-
+.exhibition-news{
+  margin-left: 19px;
+}
 </style>

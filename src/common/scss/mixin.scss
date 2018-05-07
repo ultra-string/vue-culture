@@ -1,4 +1,7 @@
 //  mixin样式的封装
+/*
+*   向下和向上的箭头
+*/
 @mixin triangle-facing-right {  
     display: inline-block;  
     margin: 72px;  
@@ -13,3 +16,11 @@
     width: 120px; height: 120px;  
     transform: rotate(45deg);  
 } 
+/*
+*   超出不换行，省略号
+*/
+@mixin nowrap-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

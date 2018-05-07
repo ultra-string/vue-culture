@@ -5,12 +5,12 @@
     :navTree="navTree"
     ></cm-bradcrumb>
     <div class="clearfix">
-      <div class="culture-nav">
+      <div class="culture-nav fl">
         <cm-part-nav
         :navTree="ClutureNewsTree"
         ></cm-part-nav>
       </div>
-      <div class="culture-view">
+      <div class="culture-view fl">
         <router-view></router-view>
       </div>
     </div>
@@ -78,6 +78,7 @@ export default {
   position: relative;
   .culture-nav{
     display:inline-block;
+    margin-right: 28px;
   }
   .culture-view {
     display: inline-block;
