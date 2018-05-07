@@ -14,12 +14,16 @@
         <router-view></router-view>
       </div>
     </div>
+    <st-foot-nav></st-foot-nav>
+  
   </div>
 </template>
 
 <script>
 import CmBradcrumb from '@/components/cm-breadcrumb';
 import CmPartNav from '@/components/cm-part-nav';
+//底部
+import StFootNav from '@/components/sections/st-foot-nav.vue';
 
 export default {
   name: 'CultureNews',
@@ -67,7 +71,8 @@ export default {
   },
   components: {
     CmBradcrumb,
-    CmPartNav
+    CmPartNav,
+    StFootNav,
   }
 }
 </script>
