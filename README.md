@@ -10,17 +10,25 @@ vue文件分为三种： 容器、业务组件（一次性组件）、功能组�
 	功能组件: 具有一定功能，相对独立的组件，要求可复用、高内聚、低耦合。要求命名规范只突出具体功能并且与业务解耦: eg：ListItem.vue Cell.vue Item.vue等，另外要求组件命名以cm-（component）开头
 
 ## 命名规范
-> class ： 全部小写，使用 - 连接  eg： nav-list
-> 业务组件名： st-开头，全部小写， 使用 - 连接，放入components/sections下 eg: st-nav-list.vue
-> 功能祖件名： cm-开头，全部小写， 使用 - 连接，放入components下 eg: cm-input.vue
-> 页面名： 驼峰命名，首字母大写，和路由path、name一致    eg： Index.vue
-> 变量名： 驼峰命名，首字母小写     
-> 文件中： 根元素class和class命名规范一致，组件name为根元素name的驼峰命名
-> scss： 命名同class命名规范
-
-## 注释
-> 函数和方法 添加多行的注释： /******/  作用、参数、默认值
-> mixin： 命名根据功能命名
+``` bash
+# class ： 
+全部小写，使用 - 连接  eg： nav-list
+# 业务组件名： 
+st-开头，全部小写， 使用 - 连接，放入components/sections下 eg: st-nav-list.vue
+# 功能祖件名： 
+cm-开头，全部小写， 使用 - 连接，放入components下 eg: cm-input.vue
+# 页面名： 
+驼峰命名，首字母大写，和路由path、name一致    eg： Index.vue
+# 变量名： 
+驼峰命名，首字母小写     
+# 文件中： 
+根元素class和class命名规范一致，组件name为根元素name的驼峰命名
+# scss： 
+命名同class命名规范
+# 函数和方法 
+添加多行的注释： /******/  作用、参数、默认值
+# mixin： 
+命名根据功能命名
 
 ## Build Setup
 
