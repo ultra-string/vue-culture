@@ -8,7 +8,6 @@
           <div class="fl" v-for="(val, key) in navTree" :key="key">{{val.name}}<span v-if="!key == navTree.length-1">></span></div>
       </div>
   </div>
-
 </template>
 
 <script>

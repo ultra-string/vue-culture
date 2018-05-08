@@ -1,6 +1,7 @@
 <template>
   <div class="">
       <cm-news-list
+      :hasDashBorder="true"
       :newsList="newsList"
       ></cm-news-list>
   </div>
@@ -14,7 +15,7 @@ export default {
   data () {
     return {
       newsList: [{
-        title: '我是政策法规的标题啊！',
+        title: '我是政策法规的标题啊！我是政策法规的标题啊！我是政策法规的标题啊！我是政策法规的标题啊！',
         date: '2018-7-20'
       },{
         title: '我是政策法规的标题啊！',

@@ -15,7 +15,6 @@
     }
     .box{
         width: 1000px;
-        /* height: 700px; */
         background: skyblue;
         border-radius: 10px;
         border: 4px solid #ccc;
@@ -23,37 +22,40 @@
         display: flex;
         -webkit-display: flex;
         flex-direction: row;
-        align-items: flex-start;
+        /* align-items: flex-start; */
+        justify-content: space-between;
     }
-    item:nth-child(0) {
+    .pink{
+        width: 270px;
         background: pink;
-        margin-left: 30px;
     }
-    item:nth-child(1) {
+    .yellow{
+        width: 700px;
         background: yellow;
-        display: inline-block;
-        margin:30px;
+
     }
-    item:nth-child(1)>.in {
-        margin-left: 30px;
+    h2{
+        color: #fff;
     }
     </style>
 </head>
 <body>
 <div class="box">
-    <div class="row">
-        <div class="item">我是左面</div>
-        <div class="item">我是右面</div>
+    <div class="pink">
+        <h2>我是一行列表</h2>
+        <h2>我是一行列表</h2>
+        <h2>我是一行列表</h2>
     </div>
-    <div class="row">
-        <div class="in">
-            <div class="item">我是左面</div>
-            <div class="item">我是右面</div>
-            <div class="item">我是左面</div>
-            <div class="item">我是右面</div>
-        </div>
-        
+    <div class="yellow">
+        <h1>只是一行文字</h1>
+        <h1>只是一行文字</h1>
+        <h1>只是一行文字</h1>
+        <h1>只是一行文字</h1>
+        <h1>只是一行文字</h1>
+        <h1>只是一行文字</h1>
     </div>
+    
 </div>
+<h2>我是一个分页器</h2>
 </body>
 </html>
