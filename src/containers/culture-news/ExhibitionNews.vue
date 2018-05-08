@@ -1,19 +1,22 @@
 <template>
   <div class="exhibition-news">
-      <st-video-item class="videoItem"></st-video-item>
-      <div>
+      <cm-thumbnail class="videoItem"></cm-thumbnail>
+      <div class="content">
         <template>
-          <!-- <cm-news-list
+          <cm-news-list
+          class="news-list"
           :newsList="newsList"
-          ></cm-news-list> -->
-          <div>我是一个文章的米搜狐是信息啊，就是不知道咋写样式啊，写不会啊写不会啊，就是写不会啊，你说咋办就咋办，最近心情不好，讨厌拖拉着那个，等我弄到机会折腾死</div>
+          ></cm-news-list>
+          <div class="news-desc">
+            <span>讨厌拖拉着那个，等我弄到机会折腾死，大叔大婶大时代发生打发斯蒂芬阿斯蒂芬阿斯顿发斯蒂芬斯蒂芬撒旦法阿斯蒂芬讨厌拖拉着那个，等我弄到机会折腾死，大叔大婶大时代发生打发斯蒂芬阿斯蒂芬阿斯顿发斯蒂芬斯蒂芬撒旦法阿斯蒂芬讨厌拖拉着那个，等我弄到机会折腾死，大叔大婶大时代发生打发斯蒂芬阿斯蒂芬阿斯顿发斯蒂芬斯蒂芬撒旦法阿斯蒂芬</span>
+            <span>我是末尾的标题</span></div>
         </template>
       </div>
   </div>
 </template>
 
 <script>
-import StVideoItem from '@/components/sections/st-video-item';
+import CmThumbnail from '@/components/cm-thumbnail';
 import CmNewsList from '@/components/cm-news-list';
 
 export default {
@@ -21,12 +24,15 @@ export default {
   data () {
     return {
       newsList: [
-        {}
+        {
+          title: '我是政策法规的标题啊！我是政策法规的标题啊！我是政策法规的标题啊！我是政策法规的标题啊！',
+          date: '2018-7-20'
+        }
       ]
     }
   },
   components: {
-    StVideoItem,
+    CmThumbnail,
     CmNewsList
   }
 }
@@ -38,9 +44,31 @@ export default {
   margin-left: 20px;
   @include display-flex;
   @include justify-content-space;
-  // div{
-  //   background: pink;
-  //   width: 550px; 
-  // }
+  .content{
+    width: 540px;
+    // height: 111px;
+    overflow: hidden;
+    margin-bottom: 11px;
+    .news-list{
+      font-size: 17px;
+      line-height: 17px;
+    }
+    .news-desc{
+      background: skyblue;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp:3;
+      -webkit-box-orient: vertical;
+      display: inline-block;
+      line-height: 26px;
+      font-size: 14px;
+      span{
+        
+        display: block;
+        overflow:hidden;
+      }
+    }
+  }
 }
 </style>

@@ -14,14 +14,15 @@
         <router-view></router-view>
       </div>
     </div>
+    <cm-change-page></cm-change-page>
     <st-foot-nav></st-foot-nav>
-  
   </div>
 </template>
 
 <script>
 import CmBradcrumb from '@/components/cm-breadcrumb';
 import CmPartNav from '@/components/cm-part-nav';
+import CmChangePage from '@/components/cm-change-page';
 //底部
 import StFootNav from '@/components/sections/st-foot-nav.vue';
 
@@ -73,6 +74,7 @@ export default {
     CmBradcrumb,
     CmPartNav,
     StFootNav,
+    CmChangePage
   }
 }
 </script>

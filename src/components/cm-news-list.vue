@@ -40,6 +40,7 @@ export default {
     @include display-flex;
     @include justify-content-space;
     h3 {
+        vertical-align: top;
         max-width: 80%;
         @include nowrap-ellipsis; 
     }

@@ -64,7 +64,7 @@ export default {
     transform : translate(-50%,-70%);
   }
   div {
-    background: rgb(0,0,0);
+    background: rgba(100,131,161,0.9);
     height: 30%;
     vertical-align: center;
     color: #fff;

@@ -6,7 +6,7 @@
     class="fl video-item"
     ></cm-thumbnail>
     <div class="fl">
-        <div>{{item}}</div>
+        <div>{{desc}}</div>
         <span></span>
     </div>
   </div>
