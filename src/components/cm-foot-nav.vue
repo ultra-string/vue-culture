@@ -3,6 +3,7 @@
         <router-link 
             v-for="(item , index) in listArr" 
             :key="index" 
+            v-show="listArr.length ? true : false"
             :to="item.path"
             class="to-index"
             id="every"
@@ -18,7 +19,10 @@ export default {
         return {}
     },
     props : {
-        listArr : Array,
+        listArr : {
+            type : Array,
+            default : []
+        },
     },
     mounted(){
         let arrStyle = this.listArr[0].style;
