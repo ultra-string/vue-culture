@@ -8,6 +8,7 @@
       ></cm-top-nav>
   		<router-view></router-view>
   	</div>
+    <st-foot-nav></st-foot-nav>
   </div>
 </template>
 
@@ -15,6 +16,9 @@
 import StTopNav from '@/components/sections/st-top-nav';
 import StTopLogo from '@/components/sections/st-top-logo';
 import CmTopNav from '@/components/cm-top-nav';
+import StFootNav from '@/components/sections/st-foot-nav';
+
+import Lib from '@/common/lib/lib.js'
 
 export default {
   name: 'App',
@@ -35,8 +39,28 @@ export default {
   components: {
     StTopNav,
     StTopLogo,
-    CmTopNav
+    CmTopNav,
+    StFootNav
   },
+  created() {
+    let aaa = Lib.changeCase('aaaaa',1);
+    console.log(aaa)
+    let page = 10;
+    this.$get(`/body/${page}`)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    this.$post('/body/page/oneId?pageNo=1&pageSize=2&twoId=1&oneId=10')
+    .then(res => {
+      console.log(res)
+    })
+    .catch( err => {
+      console.log(err);
+    })
+  }
 }
 </script>
 

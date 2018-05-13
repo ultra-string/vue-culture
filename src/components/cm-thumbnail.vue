@@ -1,8 +1,8 @@
 <template>
   <div class="cm-thumbnail" :style="{width: width+'px',height: height+'px' }">
       <img :style="{width: width+'px',height: height+'px' }" :src="src" alt="">
-      <div :style="{width: width+'px', 'line-height': height*0.3 + 'px'}">&nbsp;&nbsp;{{title}}&nbsp;&nbsp;</div>
-      <img class="video-btn" :src="src" alt="" @click.stop="watchVideo">
+      <div v-if="isTitle" :style="{width: width+'px', 'line-height': height*0.3 + 'px'}">&nbsp;&nbsp;{{title}}&nbsp;&nbsp;</div>
+      <img v-if="isVideo" class="video-btn" :src="src" alt="" @click.stop="watchVideo">
   </div>
 </template>
 
@@ -34,6 +34,14 @@ export default {
       path: {
         type: String,
         default: '/404'
+      },
+      isTitle: {
+        type: Boolean,
+        default: false,
+      },
+      isVideo: {
+        type: Boolean,
+        default: false,
       }
   },
   data () {

@@ -1,8 +1,10 @@
 <template>
   <div class="st-video-list clearfix">
     <cm-thumbnail
-    :width="170"
+    :width="270"
     :height="100"
+    :isTitle="true"
+    :isVideo="true"
     class="fl video-item"
     ></cm-thumbnail>
     <div class="fl">
