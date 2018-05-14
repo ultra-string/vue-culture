@@ -14,6 +14,10 @@ const CultureNews = () => import('@/containers/culture-news/CultureNews');
 const ImportantNews = () => import('@/containers/culture-news/ImportantNews');
 const ExhibitionNews = () => import('@/containers/culture-news/ExhibitionNews');
 const Policy = () => import('@/containers/culture-news/Policy');
+/*
+*   登录路由
+*/
+const Login = () => import('@/components/sections/st-login');
 
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
@@ -48,6 +52,11 @@ export default new Router({
           component: Policy
         }
       ]
+    },
+    {
+      path : '/login',
+      component : Login,
+      name : 'Login'
     }
   ]
 })

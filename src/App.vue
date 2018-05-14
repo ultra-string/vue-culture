@@ -8,7 +8,9 @@
       ></cm-top-nav>
   		<router-view></router-view>
   	</div>
+    <st-foot-qrcode></st-foot-qrcode>
     <st-foot-nav></st-foot-nav>
+    <st-right-adv></st-right-adv>
   </div>
 </template>
 
@@ -16,7 +18,9 @@
 import StTopNav from '@/components/sections/st-top-nav';
 import StTopLogo from '@/components/sections/st-top-logo';
 import CmTopNav from '@/components/cm-top-nav';
+import StFootQrcode from '@/components/sections/st-foot-qrcode';
 import StFootNav from '@/components/sections/st-foot-nav';
+import StRightAdv from '@/components/sections/st-right-adv';
 
 import Lib from '@/common/lib/lib.js'
 
@@ -40,7 +44,9 @@ export default {
     StTopNav,
     StTopLogo,
     CmTopNav,
-    StFootNav
+    StFootNav,
+    StFootQrcode,
+    StRightAdv,
   },
   created() {
     let aaa = Lib.changeCase('aaaaa',1);
