@@ -7,12 +7,14 @@
       :height="330"
       ></cm-swiper>
     </div>
+    <cm-title-nav></cm-title-nav>
   </div>
 </template>
 
 <script>
 import Lib from '@/common/lib/lib.js'
 import CmSwiper from '@/components/cm-swiper'
+import CmTitleNav from '@/components/cm-title-nav'
 
 export default {
   name: 'Index',
@@ -41,7 +43,8 @@ export default {
     }
   },
   components: {
-    CmSwiper
+    CmSwiper,
+    CmTitleNav
   },
   created() {
 
