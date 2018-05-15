@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-<!--   	<st-top-nav></st-top-nav>
-  	<div class="root-view">
+    <st-top-nav></st-top-nav>
+    <div class="root-view">
       <st-top-logo></st-top-logo>
       <cm-top-nav
       :options="options"
-      ></cm-top-nav> -->
-  		<router-view></router-view>
-<!--   	</div>
+      ></cm-top-nav>
+      <router-view></router-view>
+    </div>
     <st-foot-qrcode></st-foot-qrcode>
     <st-foot-nav></st-foot-nav>
-    <st-right-adv></st-right-adv> -->
+    <st-right-adv></st-right-adv>
   </div>
 </template>
 
@@ -72,5 +72,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-
+.root-view{
+  width:1000px;
+  height: 100%;
+  min-height: 100%;
+  margin:0 auto;
+  min-width: 1000px; 
+  //width:expression(document.body.clientWidth < 1000? "1000px": "auto" ); 
+}
 </style>
