@@ -79,6 +79,7 @@ export default {
     position: absolute;
     left: 0;
     bottom: 0;
+    text-align: center;
     @include nowrap-ellipsis;
   }
 }
