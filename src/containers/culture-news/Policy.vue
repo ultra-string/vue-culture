@@ -3,6 +3,7 @@
       <cm-news-list
       :hasDashBorder="true"
       :newsList="newsList"
+      :hasDate="true"
       ></cm-news-list>
   </div>
 </template>

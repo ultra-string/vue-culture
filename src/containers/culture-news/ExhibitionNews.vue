@@ -1,6 +1,10 @@
 <template>
   <div class="exhibition-news">
-      <cm-thumbnail class="videoItem"></cm-thumbnail>
+      <cm-thumbnail 
+      class="videoItem"
+      :isTitle="true"
+      :isVideo="true"
+      ></cm-thumbnail>
       <div class="content">
         <template>
           <cm-news-list
