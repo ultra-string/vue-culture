@@ -193,10 +193,9 @@ export default {
         }
     }
     .pic{
-        display: flex;
-        display: -webkit-flex;
-        justify-content : space-between;
-        flex-direction : row;
+        @include display-flex;
+        @include justify-content-space;
+        // flex-direction : row;
         width : 565px;
         
     }

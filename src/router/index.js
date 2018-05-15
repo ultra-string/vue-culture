@@ -5,6 +5,7 @@ import { routerMode } from '@/config/env'
 Vue.use(Router)
 
 //vue异步组件和webpack的【代码分块点】功能结合，实现了按需加载
+const IndexRoute = () => import('@/containers/IndexRoute');
 const Index = () => import('@/containers/Index');
 /*
 *   文旅资讯相关路由
@@ -14,38 +15,69 @@ const CultureNews = () => import('@/containers/culture-news/CultureNews');
 const ImportantNews = () => import('@/containers/culture-news/ImportantNews');
 const ExhibitionNews = () => import('@/containers/culture-news/ExhibitionNews');
 const Policy = () => import('@/containers/culture-news/Policy');
+/*
+*   登录路由
+*/
+const Login = () => import('@/components/sections/st-login');
+const Register = () => import('@/components/sections/st-login');
 
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
   routes: [
     {
       path: '/',
-      name: 'Index',
-      component: Index
+      redirect: '/index'
     },
     {
-      path: '/CultureNewsIndex',
-      component: CultureNewsIndex,
+      path : '/login',
+      component : Login,
       children: [
         {
           path: '',
-          name: 'CultureNews',
-          component: CultureNews
+          name: 'Login',
+          component: Login
         },
         {
-          path: 'ImportantNews',
-          name: 'ImportantNews',
-          component: ImportantNews
+          path: 'register',
+          name: 'Register',
+          component: Register
+        }
+      ]
+    },
+    {
+      path: '/index',
+      component: IndexRoute,
+      children: [
+        {
+          path: '/',
+          name: 'Index',
+          component: Index
         },
         {
-          path: 'ExhibitionNews',
-          name: 'ExhibitionNews',
-          component: ExhibitionNews
-        },
-        {
-          path: 'Policy',
-          name: 'Policy',
-          component: Policy
+          path: '/CultureNewsIndex',
+          component: CultureNewsIndex,
+          children: [
+            {
+              path: '',
+              name: 'CultureNews',
+              component: CultureNews
+            },
+            {
+              path: 'ImportantNews',
+              name: 'ImportantNews',
+              component: ImportantNews
+            },
+            {
+              path: 'ExhibitionNews',
+              name: 'ExhibitionNews',
+              component: ExhibitionNews
+            },
+            {
+              path: 'Policy',
+              name: 'Policy',
+              component: Policy
+            }
+          ]
         }
       ]
     }
