@@ -14,11 +14,55 @@ export default {
     },
     methods : {
         goTopFn : function(){
-            // alert(1)
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-            // alert(document.documentElement.scrollTop)
-        }
+            // document.body.scrollTop = 0;
+            // document.documentElement.scrollTop = 0;
+            let topDis = 0;
+			if(
+				document.documentElement
+				&& document.documentElement.scrollTop
+			){
+                topDis=document.documentElement.scrollTop;
+			}else if(document.body){
+				topDis=document.body.scrollTop;
+            }
+            console.log(topDis)
+            this.jump(-topDis);
+        },
+        jump: function (total) {
+			let distance = 0;
+			let step = total / 30;
+			if (total < distance) {
+                smoothDown()
+			} else {
+                let newTotal = distance - total
+				step = newTotal / 50
+				smoothUp()
+			}
+			function smoothDown () {
+				if (distance > total) {
+					distance += step;
+					document.documentElement.scrollTop -= step;
+					setTimeout(smoothDown, 10);
+				} else {
+					document.body.scrollTop = 0;
+					document.documentElement.scrollTop = 0;
+					window.pageYOffset = 0;
+				}
+			}
+			function smoothUp () {
+				if (distance < total) {
+                    document.documentElement.scrollTop += step;
+                    distance -= step;
+                    console.log(distance);
+					setTimeout(smoothUp, 30);
+				} else {
+                    // alert(3)
+					document.body.scrollTop = 0;
+					document.documentElement.scrollTop = 0;
+					window.pageYOffset = 0;
+				}
+			} 
+		},
     }
 }
 </script>
