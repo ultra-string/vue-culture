@@ -18,8 +18,9 @@ const Policy = () => import('@/containers/culture-news/Policy');
 /*
 *   登录路由
 */
+const LoginView = () => import('@/containers/LoginView');
 const Login = () => import('@/components/sections/st-login');
-const Register = () => import('@/components/sections/st-login');
+const Register = () => import('@/components/sections/st-register');
 
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
@@ -30,7 +31,7 @@ export default new Router({
     },
     {
       path : '/login',
-      component : Login,
+      component : LoginView,
       children: [
         {
           path: '',
