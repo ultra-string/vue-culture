@@ -31,7 +31,6 @@ export default new Router({
     {
       path : '/login',
       component : Login,
-      name : 'LoginCom',
       children: [
         {
           path: '',
@@ -47,7 +46,6 @@ export default new Router({
     },
     {
       path: '/index',
-      name: Index,
       component: IndexRoute,
       children: [
         {

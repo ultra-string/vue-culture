@@ -15,57 +15,27 @@
 </template>
 
 <script>
-import StTopNav from '@/components/sections/st-top-nav';
-import StTopLogo from '@/components/sections/st-top-logo';
-import CmTopNav from '@/components/cm-top-nav';
-import StFootQrcode from '@/components/sections/st-foot-qrcode';
-import StFootNav from '@/components/sections/st-foot-nav';
-import StRightAdv from '@/components/sections/st-right-adv';
-
-import Lib from '@/common/lib/lib.js'
 
 export default {
   name: 'App',
-  data() {
-    return {
-      options: [{
-          value: '选项1',
-          label: '新闻'
-        }, {
-          value: '选项2',
-          label: '娱乐'
-        }, {
-          value: '选项3',
-          label: 'happy'
-        }],
-    }
-  },
-  components: {
-    StTopNav,
-    StTopLogo,
-    CmTopNav,
-    StFootNav,
-    StFootQrcode,
-    StRightAdv,
-  },
   created() {
-    let aaa = Lib.changeCase('aaaaa',1);
-    console.log(aaa)
-    let page = 10;
-    this.$get(`/body/${page}`)
-    .then(res => {
-      console.log(res);
-    })
-    .catch(err => {
-      console.log(err);
-    })
-    this.$post('/body/page/oneId?pageNo=1&pageSize=2&twoId=1&oneId=10')
-    .then(res => {
-      console.log(res)
-    })
-    .catch( err => {
-      console.log(err);
-    })
+    // let aaa = Lib.changeCase('aaaaa',1);
+    // console.log(aaa)
+    // let page = 10;
+    // this.$get(`/body/${page}`)
+    // .then(res => {
+    //   console.log(res);
+    // })
+    // .catch(err => {
+    //   console.log(err);
+    // })
+    // this.$post('/body/page/oneId?pageNo=1&pageSize=2&twoId=1&oneId=10')
+    // .then(res => {
+    //   console.log(res)
+    // })
+    // .catch( err => {
+    //   console.log(err);
+    // })
   }
 }
 </script>
