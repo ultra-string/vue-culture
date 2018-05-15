@@ -33,7 +33,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .loginView{
-    width : 100%;
     min-width : 1000px;
 
     .top{
@@ -59,8 +58,6 @@ export default {
             width : 1000px;
             margin : 0 auto;
             text-align : center;
-
-            img{}
         }
     }
     .login{
