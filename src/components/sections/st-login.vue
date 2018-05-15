@@ -20,10 +20,10 @@
                     <input type="text" placeholder="请输入8-16位用户名,仅限字母,数字,下划线" class="boll">
                 </h6>
                 <h6>
-                    <input type="text" placeholder="请输入8-16位密码,仅限字母,数字,下划线" class="boll">
+                    <input type="password" placeholder="请输入8-16位密码,仅限字母,数字,下划线" class="boll">
                 </h6>
                 <h6 class="clearfix">
-                    <input type="text" placeholder="收到验证码" class="fl">
+                    <input type="number" placeholder="收到验证码" class="fl">
                     <input type="button" placeholder="收到验证码(51)" class="fl">
                 </h6>
             </div>
