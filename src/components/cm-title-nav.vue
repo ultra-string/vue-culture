@@ -1,10 +1,14 @@
 <template>
-  <div class="cm-list-nav clearfix">
-      <i class="fl"></i>
-      <h3 class="fl">红色标题</h3>
-      <div class="fl clearfix">
-        <span class="fl"></span>
-        <div class="fl"></div>
+  <div class="cm-list-nav">
+      <i></i>
+      <h3>{{oneTitle}}</h3>
+      <span></span>
+      <div class="clearfix">
+        <div class="fl" v-for="(value, key) in secondTitle" :key="key">
+          <h4>{{value.title}}</h4>
+          <span v-if="key != secondTitle.length - 1"></span>
+        </div>
+        <div class="fr more">更多>></div>
       </div>
   </div>
 </template>
@@ -13,15 +17,19 @@
 export default {
   name: "cm-select",
   props: {
-    options: Array,
-    selectValue: String,
-    propswidth: String,
-    width: Number,
-    marginLeft: Number
+    oneTitle: {
+      type: String,
+      default: '首标题'
+    },
+    secondTitle: {
+      type: Array,
+      default: function() {
+        return []
+      }
+    }
   },
   data() {
     return {
-      newMediaListShow: false
     };
   },
   methods: {}
@@ -33,7 +41,11 @@ export default {
 .cm-list-nav {
   height: 40px;
   line-height: 40px;
+  width: 100%;
+  @include display-flex;
+  margin-bottom: 21px;
   i{
+    display: block;
     width: 6px;
     height: 6px;
     margin: 10px 2px 0 0;
@@ -46,18 +58,57 @@ export default {
     height: 24px;
     line-height: 24px;
     padding-bottom: 2px;
+    position: relative;
+    z-index: 10;
   }
-  div{
-    span{
-      width: 8px;
-      height: 8px;
-      border-top: 2px solid $color-border-input;
-      transform:rotate(7deg);
-      -ms-transform:rotate(7deg); 	/* IE 9 */
-      -moz-transform:rotate(7deg); 	/* Firefox */
-      -webkit-transform:rotate(7deg); /* Safari 和 Chrome */
-      -o-transform:rotate(7deg); 	/* Opera */
-    } 
+  >span{
+    display: block;
+    padding-top: 1px;
+    width: 2px;
+    height: 10px;
+    // border-top: 2px solid $color-border-input;
+    transform:rotate(-45deg);
+    -ms-transform:rotate(-45deg); 	/* IE 9 */
+    -moz-transform:rotate(-45deg); 	/* Firefox */
+    -webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+    -o-transform:rotate(-45deg); 	/* Opera */
+    // background: blue;
+    // margin-left: -5px;
+    margin-top: 25px;
+    background:$color-border-input;
+    border-radius: 2px;
+  } 
+  >div {
+    width: 100%;
+    height: 29px;
+    line-height: 29px;
+    border-bottom: 2px solid $color-border-input;
+    border-radius: 2px;
+    flex-grow:1;
+    margin-top: 4px;
+    padding-left: 48px;
+    >div {
+      margin-left:18px;
+      h4{
+        display: inline-block;
+        margin-right:18px;
+      }
+      span{
+        display: inline-block;
+        background: $color-border-input;
+        width: 2px;
+        height: 10px;
+      }
+    }
+    .more {
+      background: $font-hot;
+      color: #fff;
+      width: 41px;
+      line-height: 16px;
+      font-size: 12px;
+      margin-top: 6px;
+      text-align: center;
+    }
   }
 }
 </style>
