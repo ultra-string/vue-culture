@@ -86,7 +86,7 @@ export default {
     border-radius: 2px;
     flex-grow:1;
     margin-top: 4px;
-    padding-left: 48px;
+    padding-left: 30px;
     >div {
       margin-left:18px;
       h4{
@@ -108,6 +108,7 @@ export default {
       font-size: 12px;
       margin-top: 6px;
       text-align: center;
+      margin-left: 0;
     }
   }
 }

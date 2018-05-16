@@ -15,9 +15,11 @@ export default {
   props: {
       newsList: {
           type: Array,
-          default: {
+          default: function() {
+             return [{
               title: '我只是一个默认的标题',
               date: '2018-5-17'
+            }]
           }
       },
       /*
