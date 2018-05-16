@@ -4,7 +4,7 @@
         <p class="commentContent">{{commentContent}}</p>
         <p class="commentDate">{{commentDate | getTimeMD}}</p>
         <cm-foot-nav
-            :listArr="navData"
+            :listArr="listArr"
         ></cm-foot-nav>
     </div>
 </template>
@@ -15,9 +15,9 @@ export default{
     name : "CmComment",
     data(){
         return {
-            navData : [
+            listArr : [
                 {
-                    name : '转发',
+                    name : '联系我们',
                     path : '',
                     style : {
                         padding : '0 4px',
@@ -30,7 +30,7 @@ export default{
                     color : '#eeeeee',
                 },
                 {
-                    name : '转发',
+                    name : '友情链接',
                     path : '',
                     style : {
                         padding : '0 4px',
@@ -43,7 +43,7 @@ export default{
                     color : '#eeeeee',
                 },
                 {
-                    name : '转发',
+                    name : '隐私政策',
                     path : '',
                     style : {
                         padding : '0 4px',
@@ -54,8 +54,34 @@ export default{
                     isClick : false,
                     clickClass : '',
                     color : '#eeeeee',
-                }
-            ]
+                },
+                {
+                    name : '使用条款',
+                    path : '',
+                    style : {
+                        padding : '0 4px',
+                        borderRight : '1px solid #eee',
+                        height : '12px',
+                        lineHeight : '12px',
+                    },
+                    isClick : false,
+                    clickClass : '',
+                    color : '#eeeeee',
+                },
+                {
+                    name : '设计师入驻',
+                    path : '',
+                    style : {
+                        padding : '0 4px',
+                        borderRight : '1px solid #eee',
+                        height : '12px',
+                        lineHeight : '12px',
+                    },
+                    isClick : false,
+                    clickClass : '',
+                    color : '#eeeeee',
+                },
+            ],
         }
     },
     props : {
@@ -74,7 +100,7 @@ export default{
     },
     components : {
         CmFootNav,
-    }
+    },
 }
 </script>
 <style lang="scss" scoped>

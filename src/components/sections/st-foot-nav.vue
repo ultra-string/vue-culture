@@ -107,10 +107,14 @@ export default {
                     color : '#eeeeee',
                 },
             ],
+            listId : '',
         }
     },
     components : {
         CmFootNav
+    },
+    created () {
+        this.listId = new Date().getTime() + '';
     }
 }
 </script>

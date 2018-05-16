@@ -1,12 +1,12 @@
 <template>
     <div class="cm-foot-nav clearfix">
         <router-link 
-            v-for="(item , index) in listArr" 
-            :key="index" 
+            v-for="(item , k) in listArr" 
+            :key="k" 
             v-show="listArr.length ? true : false"
             :to="item.path"
             class="to-index"
-            id="every"
+            :ref="k"
         >
             {{item.name}}
         </router-link>
@@ -16,7 +16,9 @@
 export default {
     name : 'cmFootNav',
     data () {
-        return {}
+        return {
+            listNameId : ''
+        }
     },
     props : {
         listArr : {
@@ -29,15 +31,10 @@ export default {
     mounted(){
         let arrStyle = this.listArr[0].style;
         var name;
-        for(var i = 0; i < every.length; i ++){
+        for(var i = 0; i < this.listArr.length; i ++){
+            var listName = i + '';
             for(name in this.listArr[i].style){
-                every[i].style[name] = this.listArr[i].style[name];
-                if(i == 0){
-                    every[i].style.paddingLeft = 0;
-                }else if(i == every.length - 1){
-                    every[i].style.paddingRight = 0;
-                    every[i].style.borderRight = 'none';
-                }
+                this.$refs[listName][0].$el.style[name] = this.listArr[i].style[name];
             }
         }
     },
