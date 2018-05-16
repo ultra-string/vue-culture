@@ -27,13 +27,15 @@ export default{
         this.commentData = [
             {
                 userName : 'fk',
-                commentContent : '熟练度附近抗裂砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发',
-                commentDate : '1526460237434'
+                commentContent : '熟练度附近抗裂砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发',
+                commentDate : '1526460237434',
+                // isGoodNav : false,
             },
             {
                 userName : 'fklslsl',
                 commentContent : '熟练度附近抗裂砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发',
-                commentDate : '1526460247434'
+                commentDate : '1526460247434',
+                // isGoodNav : false,
             },
         ];
     }

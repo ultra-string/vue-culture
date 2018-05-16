@@ -2,10 +2,14 @@
     <div class="cm-comment">
         <p class="userName">{{userName}}</p>
         <p class="commentContent">{{commentContent}}</p>
-        <p class="commentDate">{{commentDate | getTimeMD}}</p>
-        <cm-foot-nav
-            :listArr="listArr"
-        ></cm-foot-nav>
+        <div class="foot-fn clearfix">
+            <p class="commentDate fl">{{commentDate | getTimeMD}}</p>
+            <cm-foot-nav
+                class="fr"
+                :listArr="listArr"
+                
+            ></cm-foot-nav>
+        </div>
     </div>
 </template>
 <script>
@@ -17,70 +21,54 @@ export default{
         return {
             listArr : [
                 {
-                    name : '联系我们',
+                    name : '转发',
                     path : '',
                     style : {
                         padding : '0 4px',
-                        borderRight : '1px solid #eee',
-                        height : '12px',
-                        lineHeight : '12px',
+                        borderRight : '1px solid #99c9e2',
+                        fontSize : '14px',
+                        height : '14px',
+                        lineHeight : '14px',
+                        marginTop : '6px',
+                        color : '#99c9e2'
                     },
                     isClick : false,
                     clickClass : '',
                     color : '#eeeeee',
                 },
                 {
-                    name : '友情链接',
+                    name : '收藏',
                     path : '',
                     style : {
                         padding : '0 4px',
-                        borderRight : '1px solid #eee',
-                        height : '12px',
-                        lineHeight : '12px',
+                        borderRight : '1px solid #99c9e2',
+                        fontSize : '14px',
+                        height : '14px',
+                        lineHeight : '14px',
+                        marginTop : '6px',
+                        color : '#99c9e2'
                     },
                     isClick : false,
                     clickClass : '',
                     color : '#eeeeee',
                 },
                 {
-                    name : '隐私政策',
+                    name : '评论',
                     path : '',
                     style : {
                         padding : '0 4px',
-                        borderRight : '1px solid #eee',
-                        height : '12px',
-                        lineHeight : '12px',
+                        borderRight : '1px solid #99c9e2',
+                        fontSize : '14px',
+                        height : '14px',
+                        lineHeight : '14px',
+                        marginTop : '6px',
+                        color : '#99c9e2'
                     },
                     isClick : false,
                     clickClass : '',
                     color : '#eeeeee',
                 },
-                {
-                    name : '使用条款',
-                    path : '',
-                    style : {
-                        padding : '0 4px',
-                        borderRight : '1px solid #eee',
-                        height : '12px',
-                        lineHeight : '12px',
-                    },
-                    isClick : false,
-                    clickClass : '',
-                    color : '#eeeeee',
-                },
-                {
-                    name : '设计师入驻',
-                    path : '',
-                    style : {
-                        padding : '0 4px',
-                        borderRight : '1px solid #eee',
-                        height : '12px',
-                        lineHeight : '12px',
-                    },
-                    isClick : false,
-                    clickClass : '',
-                    color : '#eeeeee',
-                },
+                
             ],
         }
     },
@@ -96,6 +84,10 @@ export default{
         commentDate : {
             type : String,
             default : '1526460237434'
+        },
+        isGoodNav : {
+            type : Boolean,
+            default : false
         }
     },
     components : {
@@ -104,9 +96,38 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-.comment{
-    width : 100%;
-    border-bottom : 1px dashed #ccc;
+.cm-comment{
+    width : 704px;
+    margin : 0 auto;
+    border-bottom : 1px dashed #acacac;
+    padding-top : 24px;
+    text-align : left;
+    
+    .userName{
+        width : 100%;
+        color : #c26b65;
+        font-size : 16px;
+        line-height : 32px;
+        height : 32px;
+        margin-bottom : 6px;
+    }
+
+    .commentContent{
+        width : 100%;
+        line-height : 20px;
+        color : #959595;
+        font-size : 14px;
+        margin-bottom : 6px;
+    }
+
+    .foot-fn{
+        width : 100%;
+        height : 20px;
+        line-height : 20px;
+        color : #959595;
+        font-size : 12px;
+        margin-bottom : 10px;
+    }
 }
 </style>
 
