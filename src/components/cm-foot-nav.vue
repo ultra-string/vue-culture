@@ -21,7 +21,9 @@ export default {
     props : {
         listArr : {
             type : Array,
-            default : []
+            default : function(){
+                return [];
+            }
         },
     },
     mounted(){
