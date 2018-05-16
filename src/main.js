@@ -30,3 +30,29 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+/* 发布评论日期 2018年1月12日 16:30 */
+Vue.filter('getTimeMD', function(input) {
+  function add0(m){return m<10?'0'+m:m }  
+  function formatDate(needTime)  
+  {  
+     //needTime是整数，否则要parseInt转换  
+       var time = new Date(needTime);  
+       var y = time.getFullYear();  
+       var m = time.getMonth()+1;  
+       var d = time.getDate();  
+       var h = time.getHours();  
+      var mm = time.getMinutes();  
+      var s = time.getSeconds();  
+      return y+'年'+add0(m)+'月'+add0(d)+'日 '+add0(h)+':'+add0(mm)+':'+add0(s);  
+  }  
+
+
+  let time;
+  if (input === '') {
+    return '';
+  } else {
+    time = formatDate(Number(input));
+  };
+  return time;
+})

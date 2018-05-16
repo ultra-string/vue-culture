@@ -22,6 +22,12 @@ const LoginView = () => import('@/containers/LoginView');
 const Login = () => import('@/components/sections/st-login');
 const Register = () => import('@/components/sections/st-register');
 
+/*
+*   微博测试路由
+*/
+const Weibo = () => import('@/components/sections/st-comment')
+
+
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
   routes: [
@@ -81,6 +87,11 @@ export default new Router({
           ]
         }
       ]
+    },
+    {
+      name : 'Weibo',
+      path : '/Weibo',
+      component : Weibo
     }
   ]
 })
