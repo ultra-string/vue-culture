@@ -97,6 +97,7 @@
       :secondTitle="craftsmanTitle"
       ></cm-title-nav>
     </div>
+
   </div>
 </template>
 
@@ -187,7 +188,8 @@ export default {
     .catch( err => {
       console.log(err);
     })
-  }
+  }, 
+
 }
 </script>
 
