@@ -22,6 +22,8 @@ const LoginView = () => import('@/containers/LoginView');
 const Login = () => import('@/components/sections/st-login');
 const Register = () => import('@/components/sections/st-register');
 
+
+
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
   routes: [
