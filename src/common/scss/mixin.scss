@@ -95,3 +95,12 @@
     -webkit-transform: translate(-50%,-50%);
     -o-transform: translate(-50%,-50%);
 }
+/*
+*   设定标签多少行溢出隐藏替换省略号
+*/
+@mixin overflow-hidden-wrap($line){
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    overflow: hidden;
+}

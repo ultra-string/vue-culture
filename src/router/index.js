@@ -49,7 +49,7 @@ const Weibo = () => import('@/components/sections/st-comment');
 /*
 *   招聘列表测试路由
 */
-const RecruitTest = () => import('@/components/cm-recruit');
+const RecruitTest = () => import('@/components/sections/st-recruit');
 
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
