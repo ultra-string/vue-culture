@@ -1,5 +1,5 @@
 <template>
-    <div class="loginView">
+    <div class="login-view">
         <div class="top">
             <div class="title">
                 <p>中华人民共和国和旅游部主管 / 中国文化传媒集团主办</p>
@@ -19,7 +19,7 @@
 </template>
 <script>
 export default {
-    name : 'login',
+    name : 'LoginView',
     data (){
         return {
         }
@@ -32,7 +32,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.loginView{
+.login-view{
     min-width : 1000px;
 
     .top{

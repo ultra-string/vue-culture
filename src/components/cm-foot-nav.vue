@@ -14,7 +14,7 @@
 </template>
 <script>
 export default {
-    name : 'cmFootNav',
+    name : 'CmFootNav',
     data () {
         return {
             listNameId : ''

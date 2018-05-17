@@ -8,7 +8,7 @@
 </template>
 <script>
 export default {
-    name : 'stRightAdv',
+    name : 'RtRightAdv',
     data (){
         return {}
     },

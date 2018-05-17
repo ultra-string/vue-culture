@@ -31,6 +31,11 @@ const Notice = () => import('@/containers/Notice');
 const FriendShipLink = () => import('@/containers/FriendShipLink');
 
 /*
+*   招聘  路由
+*/
+const Recruit = () => import('@/containers/Recruit');
+
+/*
 *   登录路由
 */
 const LoginView = () => import('@/containers/LoginView');
@@ -40,8 +45,11 @@ const Register = () => import('@/components/sections/st-register');
 /*
 *   微博测试路由
 */
-const Weibo = () => import('@/components/sections/st-comment')
-
+const Weibo = () => import('@/components/sections/st-comment');
+/*
+*   招聘列表测试路由
+*/
+const RecruitTest = () => import('@/components/cm-recruit');
 
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
@@ -49,6 +57,12 @@ export default new Router({
     {
       path: '/',
       redirect: '/index'
+    },
+    {
+      //测试招聘列表路由
+      name : 'RecruitTest',
+      path : '/RecruitTest',
+      component : RecruitTest
     },
     {
       path : '/login',
@@ -95,6 +109,13 @@ export default new Router({
           path : 'FriendShipLink',
           meta : ['首页' , '友情链接'],
           component : FriendShipLink
+        },
+        // 招聘
+        {
+          name : 'Recruit',
+          path : 'Recruit',
+          meta : ['首页' , '招聘'],
+          component : Recruit
         },
         {
           path: '/CultureNewsIndex',
