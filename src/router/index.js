@@ -19,10 +19,17 @@ const Policy = () => import('@/containers/culture-news/Policy');
 *   联系我们 路由
 */
 const AboutUs = () => import('@/containers/AboutUs');
+
 /*
 *   公告 路由
 */
 const Notice = () => import('@/containers/Notice');
+
+/*
+*   友情链接  路由
+*/
+const FriendShipLink = () => import('@/containers/FriendShipLink');
+
 /*
 *   登录路由
 */
@@ -81,6 +88,13 @@ export default new Router({
           name: 'Notice',
           meta: ['首页','公告'],
           component: Notice
+        },
+        // 友情链接
+        {
+          name : 'FriendShipLink',
+          path : 'FriendShipLink',
+          meta : ['首页' , '友情链接'],
+          component : FriendShipLink
         },
         {
           path: '/CultureNewsIndex',
