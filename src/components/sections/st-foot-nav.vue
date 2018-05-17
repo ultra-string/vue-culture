@@ -43,7 +43,7 @@ export default {
             listArr : [
                 {
                     name : '联系我们',
-                    path : '',
+                    path : '/index/AboutUs',
                     style : {
                         padding : '0 4px',
                         borderRight : '1px solid #eee',
@@ -107,10 +107,14 @@ export default {
                     color : '#eeeeee',
                 },
             ],
+            listId : '',
         }
     },
     components : {
         CmFootNav
+    },
+    created () {
+        this.listId = new Date().getTime() + '';
     }
 }
 </script>

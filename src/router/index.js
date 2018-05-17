@@ -19,10 +19,22 @@ const Policy = () => import('@/containers/culture-news/Policy');
 *   联系我们 路由
 */
 const AboutUs = () => import('@/containers/AboutUs');
+
 /*
 *   公告 路由
 */
 const Notice = () => import('@/containers/Notice');
+
+/*
+*   友情链接  路由
+*/
+const FriendShipLink = () => import('@/containers/FriendShipLink');
+
+/*
+*   招聘  路由
+*/
+const Recruit = () => import('@/containers/Recruit');
+
 /*
 *   登录路由
 */
@@ -33,8 +45,11 @@ const Register = () => import('@/components/sections/st-register');
 /*
 *   微博测试路由
 */
-const Weibo = () => import('@/components/sections/st-comment')
-
+const Weibo = () => import('@/components/sections/st-comment');
+/*
+*   招聘列表测试路由
+*/
+const RecruitTest = () => import('@/components/cm-recruit');
 
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
@@ -42,6 +57,12 @@ export default new Router({
     {
       path: '/',
       redirect: '/index'
+    },
+    {
+      //测试招聘列表路由
+      name : 'RecruitTest',
+      path : '/RecruitTest',
+      component : RecruitTest
     },
     {
       path : '/login',
@@ -81,6 +102,20 @@ export default new Router({
           name: 'Notice',
           meta: ['首页','公告'],
           component: Notice
+        },
+        // 友情链接
+        {
+          name : 'FriendShipLink',
+          path : 'FriendShipLink',
+          meta : ['首页' , '友情链接'],
+          component : FriendShipLink
+        },
+        // 招聘
+        {
+          name : 'Recruit',
+          path : 'Recruit',
+          meta : ['首页' , '招聘'],
+          component : Recruit
         },
         {
           path: '/CultureNewsIndex',

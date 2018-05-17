@@ -2,11 +2,11 @@
     <div class="st-comment">
         我是微博
         <cm-comment
-            v-for="(item , k) in commentData"
-            :key = 'k'
             :userName="item.userName"
             :commentContent="item.commentContent"
             :commentDate="item.commentDate"
+            v-for="(item , k) in commentData"
+            :key = 'k'
         ></cm-comment>
     </div>
 </template>
@@ -27,13 +27,15 @@ export default{
         this.commentData = [
             {
                 userName : 'fk',
-                commentContent : '熟练度附近抗裂砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发',
-                commentDate : '1526460237434'
+                commentContent : '熟练度附近抗裂砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发',
+                commentDate : '1526460237434',
+                // isGoodNav : false,
             },
             {
-                userName : 'fk',
+                userName : 'fklslsl',
                 commentContent : '熟练度附近抗裂砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发',
-                commentDate : '1526460237434'
+                commentDate : '1526460247434',
+                // isGoodNav : false,
             },
         ];
     }
