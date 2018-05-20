@@ -119,6 +119,8 @@
                 </div>
             </div>
         </div>
+        <!-- 评论 -->
+        <st-comment></st-comment>
 
     </div>
 </template>
@@ -130,6 +132,7 @@ import CmShortContent from '@/components/cm-short-content';
 import CmNewsList from '@/components/cm-news-list';
 import CmThumbnail from '@/components/cm-thumbnail';
 import StVideoContent from '@/components/sections/st-video-content';
+import StComment from '@/components/sections/st-comment.vue';
 
 
 export default {
@@ -169,7 +172,8 @@ export default {
         CmShortContent,
         CmNewsList,
         CmThumbnail,
-        StVideoContent
+        StVideoContent,
+        StComment
     },
     created() {
     }
