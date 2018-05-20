@@ -2,10 +2,21 @@
     <div class="st-comment">
         <div class="choose-content clearfix">
             <ul class="fl left-content clearfix">
-                <li class="clearfix"><i>阅读&nbsp({{}})&nbsp</i><span></span></li>
-                <li class="clearfix"><i>评论&nbsp({{}})&nbsp</i><span></span></li>
-                <li class="clearfix"><i>收藏&nbsp({{}})&nbsp</i><span></span></li>
-                <li class="clearfix"><i>转载&nbsp({{}})&nbsp</i></li>
+                <li class="clearfix">
+                    <i>阅读 &nbsp()&nbsp</i>
+                    <span></span>
+                </li>
+                <li class="clearfix">
+                    <i>评论 &nbsp()&nbsp</i>
+                    <span></span>
+                </li>
+                <li class="clearfix">
+                    <i>收藏 &nbsp()&nbsp</i>
+                    <span></span>
+                </li>
+                <li class="clearfix">
+                    <i>转载 &nbsp()&nbsp</i>
+                </li>
             </ul>
         </div>
         <div class="content">

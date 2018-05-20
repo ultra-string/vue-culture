@@ -50,27 +50,12 @@ const LoginView = () => import('@/containers/LoginView');
 const Login = () => import('@/components/sections/st-login');
 const Register = () => import('@/components/sections/st-register');
 
-/*
-*   微博测试路由
-*/
-const Weibo = () => import('@/components/sections/st-comment');
-/*
-*   招聘列表测试路由
-*/
-const RecruitTest = () => import('@/components/sections/st-recruit');
-
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
   routes: [
     {
       path: '/',
       redirect: '/Index'
-    },
-    {
-      //测试招聘列表路由
-      name : 'RecruitTest',
-      path : '/RecruitTest',
-      component : RecruitTest
     },
     {
       path : '/login',
@@ -165,10 +150,5 @@ export default new Router({
         }
       ]
     },
-    {
-      name : 'Weibo',
-      path : '/Weibo',
-      component : Weibo
-    }
   ]
 })
