@@ -1,6 +1,6 @@
 <template>
     <div class="st-right-adv">
-        <div class="go-top" @click="goTopFn">
+        <div class="go-top" @click="goTopFn" v-show="showReturnBtn">
             <span class="go-top-arow">^</span>
             <p class="go-top-word">返回顶部</p>
         </div>
@@ -10,7 +10,17 @@
 export default {
     name : 'RtRightAdv',
     data (){
-        return {}
+        return {
+            pageHeight : 0,
+            showReturnBtn : false,
+        }
+    },
+    mounted(){
+        window.addEventListener('scroll', this.handleScroll);
+        this.pageHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    },
+    beforeDestroy(){
+      window.removeEventListener("scroll",this.handleScroll);
     },
     methods : {
         goTopFn : function(){
@@ -24,6 +34,12 @@ export default {
 				topDis=document.body.scrollTop;
             }
             this.jump(topDis);
+        },
+        handleScroll : function(){
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            if(scrollTop > this.pageHeight * 3){
+                this.showReturnBtn = true;
+            }
         },
         jump: function (total) {
 			let distance = 0;
