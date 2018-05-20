@@ -50,12 +50,22 @@ const LoginView = () => import('@/containers/LoginView');
 const Login = () => import('@/components/sections/st-login');
 const Register = () => import('@/components/sections/st-register');
 
+/*
+*   测试组件路由
+*/
+const Test = () => import('@/components/cm-pic-list')
+
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
   routes: [
     {
       path: '/',
       redirect: '/Index'
+    },
+    {
+      path : '/test',
+      name : 'test',
+      component : FriendShipLink,
     },
     {
       path : '/login',
