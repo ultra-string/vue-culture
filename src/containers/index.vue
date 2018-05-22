@@ -436,14 +436,22 @@ export default {
     CmShortContent
   },
   created() {
-
-    this.$post(`/body/page/oneId?${Lib.json2url(this.bodyList)}`)
+    this.$get('/index')
     .then(res => {
       console.log(res)
     })
-    .catch( err => {
-      console.log(err);
+    .catch(err => {
+      console.log(err)
     })
+
+
+    // this.$post(`/body/page/oneId?${Lib.json2url(this.bodyList)}`)
+    // .then(res => {
+    //   console.log(res)
+    // })
+    // .catch( err => {
+    //   console.log(err);
+    // })
   }, 
 
 }
