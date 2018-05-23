@@ -57,6 +57,10 @@ function formatDate(needTime , choose){
       //返回完整时间拼接'-'
       return y + '-' + add0(m) + '-' + add0(d) + '- ' + add0(h) + ':' + add0(mm) + ':' + add0(s);
     break;
+    case 'ymdWord' :
+      //返回年月日时间拼接'-'
+      return y + '-' + add0(m) + '-' + add0(d);
+    break;
     case 'dayWord' :
       //返回日文字 eg ：12日
       return add0(d) + '';
@@ -92,6 +96,16 @@ Vue.filter('getTimeDayWord', function(input) {
   return time;
 })
 
+/* 发布列表日期 2018-1-16 */
+Vue.filter('getTimeYMDWord', function(input) {
+  let time;
+  if (input === '') {
+    return '';
+  } else {
+    time = formatDate(Number(input) , 'ymdWord');
+  };
+  return time;
+})
 /* 发布列表日期 2018-1 */
 Vue.filter('getTimeYMWord', function(input) {
   let time;

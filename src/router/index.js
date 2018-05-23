@@ -16,6 +16,14 @@ const ImportantNews = () => import('@/containers/culture-news/ImportantNews');
 const ExhibitionNews = () => import('@/containers/culture-news/ExhibitionNews');
 const Policy = () => import('@/containers/culture-news/Policy');
 /*
+*   特别策划 路由
+*/
+const SpecialScheme = () => import('@/containers/SpecialScheme');
+/*
+*   详情页 路由
+*/
+const Details = () => import('@/containers/Details');
+/*
 *   联系我们 路由
 */
 const AboutUs = () => import('@/containers/AboutUs');
@@ -43,26 +51,21 @@ const Login = () => import('@/components/sections/st-login');
 const Register = () => import('@/components/sections/st-register');
 
 /*
-*   微博测试路由
+*   测试组件路由
 */
-const Weibo = () => import('@/components/sections/st-comment');
-/*
-*   招聘列表测试路由
-*/
-const RecruitTest = () => import('@/components/sections/st-recruit');
+const Test = () => import('@/components/cm-pic-list')
 
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
   routes: [
     {
       path: '/',
-      redirect: '/index'
+      redirect: '/Index'
     },
     {
-      //测试招聘列表路由
-      name : 'RecruitTest',
-      path : '/RecruitTest',
-      component : RecruitTest
+      path : '/test',
+      name : 'test',
+      component : FriendShipLink,
     },
     {
       path : '/login',
@@ -81,13 +84,19 @@ export default new Router({
       ]
     },
     {
-      path: '/index',
+      path: '/Index',
       component: IndexRoute,
       children: [
         {
           path: '/',
           name: 'Index',
           component: Index
+        },
+        // 特别策划路由
+        {
+          path: 'SpecialScheme',
+          name: 'SpecialScheme',
+          component: SpecialScheme
         },
          // 联系我们
         {
@@ -117,6 +126,12 @@ export default new Router({
           meta : ['首页' , '招聘'],
           component : Recruit
         },
+        // 详情页
+        {
+          path: 'Details/:id',
+          name: 'Details',
+          component: Details
+        },
         {
           path: '/CultureNewsIndex',
           component: CultureNewsIndex,
@@ -145,10 +160,5 @@ export default new Router({
         }
       ]
     },
-    {
-      name : 'Weibo',
-      path : '/Weibo',
-      component : Weibo
-    }
   ]
 })

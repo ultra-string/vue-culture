@@ -53,6 +53,7 @@
     </div>
 </template>
 <script>
+import Lib from '@/common/lib/lib.js'
 export default {
     name : 'Register',
     data (){

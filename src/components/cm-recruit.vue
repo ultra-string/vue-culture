@@ -10,7 +10,7 @@
             <div class="fr content">
                 <p>{{item.content}}</p>
                 <div class="btn-line clearfix">
-                    <div class="more-btn fr">更多</div>
+                    <div class="more-btn fr">查看详情</div>
                 </div>
             </div>
         </div>
@@ -37,23 +37,37 @@ export default{
 <style lang="scss" scoped>
 .cm-recruit{
     width : 1000px;
+    margin : 0 auto;
 
     .list{
         width : 100%;
-        margin-bottom : 30px;
+        margin-bottom : 42px;
 
         .date{
-            width : 80px;
-            height : 80px;
+            width : 98px;
+            height : 98px;
             border : 1px solid $font-hot;
+            color : $font-hot;
+            text-align : center;
+
+            h5{
+                font-size : 20px;
+                padding : 20px 0;
+            }
+
+            h6{
+                font-size : 16px;
+            }
         }
         .content{
-            width : 800px;
-            font-size : 16px;
+            width : 874px;
+            height : 99px;
+            font-size : 14px;
             border-bottom : 1px solid #ccc;
             p{
                 @include overflow-hidden-wrap(3);
                 min-height : 60px;
+                line-height : 24px;
             }
         
 
@@ -62,11 +76,13 @@ export default{
                 height : 20px;
 
                 .more-btn{
-                    width : 45px;
+                    width : 58px;
                     height : 20px;
                     border-radius : 3px;
+                    padding : 0 6px;
                     background : $font-hot;
                     color : $font-white;
+                    text-align : center;
                 }
             }
         }

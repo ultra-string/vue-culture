@@ -1,10 +1,14 @@
 <!-- 友情链接 -->
 <template>
     <div class="friendship-link">
-        友情链接
-        <!-- <cm-breadcrumb
+        <cm-bradcrumb
             :navTree="navTree"
-        ></cm-breadcrumb> -->
+            style="margin:18px 0;lineHeight: 45px;fontSize:19px"
+        ></cm-bradcrumb>
+        <h2 class="friend-title">合作伙伴</h2>
+        <div class="content">
+            <img :src="item.path" alt="" v-for="(item , index) in dataList" :key="index">
+        </div>
     </div>
 </template>
 <script>
@@ -14,7 +18,53 @@ export default{
     name : 'FriendShipLink',
     data(){
         return {
-            navTree : ['首页' , '友情链接'],//meta
+            navTree: [{
+                name: '首页',
+                    path: 'CultureNews',
+                    url: '',
+                    nowPage: false,
+                    isOuter: false
+                },
+                {
+                    name: '文旅资讯',
+                        path: 'CultureNews',
+                        url: '',
+                        nowPage: false,
+                        isOuter: false
+                }
+            ],//meta
+            dataList : [
+                {
+                    path : require('./../common/images/comment/friend.jpg')
+                },
+                {
+                    path : require('./../common/images/comment/friend.jpg')
+                },
+                {
+                    path : require('./../common/images/comment/friend.jpg')
+                },
+                {
+                    path : require('./../common/images/comment/friend.jpg')
+                },
+                {
+                    path : require('./../common/images/comment/friend.jpg')
+                },
+                {
+                    path : require('./../common/images/comment/friend.jpg')
+                },
+                {
+                    path : require('./../common/images/comment/friend.jpg')
+                },
+                {
+                    path : require('./../common/images/comment/friend.jpg')
+                },
+                {
+                    path : require('./../common/images/comment/friend.jpg')
+                },
+                {
+                    path : require('./../common/images/comment/friend.jpg')
+                },
+            ],
         }
     },
     component : {
@@ -26,7 +76,32 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+.friendship-link{
+    width : 100%;
+    position : relative;
+    .friend-title{
+        width : 100%;
+        height : 94px;
+        line-height : 94px;
+        color : #4d4d4d;
+        text-align : center;
+        font-weight : bold;
+    }
+    .content{
+        width : 100%;
+        @include display-flex;
+        @include justify-content-space;
+        flex-wrap: wrap;
 
+        img{
+            width : 180px;
+            height : 98px;
+            border : 1px solid #eeeeee;
+            margin-bottom : 30px;
+        }
+    }
+    
+}
 </style>
 
 

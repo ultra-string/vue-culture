@@ -1,5 +1,5 @@
 <template>
-    <div class="cm-comment">
+    <div class="cm-comment" ref="comment">
         <p class="userName">{{userName}}</p>
         <p class="commentContent">{{commentContent}}</p>
         <div class="foot-fn clearfix">
@@ -57,7 +57,6 @@ export default{
                     path : '',
                     style : {
                         padding : '0 4px',
-                        borderRight : '1px solid #99c9e2',
                         fontSize : '14px',
                         height : '14px',
                         lineHeight : '14px',
@@ -88,16 +87,25 @@ export default{
         isGoodNav : {
             type : Boolean,
             default : false
+        },
+        lastBorder : {
+            type : Boolean,
+            default : false
         }
     },
     components : {
         CmFootNav,
     },
+    mounted (){
+        if(this.lastBorder){
+            this.$refs.comment.style.borderBottom = "none";
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
 .cm-comment{
-    width : 704px;
+    width : 100%;
     margin : 0 auto;
     border-bottom : 1px dashed #acacac;
     padding-top : 24px;
