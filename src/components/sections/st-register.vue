@@ -59,6 +59,9 @@ export default {
     data (){
         return {
             phoneNum : '',
+            password : '',
+            nickname : '',
+            smscode : '',
         }
     },
     methods : {
@@ -66,6 +69,18 @@ export default {
             this.phoneNum = this.phoneNum.replace(/[^\d]/g,'');
             console.log(this.phoneNum)
         },
+        getSmsCodeFn : function(){
+            this.$get('/smscode').then(res => {
+                console.log(res)
+            })
+        },
+    },
+    created(){
+        let str = '/register&' + this.phoneNum + '&' + this.password + '&' + this.nickname + '&' + this.smscode
+        this.$post(str)
+            .then(res => {
+                console.log(res)
+            })
     }
 }
 </script>

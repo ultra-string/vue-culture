@@ -176,6 +176,10 @@ export default {
         StComment
     },
     created() {
+        this.$get('/specialPlanningSearch')
+            .then(res => {
+                console.log(res)
+            })
     }
 }
 </script>
