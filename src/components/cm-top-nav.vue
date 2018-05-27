@@ -1,7 +1,7 @@
 <template>
   <div class="cm-top-nav">
       <ul class="clearfix">
-          <li class="fl" v-for="(val, key) in options" :key="key" :class="selectedKey == key ? 'action' : '' " @click.stop="chooseNav(key)">{{val.label}}</li>
+          <li class="fl" v-for="(val, key) in options" :key="key" :class="selectedKey == key ? 'action' : '' " @click.stop="chooseNav(key)">{{val.oneTitleName}}</li>
       </ul>
       <img src="@/common/images/index/top-share.png" alt="">
   </div>
@@ -12,7 +12,12 @@
 export default {
   name: 'cmTopNav',
   props: {
-      options: Array
+      options : {
+          type : Array,
+          default : function(){
+              return [];
+          }
+      }
   },
   data () {
     return {
@@ -23,6 +28,9 @@ export default {
       chooseNav: function(key) {
           this.selectedKey = key;
       }
+  },
+  created(){
+    //   console.log(this.options)
   }
 }
 </script>

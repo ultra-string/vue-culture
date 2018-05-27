@@ -13,9 +13,9 @@
                 :width="46"
                 ></cm-select>
                 <span class="fl"></span>
-                <input type="text" value="我是输入框" class="fl">
+                <input type="text" value="" class="fl" placeholder="我是输入框" id="searchInp">
             </div>
-            <img src="@/common/images/index/search-hot.png" alt="搜索按钮">
+            <img src="@/common/images/index/search-hot.png" alt="搜索按钮" @click="toSerachFn">
         </div>
     </div>
   </div>
@@ -30,19 +30,44 @@ export default {
     return {
         options: [{
           value: '选项1',
-          label: '新闻'
+          label: '新闻',
+          type : '0'
         }, {
           value: '选项2',
-          label: '娱乐'
+          label: '娱乐',
+          type : '1'
         }, {
           value: '选项3',
-          label: 'happy'
+          label: 'happy',
+          type : '2'
         }],
         selectValue: '新闻',
+        curType : '0'
     }
   },
   components: {
       CmSelect
+  },
+  methods : {
+      toSerachFn : function(){
+          //搜索
+          let note = searchInp.value;
+          if(!note){
+              alert('请输入搜索内容');
+              return;
+          }
+          this.$post('/search' , {
+            "pageNo": 0,
+            "pageSize": 0,
+            "param": note,
+            "type": 0
+          }).then(res => {
+              console.log(res)
+          })
+      },
+      changeCurType : function(typeIndex){
+          this.curType = typeIndex;
+      }
   }
 }
 </script>

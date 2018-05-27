@@ -9,7 +9,7 @@
       ></cm-swiper>
       <div class="fl">
         <cm-title-nav
-        oneTitle="文旅资讯"
+        :oneTitle="'文旅资讯'"
         :secondTitle="swiperLineNewTitle"
         ></cm-title-nav>
         <div class="clearfix">
@@ -59,14 +59,16 @@
             class="fl"
             :width="230"
             :height="135"
-            title="特别策划标题"
+            :title="totalList.specialPlannings[0].bodyTitle"
             :isTitle="true"
+            :src="totalList.specialPlannings[0].imgUrl"
             ></cm-thumbnail>
             <ul class="fl">
               <li>
                 <cm-news-list
-                :newsList="specialPlanNewsList"
+                :newsList="totalList.specialPlannings"
                 :hasHotPoint="true"
+                :delNum="2"
                 ></cm-news-list>
               </li>
             </ul>
@@ -76,8 +78,9 @@
             class="fl"
             :width="230"
             :height="135"
-            title="特别策划标题"
+            :title="totalList.specialPlannings[1].bodyTitle"
             :isTitle="true"
+            :src="totalList.specialPlannings[1].imgUrl"
             ></cm-thumbnail>
             <ul class="fl">
               <li>
@@ -101,9 +104,10 @@
           <cm-thumbnail
           :width="230"
           :height="135"
-          title="匠人故事"
           :isTitle="true"
+          :title="totalList.craftsmans[0].bodyTitle"
           class="fl"
+          :src="totalList.craftsmans[0].imgUrl"
           ></cm-thumbnail>
           <cm-short-content
           class="fr list"
@@ -111,8 +115,9 @@
         </div>
         <div class="fr">
           <cm-news-list
-          :newsList="newsList"
+          :newsList="totalList.craftsmans"
           :hasHotPoint="true"
+          :delNum="1"
           ></cm-news-list>
         </div>
       </div>
@@ -128,21 +133,24 @@
             <cm-thumbnail
             :width="230"
             :height="135"
-            title="匠人故事"
             :isTitle="true"
             class="fl left"
+            :title="totalList.artFanCommunitys[0].bodyTitle"
+            :src="totalList.artFanCommunitys[0].imgUrl"
             ></cm-thumbnail>
             <cm-thumbnail
             :width="230"
             :height="135"
-            title="匠人故事"
             :isTitle="true"
             class="fl"
+            :title="totalList.artFanCommunitys[1].bodyTitle"
+            :src="totalList.artFanCommunitys[1].imgUrl"
             ></cm-thumbnail>
           </div>
           <cm-news-list
           :newsList="newsList"
           :hasHotPoint="true"
+          :delNum="2"
           class="news-list"
           ></cm-news-list>
         </div>
@@ -151,16 +159,18 @@
             <cm-thumbnail
             :width="230"
             :height="135"
-            title="匠人故事"
             :isTitle="true"
             class="fl left"
+            :title="totalList.artFanCommunitys[2].bodyTitle"
+            :src="totalList.artFanCommunitys[2].imgUrl"
             ></cm-thumbnail>
             <cm-thumbnail
             :width="230"
             :height="135"
-            title="匠人故事"
             :isTitle="true"
             class="fl"
+            :title="totalList.artFanCommunitys[3].bodyTitle"
+            :src="totalList.artFanCommunitys[3].imgUrl"
             ></cm-thumbnail>
           </div>
           <cm-news-list
@@ -195,42 +205,47 @@
         <cm-thumbnail
         :width="480"
         :height="270"
-        title="中国美食"
         :isTitle="true"
         class="fl"
+        :title="totalList.gourmetWorlds[0].bodyTitle"
+        :src="totalList.gourmetWorlds[0].imgUrl"
         ></cm-thumbnail>
         <div class="fr right">
           <cm-thumbnail
           :width="235"
           :height="127"
-          title="中国美食"
           :isTitle="true"
           :isVideo="true"
           class="fl right-item"
+          :title="totalList.gourmetWorlds[1].bodyTitle"
+          :src="totalList.gourmetWorlds[1].imgUrl"
           ></cm-thumbnail>
           <cm-thumbnail
           :width="235"
           :height="127"
-          title="中国美食"
           :isTitle="true"
           :isVideo="true"
           class="fl right-item"
+          :title="totalList.gourmetWorlds[2].bodyTitle"
+          :src="totalList.gourmetWorlds[2].imgUrl"
           ></cm-thumbnail>
           <cm-thumbnail
           :width="235"
           :height="127"
-          title="中国美食"
           :isTitle="true"
           :isVideo="true"
           class="fl right-item"
+          :title="totalList.gourmetWorlds[3].bodyTitle"
+          :src="totalList.gourmetWorlds[3].imgUrl"
           ></cm-thumbnail>
           <cm-thumbnail
           :width="235"
           :height="127"
-          title="中国美食"
           :isTitle="true"
           :isVideo="true"
           class="fl right-item"
+          :title="totalList.gourmetWorlds[4].bodyTitle"
+          :src="totalList.gourmetWorlds[4].imgUrl"
           ></cm-thumbnail>
         </div>
       </div>
@@ -247,14 +262,16 @@
           <cm-thumbnail
           :width="230"
           :height="135"
-          title="swiper标题"
           :isTitle="true"
+          :title="totalList.inheritanceChinas[0].bodyTitle"
+          :src="totalList.inheritanceChinas[0].imgUrl"
           ></cm-thumbnail>
           <ul>
             <li>
               <cm-news-list
               :newsList="newsList"
               :hasHotPoint="true"
+              :delNum="2"
               ></cm-news-list>
             </li>
           </ul>
@@ -263,14 +280,16 @@
           <cm-thumbnail
           :width="230"
           :height="135"
-          title="swiper标题"
           :isTitle="true"
+          :title="totalList.inheritanceChinas[1].bodyTitle"
+          :src="totalList.inheritanceChinas[1].imgUrl"
           ></cm-thumbnail>
           <ul>
             <li>
               <cm-news-list
               :newsList="newsList"
               :hasHotPoint="true"
+              :delNum="2"
               ></cm-news-list>
             </li>
           </ul>
@@ -279,14 +298,16 @@
           <cm-thumbnail
           :width="230"
           :height="135"
-          title="swiper标题"
           :isTitle="true"
+          :title="totalList.inheritanceChinas[2].bodyTitle"
+          :src="totalList.inheritanceChinas[2].imgUrl"
           ></cm-thumbnail>
           <ul>
             <li>
               <cm-news-list
               :newsList="newsList"
               :hasHotPoint="true"
+              :delNum="2"
               ></cm-news-list>
             </li>
           </ul>
@@ -295,14 +316,16 @@
           <cm-thumbnail
           :width="230"
           :height="135"
-          title="swiper标题"
           :isTitle="true"
+          :title="totalList.inheritanceChinas[3].bodyTitle"
+          :src="totalList.inheritanceChinas[3].imgUrl"
           ></cm-thumbnail>
           <ul>
             <li>
               <cm-news-list
               :newsList="newsList"
               :hasHotPoint="true"
+              :delNum="2"
               ></cm-news-list>
             </li>
           </ul>
@@ -333,6 +356,7 @@
             <cm-news-list
             :newsList="newsList"
             :hasHotPoint="true"
+            :delNum="2"
             ></cm-news-list>
           </div>
         </div>
@@ -361,6 +385,8 @@ export default {
   name: 'Index',
   data () {
     return {
+      //res.data
+      totalList : '',
       bodyList: {
         pageNo: 1,
         pageSize: 1,
@@ -381,24 +407,22 @@ export default {
           link: 'https://www.souhu.com'
         }
       ],
-      newsList: [{
-        title: '我是政策法规的标题啊！我是政策法规的标题啊！我是政策法规的标题啊！我是政策法规的标题啊！',
-        date: '2018-7-20'
-      },{
-        title: '我是政策法规的标题啊！',
-        date: '2018-7-20'
-      },{
-        title: '我是政策法规的标题啊！',
-        date: '2018-7-20'
-      },{
-        title: '我是政策法规的标题啊！',
-        date: '2018-7-20'
-      }],
-      swiperLineNewTitle: [
-        {title: '要闻', link: '/index'},
-        {title: '展讯', link: '/index'},
-        {title: '政治法规', link: '/index'},
+      newsList: [
+        {
+          title: '我是政策法规的标题啊！我是政策法规的标题啊！我是政策法规的标题啊！我是政策法规的标题啊！',
+          date: '2018-7-20'
+        },{
+          title: '我是政策法规的标题啊！',
+          date: '2018-7-20'
+        },{
+          title: '我是政策法规的标题啊！',
+          date: '2018-7-20'
+        },{
+          title: '我是政策法规的标题啊！',
+          date: '2018-7-20'
+        }
       ],
+      swiperLineNewTitle: [],
       // 特别策划数据
       specialPlanNewsList: [
         {
@@ -438,7 +462,83 @@ export default {
   created() {
     this.$get('/index')
     .then(res => {
-      console.log(res)
+      console.log(res);
+      this.totalList = res.data;
+      //假数据
+      //特别策划
+      this.totalList.specialPlannings[0] = {};
+      this.totalList.specialPlannings[0].bodyTitle = '特别策划';
+      this.totalList.specialPlannings[0].imgUrl = require('@/common/images/demo.png');
+      this.totalList.specialPlannings[1] = {};
+      this.totalList.specialPlannings[1].bodyTitle = '特别策划';
+      this.totalList.specialPlannings[1].imgUrl = require('@/common/images/demo.png');
+      //匠人匠心
+      this.totalList.craftsmans[0] = {};
+      this.totalList.craftsmans[0].bodyTitle = '匠人匠心';
+      this.totalList.craftsmans[0].imgUrl = require('@/common/images/demo.png');
+      //艺迷社区
+      this.totalList.artFanCommunitys[0] = {};
+      this.totalList.artFanCommunitys[0].bodyTitle = '艺迷社区';
+      this.totalList.artFanCommunitys[0].imgUrl = require('@/common/images/demo.png');
+      this.totalList.artFanCommunitys[1] = {};
+      this.totalList.artFanCommunitys[1].bodyTitle = '艺迷社区';
+      this.totalList.artFanCommunitys[1].imgUrl = require('@/common/images/demo.png');
+      this.totalList.artFanCommunitys[2] = {};
+      this.totalList.artFanCommunitys[2].bodyTitle = '艺迷社区';
+      this.totalList.artFanCommunitys[2].imgUrl = require('@/common/images/demo.png');
+      this.totalList.artFanCommunitys[3] = {};
+      this.totalList.artFanCommunitys[3].bodyTitle = '艺迷社区';
+      this.totalList.artFanCommunitys[3].imgUrl = require('@/common/images/demo.png');
+      //中国美食
+      this.totalList.gourmetWorlds[0] = {};
+      this.totalList.gourmetWorlds[0].bodyTitle = '中国美食';
+      this.totalList.gourmetWorlds[0].imgUrl = require('@/common/images/demo.png');
+      this.totalList.gourmetWorlds[1] = {};
+      this.totalList.gourmetWorlds[1].bodyTitle = '中国美食';
+      this.totalList.gourmetWorlds[1].imgUrl = require('@/common/images/demo.png');
+      this.totalList.gourmetWorlds[2] = {};
+      this.totalList.gourmetWorlds[2].bodyTitle = '中国美食';
+      this.totalList.gourmetWorlds[2].imgUrl = require('@/common/images/demo.png');
+      this.totalList.gourmetWorlds[3] = {};
+      this.totalList.gourmetWorlds[3].bodyTitle = '中国美食';
+      this.totalList.gourmetWorlds[3].imgUrl = require('@/common/images/demo.png');
+      this.totalList.gourmetWorlds[4] = {};
+      this.totalList.gourmetWorlds[4].bodyTitle = '中国美食';
+      this.totalList.gourmetWorlds[4].imgUrl = require('@/common/images/demo.png');
+      //非遗中国
+      this.totalList.inheritanceChinas[0] = {};
+      this.totalList.inheritanceChinas[0].bodyTitle = '非遗中国';
+      this.totalList.inheritanceChinas[0].imgUrl = require('@/common/images/demo.png');
+      this.totalList.inheritanceChinas[1] = {};
+      this.totalList.inheritanceChinas[1].bodyTitle = '非遗中国';
+      this.totalList.inheritanceChinas[1].imgUrl = require('@/common/images/demo.png');
+      this.totalList.inheritanceChinas[2] = {};
+      this.totalList.inheritanceChinas[2].bodyTitle = '非遗中国';
+      this.totalList.inheritanceChinas[2].imgUrl = require('@/common/images/demo.png');
+      this.totalList.inheritanceChinas[3] = {};
+      this.totalList.inheritanceChinas[3].bodyTitle = '非遗中国';
+      this.totalList.inheritanceChinas[3].imgUrl = require('@/common/images/demo.png');
+      this.totalList.inheritanceChinas[4] = {};
+      this.totalList.inheritanceChinas[4].bodyTitle = '非遗中国';
+      this.totalList.inheritanceChinas[4].imgUrl = require('@/common/images/demo.png');
+
+
+
+
+
+      // //文旅资讯二级标题
+      // this.swiperLineNewTitle = res.data.travelConsultings.twoTitleVOs;
+      // let wordGuidId = res.data.travelConsultings.id;
+      // //获取文旅资讯的信息
+      // this.$post('/body/page' , {
+      //   //更换id
+      //   "oneId": wordGuidId,
+      //   "twoId": '',
+      //   "pageNo": 1,
+      //   "pageSize": 10,
+      // }).then(res => {
+      //   console.log(res)
+      // })
     })
     .catch(err => {
       console.log(err)
