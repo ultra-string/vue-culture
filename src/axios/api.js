@@ -13,9 +13,19 @@ import Lib from '@/common/lib/lib'
 
 console.log(baseUrl)
 
-axios.defaults.headers.post['Content-Type'] = 'Content-Type: application/json'
+// axios.defaults.headers.post['Content-Type'] = 'Content-Type: application/json'
 // baseURL配置
-axios.defaults.baseURL = baseUrl
+// axios.defaults.baseURL = baseUrl
+
+
+const server = axios.create({
+  baseURL: `${baseUrl}/backend`,
+  timeout: 10000,
+  // headers: {'Content-Type': 'Content-Type: application/json'}
+  headers: {
+    Authorization:`Bearer ${store.state.user.token}`
+  }
+});
 
 
 
@@ -47,7 +57,7 @@ export function fetch(url, params = {}) {
     // get 请求
     
     // url = `${url}${Lib.json2url(params)}`
-    axios.get(url, {
+    axios.get(`${baseUrl}/backend${url}`, {
       params
     })
     .then(response => {
@@ -70,7 +80,45 @@ export function post(url, params = {}) {
   console.log(typeof request)
   return new Promise((resolve, reject) => {
     // post请求
-    axios.post(url, request)
+    axios({
+      method: 'post',
+      url: `${baseUrl}/backend${url}`,
+      data: params,
+      // headers: {
+      //   Authorization:`Bearer ${store.state.user.token}`
+      // }
+    })
+    // axios.post(url, request)
+      .then(response => {
+        console.log(response)
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject(error);
+      })
+  })
+}
+
+/*
+*   axios的post请求
+*   @params  url
+*   @params  params
+*   @returns {Promise}
+*/
+export function auth(url, params = {}) {
+  let request = JSON.stringify(params);
+  console.log(typeof request)
+  return new Promise((resolve, reject) => {
+    // post请求
+    axios({
+      method: 'post',
+      url: `/apis${url}`,
+      data: params,
+      headers: {
+        Authorization:`Bearer ${store.state.user.token}`
+      }
+    })
+    // axios.post(url, request)
       .then(response => {
         console.log(response)
         resolve(response.data);

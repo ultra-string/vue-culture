@@ -28,7 +28,7 @@
                 </h6>
             </div>
         </div>
-        <div class="go-login">立即登录</div>
+        <div class="go-login" @click="login">立即登录</div>
     </div>
 </template>
 <script>
@@ -44,6 +44,14 @@ export default {
                 .then(res => {
                     console.log(res)
                 })
+        },
+        login: function() {
+          this.$auth('/auth', {username:"admin",password:"admin"})
+          .then( res => {
+              console.log(res)
+              this.$store.dispatch('STORE_TOKEN', res.token)
+              this.$router.push({path: '/Test'})
+          })  
         }
     }
 }
