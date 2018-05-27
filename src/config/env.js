@@ -11,7 +11,7 @@ let routerMode = '';
 let baseImgPath;
 
 if (process.env.NODE_ENV == 'development') {
-	baseUrl = 'http://118.190.152.1:8083/backend';
+	baseUrl = 'http://118.190.152.1:8083';
     baseImgPath = '';
 }else{
 	baseUrl = 'http://www.baidu.com';

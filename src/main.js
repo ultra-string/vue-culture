@@ -7,7 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import '@/common/scss/element-variables.scss'
 import router from './router'
 // axios封装引入
-import { fetch, post } from '@/axios/api'
+import { fetch, post, auth } from '@/axios/api'
 // vuex 模块仓库
 import store from './store/index'
 
@@ -21,6 +21,8 @@ require ('@/common/scss/index.scss')
 Vue.prototype.$post = post;
 // get 请求使用 this.$get
 Vue.prototype.$get = fetch;
+// 用户登录的借口 auth
+Vue.prototype.$auth = auth;
 
 /* eslint-disable no-new */
 new Vue({

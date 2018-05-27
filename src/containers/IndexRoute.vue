@@ -59,7 +59,12 @@ export default {
     .catch(err => {
       console.log(err);
     })
-    this.$post('/body/page/oneId?pageNo=1&pageSize=2&twoId=1&oneId=10')
+    this.$post('/body/page/oneId',{
+      pageNo:1,
+      pageSize:2,
+      twoId:1,
+      oneId:10
+    })
     .then(res => {
       console.log(res)
     })
