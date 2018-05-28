@@ -53,7 +53,7 @@ const Register = () => import('@/components/sections/st-register');
 /*
 *   测试组件路由
 */
-const Test = () => import('@/components/cm-pic-list')
+const Test = () => import('@/components/cm-test');
 
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
@@ -63,9 +63,9 @@ export default new Router({
       redirect: '/Index'
     },
     {
-      path : '/test',
-      name : 'test',
-      component : FriendShipLink,
+      path : '/Test',
+      name : 'Test',
+      component : Test,
     },
     {
       path : '/login',

@@ -69,6 +69,11 @@ export default{
                 },
                 
             ],
+            pageNo : '1',
+            pageSize : '1',
+            comment : 'sdfsfd',
+            bodyId :'12',
+            id : '1'
         }
     },
     props : {
@@ -97,6 +102,25 @@ export default{
         CmFootNav,
     },
     mounted (){
+        //查询
+        // var str = '/commentSearch&' + this.pageNo + '&' + this.pageSize
+        // this.$post(str).then(res => {
+        //     console.log(res)
+        // })
+        //发布
+        // var str = '/commentPublish&' + this.comment + '&' + this.bodyId;
+        // this.$post(str).then(res => {
+        //     console.log(res)
+        // })
+        //删除  
+        // var str = '/commentDelete&' + this.id;
+        // this.$post(str).then(res => {
+        //     console.log(res)
+        // })
+        //获取登录信息
+        this.$get('/user').then(res => {
+            console.log(res);
+        })
         if(this.lastBorder){
             this.$refs.comment.style.borderBottom = "none";
         }

@@ -1,10 +1,10 @@
 <!-- 友情链接 -->
 <template>
     <div class="friendship-link">
-        <cm-bradcrumb
+        <!-- <cm-bradcrumb
             :navTree="navTree"
             style="margin:18px 0;lineHeight: 45px;fontSize:19px"
-        ></cm-bradcrumb>
+        ></cm-bradcrumb> -->
         <h2 class="friend-title">合作伙伴</h2>
         <div class="content">
             <img :src="item.path" alt="" v-for="(item , index) in dataList" :key="index">
@@ -72,6 +72,19 @@ export default{
     },
     created(){
         // this.navTree = this.$route.meta;
+        //
+        this.$get(`/friendLink`)
+        .then( res => {
+            console.log(res)
+        })
+        // this.$post('/commentPublish?comment=1&bodyId=1')///commentDelete
+        // .then(res => {
+        // console.log(res)
+        // })
+        // this.$post('/commentDelete?id=1')///commentDelete
+        // .then(res => {
+        // console.log(res)
+        // })
     }
 }
 </script>

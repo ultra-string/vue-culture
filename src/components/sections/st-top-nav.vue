@@ -13,8 +13,8 @@
         ></cm-select>
       </div>
       <div class="fr clearfix">
-        <div class="fl">登录</div>
-        <div class="fl">注册</div>
+        <div class="fl" @click="toLogin">登录</div>
+        <div class="fl" @click="toRegister">注册</div>
         <div class="fl">网站导航</div>
       </div>
     </div>
@@ -62,7 +62,19 @@ export default {
   methods: {
     newMediaList: function() {
       this.newMediaListShow = !this.newMediaListShow;
-    }
+    },
+    //跳转登录界面
+    toLogin : function(){
+      this.$router.push({
+        path : '/login'
+      });
+    },
+    //跳转注册界面
+    toRegister : function(){
+      this.$router.push({
+        path : '/login/register'
+      })
+    },
   }
 }
 </script>

@@ -28,16 +28,7 @@ export default {
   name: 'App',
   data() {
     return {
-      options: [{
-          value: '选项1',
-          label: '新闻'
-        }, {
-          value: '选项2',
-          label: '娱乐'
-        }, {
-          value: '选项3',
-          label: 'happy'
-        }],
+      options: [],
     }
   },
   components: {
@@ -49,23 +40,39 @@ export default {
     StRightAdv,
   },
   created() {
-    let aaa = Lib.changeCase('aaaaa',1);
-    console.log(aaa)
-    let page = 10;
-    this.$get(`/body/${page}`)
-    .then(res => {
-      console.log(res);
+    //获取标题
+    this.$get('/index').then(res => {
+      console.log(res.data);
+      this.options = res.data.titleVOs;
     })
-    .catch(err => {
-      console.log(err);
-    })
-    this.$post('/body/page/oneId?pageNo=1&pageSize=2&twoId=1&oneId=10')
-    .then(res => {
-      console.log(res)
-    })
-    .catch( err => {
-      console.log(err);
-    })
+
+
+
+
+
+
+    // let aaa = Lib.changeCase('aaaaa',1);
+    // console.log(aaa)
+    // let page = 10;
+    // this.$get(`/body/${page}`)
+    // .then(res => {
+    //   console.log(res);
+    // })
+    // .catch(err => {
+    //   console.log(err);
+    // })
+    // this.$post('/body/page/oneId',{
+    //   pageNo:1,
+    //   pageSize:2,
+    //   twoId:1,
+    //   oneId:10
+    // })
+    // .then(res => {
+    //   console.log(res)
+    // })
+    // .catch( err => {
+    //   console.log(err);
+    // })
   }
 }
 </script>
