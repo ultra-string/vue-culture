@@ -28,6 +28,7 @@
                 </h6>
             </div>
         </div>
+        <img :src="picPath" alt="">
         <div class="go-login" @click="login">立即登录</div>
     </div>
 </template>
@@ -36,6 +37,7 @@ export default {
     name : 'Login',
     data (){
         return {
+            picPath : '',
         }
     },
     methods : {
@@ -45,15 +47,22 @@ export default {
                     console.log(res)
                 })
         },
-        login: function() {
+        login : function() {
           this.$auth('/auth', {username:"admin",password:"admin"})
           .then( res => {
               console.log(res)
               this.$store.dispatch('STORE_TOKEN', res.token)
               this.$router.push({path: '/Test'})
           })  
+        },
+        //获取图形验证码
+        getPicMark : function(){
+            this.picPath = `http://118.190.152.1:8084/imageVali/?time=${new Date().getTime()}`;
         }
-    }
+    },
+    created(){
+        this.getPicMark();
+    },
 }
 </script>
 <style lang="scss" scoped>

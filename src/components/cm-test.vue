@@ -8,6 +8,7 @@
         <input type="button" @click="getMark" value="获取验证码">
         <input type="button" @click="getUser" value="获取用户信息">
         <input type="button" @click="getRes" value="注册">
+        <img :src="this.picPath" alt="">
     </div>
 </template>
 <script>
@@ -16,7 +17,7 @@ export default{
     name : 'Test',
     data (){
         return {
-
+            picPath : '',
         }
     },
     methods : {
@@ -90,8 +91,16 @@ export default{
                 "phone": "18611422521",
                 "smscode": "POD4"
             }).then(res => {
+                this.picPath = res;
                 console.log(res)
             })
+        },
+        //获取图形验证码
+        getPicMark : function(){
+            // this.$getPic('imageVali/').then(res => {
+            //     console.log(res);
+            // })
+            this.picPath = `http://118.190.152.1:8084/imageVali/?time=${new Date().getTime()}`
         }
     },
     created(){
@@ -127,6 +136,7 @@ export default{
         this.$get('/friendLink').then(res => {
             console.log(res);
         })
+        this.getPicMark();
     }, 
 }
 </script>
