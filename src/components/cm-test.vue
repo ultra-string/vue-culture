@@ -132,10 +132,11 @@ export default{
         //     console.log(res)
         // })
         ///friendLink
-        let str = '/friendLink';
-        this.$get('/friendLink').then(res => {
-            console.log(res);
-        })
+        // let str = '/friendLink';
+        // this.$get('/friendLink').then(res => {
+        //     console.log(res);
+        // })
+        this.getBodyTitle();
         this.getPicMark();
     }, 
 }
