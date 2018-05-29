@@ -1,16 +1,16 @@
 <template>
     <div class="cm-pic-list">
-        <ul class="pic-list">
+        <ul class="pic-list clearfix">
             <li 
                 class="pic-list-box clearfix" 
                 v-for="(item , index) in dataList" 
                 :key="index"
             >
-                <img src="@/common/images/comment/test-pic.jpg" alt="" class="adv-pic">
-                <p class="text">{{item.content}}</p>
+                <img :src="item.thumbnailUrl" alt="" class="adv-pic">
+                <p class="text">{{item.bodyTitle}}</p>
             </li>
         </ul>
-        <cm-change-page></cm-change-page>
+        <!-- <cm-change-page></cm-change-page> -->
     </div>
 </template>
 <script>
@@ -21,53 +21,16 @@ export default{
     name : 'CmArrowList',
     data(){
         return {
-            dataList : [
-                {
-                    content : '1讲述了思科技地方了',
-                    date : '1526814292078'
-                },
-                {
-                    content : '2讲述了思科技地方了',
-                    date : '1526814292078'
-                },
-                {
-                    content : '3讲述了思科技地方了',
-                    date : '1526814292078'
-                },
-                {
-                    content : '4讲述了思科技地方了',
-                    date : '1526814292078'
-                },
-                {
-                    content : '5讲述了思科技地方了',
-                    date : '1526814292078'
-                },
-                {
-                    content : '6讲述了思科技地方了',
-                    date : '1526814292078'
-                },
-                {
-                    content : '7讲述了思科技地方了',
-                    date : '1526814292078'
-                },
-                {
-                    content : '8讲述了思科技地方了',
-                    date : '1526814292078'
-                },
-                {
-                    content : '9讲述了思科技地方了',
-                    date : '1526814292078'
-                },
-            ],
+            
         }
     },
     props : {
-        // dataList : {
-        //     type : Array,
-        //     default : function(){
-        //         return [];
-        //     }
-        // }
+        dataList : {
+            type : Array,
+            default : function(){
+                return [];
+            }
+        }
     },
     components : {
         CmChangePage,
@@ -77,6 +40,7 @@ export default{
 <style lang="scss" scoped>
 .cm-pic-list{
     width : 100%;
+    overflow: hidden;
     .font-black{
         color : #666;
     }
@@ -84,14 +48,24 @@ export default{
         color : $font-hot;
     }
     .pic-list{
-        width : 100%;
-        @include display-flex;
-        @include justify-content-space;
-        flex-wrap: wrap;
+        width : calc(100% + 50px);
+        // @include display-flex;
+        // @include justify-content-space;
+        // flex-wrap: wrap;
+        // overflow: hidden;
         
         .pic-list-box{
             width : 208px;
             height : 180px;
+            float : left;
+            margin-right : 54px;
+            margin-bottom : 10px;
+            img{
+                width : 208px;
+                height : 180px;
+                display: block;
+                margin : 0 auto;
+            }
             .text{
                 width : 100%;
                 height : 50px;

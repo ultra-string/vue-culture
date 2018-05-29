@@ -10,20 +10,23 @@
       <div class="fl">
         <cm-title-nav
         :oneTitle="'文旅资讯'"
-        :secondTitle="swiperLineNewTitle"
+        :secondTitle="cultureTitleArr.twoTitleVOs"
+        :showType="cultureTitleArr.showType"
+        :treeType="'cultureTitleArr'"
         ></cm-title-nav>
         <div class="clearfix">
           <div class="fl left">
             <cm-thumbnail
             :width="230"
             :height="135"
-            title="swiper标题"
+            :title="totalList.travelConsultings[0].bodyTitle"
             :isTitle="true"
+            :src="totalList.travelConsultings[0].thumbnailUrl"
             ></cm-thumbnail>
             <ul>
               <li>
                 <cm-news-list
-                :newsList="newsList"
+                :newsList="cultureListLeft"
                 :hasHotPoint="true"
                 ></cm-news-list>
               </li>
@@ -33,13 +36,14 @@
             <cm-thumbnail
             :width="230"
             :height="135"
-            title="swiper标题"
+            :title="totalList.travelConsultings[0].bodyTitle"
             :isTitle="true"
+            :src="totalList.travelConsultings[1].thumbnailUrl"
             ></cm-thumbnail>
             <ul>
               <li>
                 <cm-news-list
-                :newsList="newsList"
+                :newsList="cultureListRight"
                 :hasHotPoint="true"
                 ></cm-news-list>
               </li>
@@ -61,12 +65,12 @@
             :height="135"
             :title="totalList.specialPlannings[0].bodyTitle"
             :isTitle="true"
-            :src="totalList.specialPlannings[0].imgUrl"
+            :src="totalList.specialPlannings[0].thumbnailUrl"
             ></cm-thumbnail>
             <ul class="fl">
               <li>
                 <cm-news-list
-                :newsList="totalList.specialPlannings"
+                :newsList="specialListLeft"
                 :hasHotPoint="true"
                 :delNum="2"
                 ></cm-news-list>
@@ -80,12 +84,12 @@
             :height="135"
             :title="totalList.specialPlannings[1].bodyTitle"
             :isTitle="true"
-            :src="totalList.specialPlannings[1].imgUrl"
+            :src="totalList.specialPlannings[1].thumbnailUrl"
             ></cm-thumbnail>
             <ul class="fl">
               <li>
                 <cm-news-list
-                :newsList="specialPlanNewsList"
+                :newsList="specialListRight"
                 :hasHotPoint="true"
                 ></cm-news-list>
               </li>
@@ -115,7 +119,7 @@
         </div>
         <div class="fr">
           <cm-news-list
-          :newsList="totalList.craftsmans"
+          :newsList="workerListRight"
           :hasHotPoint="true"
           :delNum="1"
           ></cm-news-list>
@@ -148,7 +152,7 @@
             ></cm-thumbnail>
           </div>
           <cm-news-list
-          :newsList="newsList"
+          :newsList="arrtListLeft"
           :hasHotPoint="true"
           :delNum="2"
           class="news-list"
@@ -174,7 +178,7 @@
             ></cm-thumbnail>
           </div>
           <cm-news-list
-          :newsList="newsList"
+          :newsList="arrtListRight"
           :hasHotPoint="true"
           class="news-list"
           ></cm-news-list>
@@ -269,7 +273,7 @@
           <ul>
             <li>
               <cm-news-list
-              :newsList="newsList"
+              :newsList="chinaListOne"
               :hasHotPoint="true"
               :delNum="2"
               ></cm-news-list>
@@ -287,7 +291,7 @@
           <ul>
             <li>
               <cm-news-list
-              :newsList="newsList"
+              :newsList="chinaListTwo"
               :hasHotPoint="true"
               :delNum="2"
               ></cm-news-list>
@@ -305,7 +309,7 @@
           <ul>
             <li>
               <cm-news-list
-              :newsList="newsList"
+              :newsList="chinaListTree"
               :hasHotPoint="true"
               :delNum="2"
               ></cm-news-list>
@@ -323,7 +327,7 @@
           <ul>
             <li>
               <cm-news-list
-              :newsList="newsList"
+              :newsList="chinaListFour"
               :hasHotPoint="true"
               :delNum="2"
               ></cm-news-list>
@@ -354,7 +358,7 @@
           </div>
           <div>
             <cm-news-list
-            :newsList="newsList"
+            :newsList="studyListLeft"
             :hasHotPoint="true"
             :delNum="2"
             ></cm-news-list>
@@ -407,21 +411,6 @@ export default {
           link: 'https://www.souhu.com'
         }
       ],
-      newsList: [
-        {
-          title: '我是政策法规的标题啊！我是政策法规的标题啊！我是政策法规的标题啊！我是政策法规的标题啊！',
-          date: '2018-7-20'
-        },{
-          title: '我是政策法规的标题啊！',
-          date: '2018-7-20'
-        },{
-          title: '我是政策法规的标题啊！',
-          date: '2018-7-20'
-        },{
-          title: '我是政策法规的标题啊！',
-          date: '2018-7-20'
-        }
-      ],
       swiperLineNewTitle: [],
       // 特别策划数据
       specialPlanNewsList: [
@@ -449,7 +438,34 @@ export default {
         {title: '非遗数据', path: '/index'},
         {title: '大家说非遗', path: '/index'},
         {title: '热点关注', path: '/index'}
-      ]
+      ],
+      cultureListLeft : [],//文旅左侧
+      cultureListRight : [],//文旅右侧
+      specialListLeft : [],//特别左侧
+      specialListRight : [],//特别右侧
+      workerListLeft : [],//匠人左侧
+      workerListRight : [],//匠人右侧
+      arrtListLeft : [],//艺迷左侧
+      arrtListRight : [],//艺迷右侧
+      foodListLeft : [],//美食左侧
+      foodListRight : [],//美食右侧
+      chinaListOne : [],//非遗中国1
+      chinaListTwo : [],//非遗中国2
+      chinaListTree : [],//非遗中国3
+      chinaListFour : [],//非遗中国4
+      studyListLeft : [],//非遗研培左侧
+      studyListRight : [],//非遗研培右侧
+
+      indexTitleArr : [],//首页标题
+      cultureTitleArr : [],//文旅标题
+      workerTitleArr : [],//匠人匠心标题
+      arrTitleArr : [],//艺迷标题
+      foodTitleArr : [],//美食标题
+      chinaTitleArr : [],//非遗中国标题
+      studyTitleArr : [],//非遗研培标题
+      specialTitleArr : [],//特别策划标题
+
+      
     }
   },
   components: {
@@ -465,6 +481,7 @@ export default {
       console.log(res);
       this.totalList = res.data;
       //假数据
+      //文旅资讯
       //特别策划
       this.totalList.specialPlannings[0] = {};
       this.totalList.specialPlannings[0].bodyTitle = '特别策划';
@@ -539,6 +556,13 @@ export default {
       // }).then(res => {
       //   console.log(res)
       // })
+
+      //根据类别处理数组
+      this.changeListByType();
+      //处理一二级标题
+      this.chooseTitleNameFn();
+
+
     })
     .catch(err => {
       console.log(err)
@@ -553,6 +577,116 @@ export default {
     //   console.log(err);
     // })
   }, 
+  methods : {
+    //跳转文旅资讯
+    toCulureFn : function(){
+      this.$router.push({
+        path : '/CultureNewsIndex',
+        query : {}
+      })
+    },
+    //处理一二级标题
+    chooseTitleNameFn : function(){
+      var titleOv = this.totalList.titleVOs;
+      let _this = this;
+      titleOv.forEach(function(item , index){
+        switch (item.oneTitleName){
+          case "首页":
+            _this.indexTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("indexTitleArr", JSON.stringify(item));
+          break;
+          case "文旅咨询":
+            _this.cultureTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("cultureTitleArr", JSON.stringify(item));
+          break;
+          case "匠人匠心":
+            _this.workerTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("workerTitleArr", JSON.stringify(item));
+          break;
+          case "艺迷社区":
+            _this.arrTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("arrTitleArr", JSON.stringify(item));
+          break;
+          case "美食天下":
+            _this.foodTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("foodTitleArr", JSON.stringify(item));
+          break;
+          case "非遗中国":
+            _this.chinaTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("chinaTitleArr", JSON.stringify(item));
+          break;
+          case "非遗研培":
+            _this.studyTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("studyTitleArr", JSON.stringify(item));
+          break;
+          case "特别策划":
+            _this.specialTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("specialTitleArr", JSON.stringify(item));
+          break;
+          // case "中国手艺网电商":
+          //   this.indexTitleArr = item;
+          // break;
+          // case "传统工艺振兴":
+          //   this.indexTitleArr = item;
+          // break;
+          // case "研修研培":
+          //   this.indexTitleArr = item;
+          // break;
+        }
+      })
+    },
+    //根据类别处理数组
+    changeListByType : function(){
+      //文旅
+      this.cultureListLeft = this.changeArr(2,0,3,this.totalList.travelConsultings);
+      this.cultureListRight = this.changeArr(2,4,7,this.totalList.travelConsultings);
+      //特别策划
+      this.specialListLeft = this.changeArr(2,0,3,this.totalList.specialPlannings);
+      this.specialListRight = this.changeArr(2,4,7,this.totalList.specialPlannings);
+      //匠人匠心
+      this.workerListLeft = this.changeArr(2,0,3,this.totalList.craftsmans);
+      this.workerListRight = this.changeArr(2,4,7,this.totalList.craftsmans);
+      //艺迷社区
+      this.arrtListLeft = this.changeArr(4,0,2,this.totalList.artFanCommunitys);
+      this.arrtListRight = this.changeArr(4,3,5,this.totalList.artFanCommunitys);
+      //美食天下
+      // this.foodListLeft = this.changeArr(4,0,2,this.totalList.gourmetWorlds);
+      // this.foodListRight = this.changeArr(4,3,5,this.totalList.gourmetWorlds);
+      //非遗中国
+      this.chinaListOne = this.changeArr(4,0,2,this.totalList.inheritanceChinas);
+      this.chinaListTwo = this.changeArr(4,3,5,this.totalList.inheritanceChinas);
+      this.chinaListTree = this.changeArr(4,6,8,this.totalList.inheritanceChinas);
+      this.chinaListFour = this.changeArr(4,9,11,this.totalList.inheritanceChinas);
+      //研培
+      this.studyListLeft = this.changeArr(1,0,3,this.totalList.studyMatchs);
+      this.studyListRight = this.changeArr(1,4,7,this.totalList.studyMatchs);
+      // console.log(this.cultureLeftRight)
+    },
+    //根据格式处理数组方法
+    changeArr : function(del , from , to , newArr){
+      var arr = [];
+      //去掉删除的
+      to += del;
+      //test
+      if(to > newArr.length){to = newArr.length;}
+      from += del;
+      if(from > newArr.length){return arr;}
+      //取值
+      for(var i = from; i < to; i ++){
+        arr.push(newArr[i]);
+      }
+      return arr;
+      console.log(arr)
+    }
+  }
 
 }
 </script>

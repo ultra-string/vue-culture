@@ -45,6 +45,12 @@ export default {
       console.log(res.data);
       this.options = res.data.titleVOs;
     })
+    // this.options = sessionStorage.getItem("TITLE_NAV").split('-');
+    // this.options.map(function(item,index){
+    //   item = JSON.parse(item);
+    //   return item;
+    // })
+    // console.log(this.options)
 
 
 

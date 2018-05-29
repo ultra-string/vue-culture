@@ -1,9 +1,9 @@
 <template>
   <div>
-      <div class="cm-news-list clearfix" :class="hasDashBorder ? 'hasDashBorder' : ''" v-for="(val, key) in dataList" :key="key">
+      <div class="cm-news-list clearfix" :class="hasDashBorder ? 'hasDashBorder' : ''" v-for="(val, key) in newsList" :key="key">
           <i v-if="hasHotPoint" class="fl"></i>
           <h3 class="fl">{{val.bodyTitle}}</h3>
-          <div v-if="hasDate" class="fr">{{val.date}}</div>
+          <div v-if="hasDate" class="fr">{{val.updateTime | getTimeYMDWord}}</div>
       </div>
   </div>
 </template>
@@ -16,10 +16,6 @@ export default {
       type: Array,
       default: function() {
         return [
-          {
-            title: "我只是一个默认的标题",
-            date: "2018-5-17"
-          }
         ];
       }
     },
@@ -61,7 +57,8 @@ export default {
   created() {
     //处理list
     this.dataList = this.newsList;
-    this.delNumFn();
+    // console.log(this.dataList)
+    // this.delNumFn();
   },
   methods : {
       //处理newsList

@@ -4,11 +4,11 @@
         <!-- 列表 -->
         <div class="list clearfix" v-for="(item , index) in listArr" :key="index">
             <div class="fl date">
-                <h5>{{item.date | getTimeDayWord}}</h5>
-                <h6>{{item.date | getTimeYMWord}}</h6>
+                <h5>{{item.updateTime | getTimeDayWord}}</h5>
+                <h6>{{item.updateTime | getTimeYMWord}}</h6>
             </div>
             <div class="fr content">
-                <p>{{item.content}}</p>
+                <p>{{item.bodyTitle}}</p>
                 <div class="btn-line clearfix">
                     <div class="more-btn fr">查看详情</div>
                 </div>
@@ -31,6 +31,9 @@ export default{
             }
         },
     },
+    created(){
+        console.log(this.listArr)
+    }
 
 }
 </script>

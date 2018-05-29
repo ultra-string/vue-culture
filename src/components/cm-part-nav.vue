@@ -1,7 +1,8 @@
 <template>
   <div class="cm-part-nav">
       <ul>
-          <li class="marginBot" v-for="(val,key) in navTree" :key="key" :class="key == selectedKey ? 'active' : '' " @click.stop="chooseNav(key)">{{val.name}}</li>
+        <li class="marginBot" :class="0 == selectedKey ? 'active' : '' " @click.stop="chooseNav(0 , navTree.id , '' , navTree.showType)">{{navTree.oneTitleName}}</li>
+        <li class="marginBot" v-for="(val,key) in navTree.twoTitleVOs" :key="key" :class="key+1 == selectedKey ? 'active' : '' " @click.stop="chooseNav(key+1 , val.oneTitleId , val.id , val.showType)">{{val.twoTitleName}}</li>
       </ul>
   </div>
 
@@ -12,17 +13,32 @@
 export default {
   name: 'CmPartNav',
   props: {
-      navTree: Array
+      navTree : {
+          type : Object,
+          default : function(){
+              return {}
+          }
+      }
   },
   data() {
       return {
           selectedKey: 0,
       }
   },
+  created(){
+    //   console.log(this.navTree)
+  },
   methods: {
-      chooseNav: function(key) {
+      chooseNav: function(key , oneId , twoId , showType) {
+          //pageNo:第几页;pageSize:一页几条数据;twoId二级标题id;oneId一级标题id;showType格式
+          let pageSize = 12;
+          let pageNo = 1;
+          if(!twoId){
+              twoId = '';
+          }
+          this.$emit("getBodyTitlePartProps", pageNo , pageSize , oneId , twoId , showType);
           this.selectedKey = key;
-          this.$router.push({name: this.navTree[key].path});
+        //   this.$router.push({name: this.navTree[key].path});
       }
   }
 }

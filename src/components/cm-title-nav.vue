@@ -5,10 +5,10 @@
       <span></span>
       <div class="clearfix">
         <div class="fl" v-for="(value, key) in secondTitle" :key="key">
-          <h4>{{value.title}}</h4>
+          <h4>{{value.twoTitleName}}</h4>
           <span v-if="key != secondTitle.length - 1"></span>
         </div>
-        <div class="fr more">更多>></div>
+        <div class="fr more" @click="toCulureFn">更多>></div>
       </div>
   </div>
 </template>
@@ -26,13 +26,33 @@ export default {
       default: function() {
         return []
       }
+    },
+    showType : {
+      type : Number,
+      default : 0
+    },
+    treeType : {
+      type : String,
+      default : 'cultureTitleArr'
     }
   },
   data() {
     return {
     };
   },
-  methods: {}
+  methods: {
+    //跳转文旅资讯
+    toCulureFn : function(cuId){
+      this.$router.push({
+        path : '/CultureNewsIndex',
+        query : {
+          oneTitleId : this.secondTitle[0].oneTitleId,
+          showType : this.showType,
+          treeType : this.treeType
+        }
+      })
+    }
+  }
 };
 </script>
 

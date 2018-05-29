@@ -29,26 +29,27 @@
             </div>
             <div class="login-register-right">
                 <h6>
-                    <input type="text" placeholder="请输入手机号" @keyup="log" v-model="phoneNum" class="boll">
+                    <input type="text" placeholder="请输入手机号" @keyup="log" v-model="mobile" class="boll" id="login_mobile">
                 </h6>
                 <h6 class="clearfix">
-                    <input type="number" placeholder="收到验证码" class="fl">
-                    <input type="button" placeholder="收到验证码(51)" class="fl">
+                    <input type="number" placeholder="请输入验证码" class="fl" id="note">
+                    <input type="button" value="收到验证码" class="fr ms-code-btn" v-show="beReady" @click="getSmsCodeFn">
+                    <input type="button" value="收到验证码(60)" class="fr ms-code-btn" id="noteCode" v-show="!beReady">
                 </h6>
                 <h6>
-                    <input type="text" placeholder="昵称" class="boll">
+                    <input type="text" placeholder="昵称" id="nickname" class="boll">
                 </h6>
                 <h6>
-                    <input type="password" placeholder="设定登录密码" class="boll">
+                    <input type="password" placeholder="设定登录密码" id="password" class="boll">
                 </h6>
                 <h6>
-                    <input type="password" placeholder="再次登录密码" class="boll">
+                    <input type="password" placeholder="再次登录密码" id="passwordagin" class="boll">
                 </h6>
             </div>
         </div>
-        <div class="select">
+        <!-- <div class="select">
             <p>同意</p>
-        </div>
+        </div> -->
         <div class="submission">提交</div>
     </div>
 </template>
@@ -58,29 +59,97 @@ export default {
     name : 'Register',
     data (){
         return {
-            phoneNum : '',
+            mobile : '',
             password : '',
             nickname : '',
             smscode : '',
+            countTime : 60,
+            beReady : true,
+            MSG_text : '',//错误异常信息
+            timer : '',//定时器
         }
     },
     methods : {
         log : function(){
-            this.phoneNum = this.phoneNum.replace(/[^\d]/g,'');
-            console.log(this.phoneNum)
+            this.mobile = this.mobile.replace(/[^\d]/g,'');
         },
+        //获取短信验证码
         getSmsCodeFn : function(){
+            let mobile = login_mobile.value;
+            if (this.mobile == '') {
+                this.MSG_text = "请输入手机号";
+                alert(this.MSG_text)
+				login_mobile.focus();
+				this.beReady = true;
+				this.timer && clearInterval(this.timer);
+				return;
+			}
+            if (!(/^1[3|4|5|7|8]\d{9}$/.test(mobile))) {
+				login_mobile.focus();
+                this.MSG_text = "手机号码有误";
+                alert(this.MSG_text)
+				this.beReady = true;
+				this.timer && clearInterval(this.timer);
+				return;
+            }
+            console.log('dfdf')
             this.$get('/smscode').then(res => {
                 console.log(res)
+                //  验证码倒计时
+                if(res.code != '111111'){
+                    this.beReady = false;
+                    let _this = this;
+                    this.timer = setInterval(function() {
+                        if (_this.countTime == 0) {
+                            _this.countTime = 60;
+                            _this.beReady = true;
+                            let date = new Date().getTime();
+                            // alert('验证码已过期，请重新输入');
+                            clearInterval(_this.timer);
+                        }
+                        _this.countTime--;
+                        noteCode.value = '收到验证码(' + _this.countTime + ')';
+                    }, 1000);
+                }else{
+                    alert(res.msg)
+                }
+            })
+        },
+        //注册
+        registerFn : function(){
+            let safeCode = note.value;
+            if (safeCode == '') {
+                this.MSG_text = "请输入验证码";
+                alert(this.MSG_text)
+				this.beReady = true;
+				this.countTime = 60;
+				note.focus();
+				this.timer && clearInterval(this.timer);
+				return;
+            }
+            //两次密码不一致
+            if(password.value != passwordagin.value){
+                alert('两次密码不一致')
+                return;
+            }
+
+            this.nickname = nickname.value;
+            this.password = password.value;
+            this.smscode = note.value;
+
+
+            this.$post('/register' , {
+                "nickname": this.nickname,
+                "password": this.password,
+                "phone": this.mobile,
+                "smscode": this.smscode
+            }).then(res => {
+                console.log(res);
             })
         },
     },
     created(){
-        let str = '/register&' + this.phoneNum + '&' + this.password + '&' + this.nickname + '&' + this.smscode
-        this.$post(str)
-            .then(res => {
-                console.log(res)
-            })
+        
     }
 }
 </script>
@@ -122,6 +191,13 @@ export default {
 
             .boll{
                 width : 370px;
+            }
+
+            .ms-code-btn{
+                width : 156px;
+                text-align : center;
+                line-height : 38px;
+                color : $color-login-font-deep;
             }
         }
     }

@@ -39,7 +39,7 @@
     },
     created () {
       for(var i = 0; i<this.navTree.length; i ++){
-        console.log(this.navTree[i]);
+        // console.log(this.navTree[i]);
       }
     }
 
