@@ -23,7 +23,7 @@
           <input type="password" placeholder="请输入8-16位密码,仅限字母,数字,下划线" class="boll" id="password">
         </h6>
         <h6 class="clearfix">
-          <input type="number" placeholder="收到验证码" class="fl getMark">
+          <input type="text" placeholder="输入验证码" class="fl getMark">
           <img :src="picPath" alt="" class="fl picMark" @click="getPicMark">
           <h5 class="changeMark fr" @click="getPicMark">看不清,换一张</h5>
         </h6>
@@ -42,17 +42,17 @@
     },
     methods: {
       login: function () {
-        let username = username.value;  
-        let password = password.value;  
+        let usernameValue = username.value;  
+        let passwordValue = password.value;  
         this.$auth('/auth', {
-            username : username,
-            password : password
+            username : usernameValue,
+            password : passwordValue
           })
           .then(res => {
             console.log(res)
             this.$store.dispatch('STORE_TOKEN', res.token)
             this.$router.push({
-              path: '/Test'
+              path: this.$router.query.to
             })
           })
       },

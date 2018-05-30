@@ -4,11 +4,11 @@
         <p class="commentContent">{{commentContent}}</p>
         <div class="foot-fn clearfix">
             <p class="commentDate fl">{{createTime | getTimeMD}}</p>
-            <cm-foot-nav
+            <!-- <cm-foot-nav
                 class="fr"
                 :listArr="listArr"
                 
-            ></cm-foot-nav>
+            ></cm-foot-nav> -->
         </div>
     </div>
 </template>
@@ -118,12 +118,12 @@ export default{
         //     console.log(res)
         // })
         //获取登录信息
-        this.$get('/user').then(res => {
-            console.log(res);
-        })
-        if(this.lastBorder){
-            this.$refs.comment.style.borderBottom = "none";
-        }
+        // this.$get('/user').then(res => {
+        //     console.log(res);
+        // })
+        // if(this.lastBorder){
+        //     this.$refs.comment.style.borderBottom = "none";
+        // }
     }
 }
 </script>

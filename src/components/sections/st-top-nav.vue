@@ -59,6 +59,15 @@ export default {
   },
   created() {
   },
+  beforeRouteLeave : ((to, from, next) => {
+    next({
+      path: "/login",
+      query: {
+        redirect: to.fullPath
+      }
+    });
+    
+  }),
   methods: {
     newMediaList: function() {
       this.newMediaListShow = !this.newMediaListShow;

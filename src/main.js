@@ -59,15 +59,19 @@ function formatDate(needTime , choose){
       //返回完整时间拼接'-'
       return y + '-' + add0(m) + '-' + add0(d) + '- ' + add0(h) + ':' + add0(mm) + ':' + add0(s);
     break;
-    case 'ymdWord' :
+    case 'ymdAnd' :
       //返回年月日时间拼接'-'
       return y + '-' + add0(m) + '-' + add0(d);
+    break;
+    case 'ymdWord' :
+      //返回年月日时间拼接'-'
+      return y + '年' + add0(m) + '月' + add0(d) + '日';
     break;
     case 'dayWord' :
       //返回日文字 eg ：12日
       return add0(d) + '';
     break;
-    case 'ymWord' :
+    case 'ymAnd' :
       //返回日文字 eg ：2018-12
       return y + '-' + add0(m) + '';
     break;
@@ -83,6 +87,18 @@ Vue.filter('getTimeMD', function(input) {
     return '';
   } else {
     time = formatDate(Number(input) , 'allWord');
+  };
+  return time;
+})
+
+/* 发布评论日期 2018年1月12日  */
+Vue.filter('getTimeYMD', function(input) {
+  
+  let time;
+  if (input === '') {
+    return '';
+  } else {
+    time = formatDate(Number(input) , 'ymdWord');
   };
   return time;
 })
@@ -104,7 +120,7 @@ Vue.filter('getTimeYMDWord', function(input) {
   if (input === '') {
     return '';
   } else {
-    time = formatDate(Number(input) , 'ymdWord');
+    time = formatDate(Number(input) , 'ymdAnd');
   };
   return time;
 })
@@ -114,7 +130,7 @@ Vue.filter('getTimeYMWord', function(input) {
   if (input === '') {
     return '';
   } else {
-    time = formatDate(Number(input) , 'ymWord');
+    time = formatDate(Number(input) , 'ymAnd');
   };
   return time;
 })

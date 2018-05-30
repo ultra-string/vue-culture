@@ -2,21 +2,20 @@
   <div class="st-comment">
     <div class="choose-content clearfix">
       <ul class="fl left-content clearfix">
-        <li class="clearfix">
+        <!-- <li class="clearfix">
           <i>阅读 &nbsp()&nbsp</i>
           <span></span>
-        </li>
+        </li> -->
         <li class="clearfix">
-          <i>评论 &nbsp()&nbsp</i>
-          <span></span>
+          <i>评论 &nbsp({{resData.total}})&nbsp</i>
         </li>
-        <li class="clearfix">
+        <!-- <li class="clearfix">
           <i>收藏 &nbsp()&nbsp</i>
           <span></span>
         </li>
         <li class="clearfix">
           <i>转载 &nbsp()&nbsp</i>
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="content">
@@ -24,14 +23,14 @@
         <div class="text-content-title">
           <p>评论</p>
         </div>
-        <textarea class="text-content-box" placeholder="请输入评论...." name="" id="" cols="30" rows="10"></textarea>
+        <textarea class="text-content-box" placeholder="请输入评论...." name="" id="note" cols="30" rows="10"></textarea>
         <div class="text-content-btn clearfix">
-          <div class="post-btn fr">发布</div>
-          <div class="login-nav fr clearfix">
+          <div class="post-btn fr" @click="postCommentFn">发布</div>
+          <!-- <div class="login-nav fr clearfix">
             <span class="login-btn fl">登录</span>
             <i class="fl"></i>
             <span class="login-btn fl">注册</span>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="show-content-title">
@@ -42,15 +41,20 @@
       </div>
       <div class="cm-box-comment">
         <cm-comment 
-            v-for="(item , k) in commentData"
+            v-for="(item , k) in dataList"
             :key='k' 
             :userName="item.userName" 
             :commentContent="item.commentContent" 
             :createTime="item.createTime" 
-            :lastBorder="k==commentData.length-1?true:false"
+            :lastBorder="k==dataList.length-1?true:false"
         ></cm-comment>
       </div>
-      <cm-change-page></cm-change-page>
+      <cm-change-page
+        style="padding-right:20px;"
+        :pageNum="resData.pageNum"
+        :data="resData"
+        @changePageFn="changePageFn"
+      ></cm-change-page>
     </div>
   </div>
 </template>
@@ -80,26 +84,61 @@
             "bodyId" : this.bodyId
         }).then(res => {
             console.log(res);
-            this.commentData = res.data.list;
+            this.dataList = res.data.list;
+            this.resData = res.data;
         })
 
 
     },
+    // beforeRouteLeave : ((to, from, next) => {
+    //   next({
+    //     path: "/login",
+    //     query: {
+    //       redirect: to.fullPath
+    //     }
+    //   });
+      
+    // }),
     methods : {
-        postCommentFn : function(){
-            // 发布
-            this.$post('/commentPublish' , {
-                "bodyId": 0,
-                "comment": "string"
-            }).then(res => {
-                console.log(res)
-            })
-            // 删除  
-            var str = '/commentDelete&' + this.id;
-            this.$post(str).then(res => {
-                console.log(res)
-            })
-        }
+      //跳登录
+      // toLogin : function(){
+      //   this.$router.push({
+      //     path : '/login'
+      //   })
+      // },
+      postCommentFn : function(){
+        let val = note.value;
+          // 发布
+          this.$post('/commentPublish' , {
+              "bodyId": this.params.id,
+              "comment": val
+          }).then(res => {
+              console.log(res)
+              note.value = '';//清空评论
+              this.changePageFn(1);
+          })
+          // 删除  
+          // var str = '/commentDelete&' + this.id;
+          // this.$post(str).then(res => {
+          //     console.log(res)
+          // })
+      },
+      changePageFn : function(page){
+        //pageNo:第几页
+        let pageNo = page;
+        //pageSize:一页几条数据
+        let pageSize = 10;
+        this.$post('/commentSearch', {
+          "bodyId": this.params.id,
+          "pageNo": pageNo,
+          "pageSize": pageSize
+        }).then(res => {
+          console.log(res);
+            this.resData = res.data;
+            this.dataList = res.data.list;
+            // console.log(this.dataList)
+        })
+      }
     }
   }
 

@@ -149,7 +149,7 @@ export default {
           // console.log(res);
           this.resData = res.data;
           this.dataList = res.data.list;
-          console.log(this.dataList)
+          // console.log(this.dataList)
       })
     },
     getBodyTitlePartProps : function(pageNo , pageSize , oneId , twoId , showType){
@@ -163,7 +163,7 @@ export default {
         // console.log(res);
           this.resData = res.data;
           this.dataList = res.data.list;
-          console.log(this.dataList)
+          // console.log(this.dataList)
           this.showType = showType;
       })
     },
@@ -185,7 +185,7 @@ export default {
         console.log(res);
           this.resData = res.data;
           this.dataList = res.data.list;
-          console.log(this.dataList)
+          // console.log(this.dataList)
       })
     },
     chooseTree : function(){
