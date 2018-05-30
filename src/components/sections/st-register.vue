@@ -145,6 +145,9 @@ export default {
                 "smscode": this.smscode
             }).then(res => {
                 console.log(res);
+                this.$router.push({
+                    path: decodeURIComponent(this.$route.query.to),
+                })
             })
         },
     },

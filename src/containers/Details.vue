@@ -25,7 +25,8 @@
                 <cm-video-player
                     v-if="detialMsg.videoUrl"
                     :src="detialMsg.videoUrl"
-                    style="width:100%;"
+                    :width="'754px'"
+                    :height="'426px'"
                 ></cm-video-player>
                 <div>{{detialMsg.body}}</div>
                 <st-comment></st-comment>
@@ -40,6 +41,7 @@
 import CmBradcrumb from '@/components/cm-breadcrumb';
 import CmVideoPlayer from '@/components/cm-video-player';
 import StComment from '@/components/sections/st-comment';
+import CmShare from '@/components/cm-share'
 
 export default {
     name : 'Detail',
@@ -65,7 +67,8 @@ export default {
     components: {
         CmBradcrumb,
         CmVideoPlayer,
-        StComment
+        StComment,
+        CmShare
     },
     created() {
         console.log('aaa=>',this.$route.params.id)

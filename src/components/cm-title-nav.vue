@@ -80,6 +80,7 @@ export default {
     padding-bottom: 2px;
     position: relative;
     z-index: 10;
+    width : 100px;
   }
   >span{
     display: block;
@@ -99,7 +100,7 @@ export default {
     border-radius: 2px;
   } 
   >div {
-    width: 100%;
+    width: calc(100% - 120px - 60px - 6px);
     height: 29px;
     line-height: 29px;
     border-bottom: 2px solid $color-border-input;
@@ -123,7 +124,7 @@ export default {
     .more {
       background: $font-hot;
       color: #fff;
-      width: 41px;
+      width: 60px;
       line-height: 16px;
       font-size: 12px;
       margin-top: 6px;

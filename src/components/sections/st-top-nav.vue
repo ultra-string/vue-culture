@@ -59,29 +59,36 @@ export default {
   },
   created() {
   },
-  beforeRouteLeave : ((to, from, next) => {
-    next({
-      path: "/login",
-      query: {
-        redirect: to.fullPath
-      }
-    });
-    
-  }),
+  // beforeRouteLeave(to, from, next) {
+  //   alert(2)
+  //   next({
+  //     path: "/login",
+  //     query: {
+  //       to : from
+  //     }
+  //   });
+  // },
   methods: {
     newMediaList: function() {
       this.newMediaListShow = !this.newMediaListShow;
     },
     //跳转登录界面
     toLogin : function(){
+      console.log(encodeURIComponent(this.$route.fullPath))
       this.$router.push({
-        path : '/login'
+        path : '/login',
+        query : {
+          to : encodeURIComponent(this.$route.fullPath)
+        }
       });
     },
     //跳转注册界面
     toRegister : function(){
       this.$router.push({
-        path : '/login/register'
+        path : '/login/register',
+        query : {
+          to : encodeURIComponent(this.$route.fullPath)
+        }
       })
     },
   }

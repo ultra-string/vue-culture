@@ -10,7 +10,7 @@
       <div class="fl">
         <cm-title-nav
         :oneTitle="'文旅资讯'"
-        :secondTitle="cultureTitleArr.twoTitleVOs"
+        :secondTitle="cultureTitleArr.twoTitleVOs.length > 3 ? [cultureTitleArr.twoTitleVOs[0],cultureTitleArr.twoTitleVOs[1],cultureTitleArr.twoTitleVOs[2]] : cultureTitleArr.twoTitleVOs"
         :showType="cultureTitleArr.showType"
         :treeType="'cultureTitleArr'"
         ></cm-title-nav>
@@ -36,7 +36,7 @@
             <cm-thumbnail
             :width="230"
             :height="135"
-            :title="totalList.travelConsultings[0].bodyTitle"
+            :title="totalList.travelConsultings[1].bodyTitle"
             :isTitle="true"
             :src="totalList.travelConsultings[1].thumbnailUrl"
             ></cm-thumbnail>
@@ -53,9 +53,12 @@
       </div>
     </div>
     <!-- 特别策划 -->
-    <div class="specialPlan">
+    <!-- <div class="specialPlan">
       <cm-title-nav
       oneTitle="特别策划"
+      :secondTitle="specialTitleArr.twoTitleVOs.length > 3 ? [specialTitleArr.twoTitleVOs[0],specialTitleArr.twoTitleVOs[1],specialTitleArr.twoTitleVOs[2]] : specialTitleArr.twoTitleVOs"
+      :showType="specialTitleArr.showType"
+      :treeType="'specialTitleArr'"
       ></cm-title-nav>
       <div class="clearfix">
         <div class="fl clearfix">
@@ -96,12 +99,14 @@
             </ul>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- 匠人匠心 -->
     <div class="craftsman">
       <cm-title-nav
       oneTitle="匠人匠心"
-      :secondTitle="craftsmanTitle"
+    :secondTitle="workerTitleArr.twoTitleVOs.length > 3 ? [workerTitleArr.twoTitleVOs[0],workerTitleArr.twoTitleVOs[1],workerTitleArr.twoTitleVOs[2]] : workerTitleArr.twoTitleVOs"
+      :showType="workerTitleArr.showType"
+      :treeType="'workerTitleArr'"
       ></cm-title-nav>
       <div class="clearfix">
         <div class="left fl clearfix">
@@ -483,12 +488,13 @@ export default {
       //假数据
       //文旅资讯
       //特别策划
-      this.totalList.specialPlannings[0] = {};
-      this.totalList.specialPlannings[0].bodyTitle = '特别策划';
-      this.totalList.specialPlannings[0].imgUrl = require('@/common/images/demo.png');
-      this.totalList.specialPlannings[1] = {};
-      this.totalList.specialPlannings[1].bodyTitle = '特别策划';
-      this.totalList.specialPlannings[1].imgUrl = require('@/common/images/demo.png');
+      // console.log(this.totalList.specialPlannings[0].bodyTitle)
+      // this.totalList.specialPlannings[0] = {};
+      // this.totalList.specialPlannings[0].bodyTitle = '特别策划';
+      // this.totalList.specialPlannings[0].imgUrl = require('@/common/images/demo.png');
+      // this.totalList.specialPlannings[1] = {};
+      // this.totalList.specialPlannings[1].bodyTitle = '特别策划';
+      // this.totalList.specialPlannings[1].imgUrl = require('@/common/images/demo.png');
       //匠人匠心
       this.totalList.craftsmans[0] = {};
       this.totalList.craftsmans[0].bodyTitle = '匠人匠心';
@@ -629,6 +635,7 @@ export default {
           case "特别策划":
             _this.specialTitleArr = item;
             //存标题导航
+            console.log()
             sessionStorage.setItem("specialTitleArr", JSON.stringify(item));
           break;
           // case "中国手艺网电商":
