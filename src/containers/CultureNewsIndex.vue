@@ -149,19 +149,21 @@ export default {
           // console.log(res);
           this.resData = res.data;
           this.dataList = res.data.list;
+          console.log(this.dataList)
       })
     },
     getBodyTitlePartProps : function(pageNo , pageSize , oneId , twoId , showType){
       //pageNo:第几页;pageSize:一页几条数据;twoId二级标题id;oneId一级标题id
       this.$post('/body/page', {
-          pageNo:  pageNo,
+        pageNo:  pageNo,
           pageSize: pageSize,
           oneId: oneId,
           twoId: twoId
       }).then(res => {
-          // console.log(res);
+        // console.log(res);
           this.resData = res.data;
           this.dataList = res.data.list;
+          console.log(this.dataList)
           this.showType = showType;
       })
     },
@@ -175,14 +177,15 @@ export default {
       //oneId一级标题id
       let oneId = this.oneTitleId;
       this.$post('/body/page', {
-          pageNo:  pageNo,
+        pageNo:  pageNo,
           pageSize: pageSize,
           oneId: oneId,
           twoId: twoId
       }).then(res => {
-          console.log(res);
+        console.log(res);
           this.resData = res.data;
           this.dataList = res.data.list;
+          console.log(this.dataList)
       })
     },
     chooseTree : function(){

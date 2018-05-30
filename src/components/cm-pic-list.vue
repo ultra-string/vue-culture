@@ -5,6 +5,7 @@
                 class="pic-list-box clearfix" 
                 v-for="(item , index) in dataList" 
                 :key="index"
+                @click="toDetail(item)"
             >
                 <img :src="item.thumbnailUrl" alt="" class="adv-pic">
                 <p class="text">{{item.bodyTitle}}</p>
@@ -34,6 +35,21 @@ export default{
     },
     components : {
         CmChangePage,
+    },
+    methods : {
+        toDetail : function(obj){
+            this.$router.push({
+                query : {
+                    oneTitleId : obj.oneTitleId,
+                    twoTitleId : obj.twoTitleId,
+                    id : obj.id
+                },
+                params : {
+                    id : obj.id
+                },
+                name : 'Details',
+            });
+        }
     }
 }
 </script>
@@ -62,7 +78,7 @@ export default{
             margin-bottom : 10px;
             img{
                 width : 208px;
-                height : 180px;
+                height : 130px;
                 display: block;
                 margin : 0 auto;
             }

@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div class="cm-news-list clearfix" :class="hasDashBorder ? 'hasDashBorder' : ''" v-for="(val, key) in newsList" :key="key">
+      <div class="cm-news-list clearfix" :class="hasDashBorder ? 'hasDashBorder' : ''" v-for="(val, key) in newsList" :key="key" @click="toDetail(val)">
           <i v-if="hasHotPoint" class="fl"></i>
           <h3 class="fl">{{val.bodyTitle}}</h3>
           <div v-if="hasDate" class="fr">{{val.updateTime | getTimeYMDWord}}</div>
@@ -65,6 +65,20 @@ export default {
       delNumFn : function(){
           if(!this.dataList.length)return;
           this.dataList = this.dataList.splice(0 , this.delNum);
+      },
+      //跳转
+      toDetail : function(obj){
+        this.$router.push({
+            query : {
+                oneTitleId : obj.oneTitleId,
+                twoTitleId : obj.twoTitleId,
+                id : obj.id
+            },
+            params : {
+                id : obj.id
+            },
+            name : 'Details',
+        });
       }
   }
 };

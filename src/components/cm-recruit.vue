@@ -2,7 +2,7 @@
 <template>
     <div class="cm-recruit">
         <!-- 列表 -->
-        <div class="list clearfix" v-for="(item , index) in listArr" :key="index">
+        <div class="list clearfix" v-for="(item , index) in listArr" :key="index" @click="toDetail(item)">
             <div class="fl date">
                 <h5>{{item.updateTime | getTimeDayWord}}</h5>
                 <h6>{{item.updateTime | getTimeYMWord}}</h6>
@@ -31,15 +31,30 @@ export default{
             }
         },
     },
-    created(){
+    mounted(){
         console.log(this.listArr)
+    },
+    methods : {
+        toDetail : function(obj){
+            this.$router.push({
+                query : {
+                    oneTitleId : obj.oneTitleId,
+                    twoTitleId : obj.twoTitleId,
+                    id : obj.id
+                },
+                params : {
+                    id : obj.id
+                },
+                name : 'Details',
+            });
+        }
     }
 
 }
 </script>
 <style lang="scss" scoped>
 .cm-recruit{
-    width : 1000px;
+    width : 100%;
     margin : 0 auto;
 
     .list{
@@ -63,7 +78,7 @@ export default{
             }
         }
         .content{
-            width : 874px;
+            width : calc(100% - 110px);
             height : 99px;
             font-size : 14px;
             border-bottom : 1px solid #ccc;
