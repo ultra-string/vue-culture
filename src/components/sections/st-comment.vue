@@ -6,8 +6,11 @@
           <i>阅读 &nbsp()&nbsp</i>
           <span></span>
         </li> -->
-        <li class="clearfix">
+        <li class="clearfix fl">
           <i>评论 &nbsp({{resData.total}})&nbsp</i>
+        </li>
+        <li style="width:310px;" class="fr">
+          <cm-share></cm-share>
         </li>
         <!-- <li class="clearfix">
           <i>收藏 &nbsp()&nbsp</i>
@@ -61,6 +64,7 @@
 <script>
   import CmComment from '@/components/cm-comment';
   import CmChangePage from '@/components/cm-change-page';
+  import CmShare from '@/components/cm-share';
 
   export default {
     name: 'StComment',
@@ -74,6 +78,7 @@
     components: {
       CmComment,
       CmChangePage,
+      CmShare
     },
     created() {
         this.params = this.$route.query;
@@ -149,12 +154,13 @@
     margin: 66px auto 0;
     /* border-top : 2px solid #f4f3f1; */
     .choose-content {
+      width :100%;
       height: 58px;
       line-height: 58px;
       margin-bottom: 18px;
 
       .left-content {
-        li,
+        width : 100%;
         span,
         i {
           float: left;

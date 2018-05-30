@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     //跳转文旅资讯
-    toCulureFn : function(cuId){
+    toCulureFn : function(){
       this.$router.push({
         path : '/CultureNewsIndex',
         query : {

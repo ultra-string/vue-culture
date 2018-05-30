@@ -30,6 +30,16 @@ export default {
 
 <style>
 .cm-share{
-    width: 100%;
+    width: 100%; 
+    line-height : 100%;
+    height :100%;
+    margin-top : 15px;
+    .bdshare_t{
+        width : 100%;
+        a{
+            margin-top : 10px;
+            display : block;
+        }
+    }  
 }
 </style>
