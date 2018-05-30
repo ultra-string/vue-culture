@@ -5,7 +5,7 @@
         <span class="fr" :class="newMediaListShow ? 'icon-top' : 'icon-bottom' "></span> 
         <transition name="fade">
         <ul class="list" v-show="newMediaListShow">
-            <li v-for="(val, key) in options" :key="key">{{val.label}}</li>
+            <li v-for="(val, key) in options" :key="key" @click="changeCurType(key)">{{val.label}}</li>
         </ul>
         </transition>
     </div>
@@ -25,11 +25,15 @@ export default {
   data () {
     return {
       newMediaListShow: false,
+      curType : '0'
     }
   },
   methods: {
     newMediaList: function() {
       this.newMediaListShow = !this.newMediaListShow;
+    },
+    changeCurType : function(key){
+        this.$emit('changeCurType',key)
     }
   }
 }

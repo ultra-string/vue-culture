@@ -3,7 +3,7 @@
         <p class="userName">{{userName}}</p>
         <p class="commentContent">{{commentContent}}</p>
         <div class="foot-fn clearfix">
-            <p class="commentDate fl">{{commentDate | getTimeMD}}</p>
+            <p class="commentDate fl">{{createTime | getTimeMD}}</p>
             <cm-foot-nav
                 class="fr"
                 :listArr="listArr"
@@ -85,9 +85,9 @@ export default{
             type : String,
             default : '输入评论输入评论输入评论输入评论输入评论输入评论输入评论输入评论！！！！'
         },
-        commentDate : {
-            type : String,
-            default : '1526460237434'
+        createTime : {
+            type : Number,
+            default : 1526460237434
         },
         isGoodNav : {
             type : Boolean,
@@ -107,12 +107,12 @@ export default{
         // this.$post(str).then(res => {
         //     console.log(res)
         // })
-        //发布
+        // // 发布
         // var str = '/commentPublish&' + this.comment + '&' + this.bodyId;
         // this.$post(str).then(res => {
         //     console.log(res)
         // })
-        //删除  
+        // // 删除  
         // var str = '/commentDelete&' + this.id;
         // this.$post(str).then(res => {
         //     console.log(res)

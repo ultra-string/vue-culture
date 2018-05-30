@@ -9,6 +9,16 @@
         <input type="button" @click="getUser" value="获取用户信息">
         <input type="button" @click="getRes" value="注册">
         <img :src="this.picPath" alt="">
+<!-- 替换标题  -->
+<div class="test">
+    <el-menu ref="elmentItem" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" :unique-opened="true">
+        <el-submenu v-for="(item,key) in titleList" :key="key" :index="key+''">
+            <template slot="title">{{item.oneTitleName}}</template>
+            <el-menu-item v-for="(val , k) in item.twoTitleVOs" :key="k" index="key+'-'+k">{{val.twoTitleName}}</el-menu-item>
+            </el-submenu>
+        </el-submenu>
+    </el-menu>
+</div>
     </div>
 </template>
 <script>
@@ -18,9 +28,17 @@ export default{
     data (){
         return {
             picPath : '',
+            dataList : [],
+            activeIndex: '1',
+            activeIndex2: '1',
+            titleList : [],
+            itemTrue : true,
         }
     },
     methods : {
+        handleSelect(key, keyPath) {
+            console.log(key, keyPath);
+        },
         getBodyTitle : function(){
             //pageNo:第几页
             let pageNo = 1;
@@ -67,8 +85,9 @@ export default{
         getComment : function(){
             ///commentSearch
             this.$post('/commentSearch',{
-            "pageNo": 1,
-            "pageSize": 1
+                "pageNo": 1,
+                "pageSize": 10,
+                "bodyId" : 2
             }).then(res => {
                 console.log(res)
             })
@@ -101,9 +120,21 @@ export default{
             //     console.log(res);
             // })
             this.picPath = `http://118.190.152.1:8084/imageVali/?time=${new Date().getTime()}`
-        }
+        },
+        getBodyFn : function(){
+            this.$get('/index').then(res => {
+                this.titleList = res.data.titleVOs;
+                console.log(this.titleList);
+            })
+        },
+    },
+    mounted(){
+        console.log(this.$refs.elmentItem.uniqueOpened)
+    //     this.$refs.elmentItem.uniqueOpened = true;
     },
     created(){
+        this.getBodyFn();
+        
         //get
         // this.$get().then(res => {
         //     console.log(res);
@@ -136,20 +167,19 @@ export default{
         // this.$get('/friendLink').then(res => {
         //     console.log(res);
         // })
-        this.getBodyTitle();
-        this.getPicMark();
+        // this.getBodyTitle();
+        // this.getPicMark();
     }, 
 }
 </script>
 <style lang="scss" scoped>
-    input{
-        width : 10rem;
-        height : 1rem;
-        display: block;
-        margin : 1rem auto;
-        border : 1px solid #ccc;
-    }
-
+input{
+    width : 10rem;
+    height : 1rem;
+    display: block;
+    margin : 1rem auto;
+    border : 1px solid #ccc;
+}
 </style>
 
 

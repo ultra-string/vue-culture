@@ -11,6 +11,7 @@
                 :selectValue="selectValue"
                 :options="options"
                 :width="46"
+                @changeCurType="changeCurType"
                 ></cm-select>
                 <span class="fl"></span>
                 <input type="text" value="" class="fl" placeholder="我是输入框" id="searchInp">
@@ -30,18 +31,18 @@ export default {
     return {
         options: [{
           value: '选项1',
-          label: '新闻',
+          label: '作者',
           type : '0'
         }, {
           value: '选项2',
-          label: '娱乐',
+          label: '标题',
           type : '1'
         }, {
           value: '选项3',
-          label: 'happy',
+          label: '关键词',
           type : '2'
         }],
-        selectValue: '新闻',
+        selectValue: '作者',
         curType : '0'
     }
   },
@@ -57,17 +58,18 @@ export default {
               return;
           }
           this.$post('/search' , {
-            "pageNo": 0,
-            "pageSize": 0,
+            "pageNo": 1,
+            "pageSize": 10,
             "param": note,
-            "type": 0
+            "type": this.curType
           }).then(res => {
               console.log(res)
           })
       },
-      changeCurType : function(typeIndex){
-          this.curType = typeIndex;
-      }
+      changeCurType : function(key){
+          this.curType = this.options[key].type;
+          this.selectValue = this.options[key].label;
+      },
   }
 }
 </script>
