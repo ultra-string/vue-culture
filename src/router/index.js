@@ -51,9 +51,14 @@ const Login = () => import('@/components/sections/st-login');
 const Register = () => import('@/components/sections/st-register');
 
 /*
+*   搜索框路由
+*/
+const SearchView = () => import('@/containers/SerchText');
+
+/*
 *   测试组件路由
 */
-const Test = () => import('@/components/cm-test');
+const Test = () => import('@/components/cm-pic-list')
 
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
@@ -63,8 +68,8 @@ export default new Router({
       redirect: '/Index'
     },
     {
-      path : '/Test',
-      name : 'Test',
+      path : '/test',
+      name : 'test',
       component : Test,
     },
     {
@@ -131,6 +136,12 @@ export default new Router({
           path: 'Details/:id',
           name: 'Details',
           component: Details
+        },
+        //搜索框
+        {
+          path : 'SearchView/:str',
+          name : 'SearchView',
+          component : SearchView
         },
         {
           path: '/CultureNewsIndex',

@@ -57,14 +57,19 @@ export default {
               alert('请输入搜索内容');
               return;
           }
-          this.$post('/search' , {
-            "pageNo": 1,
-            "pageSize": 10,
-            "param": note,
-            "type": this.curType
-          }).then(res => {
-              console.log(res)
+          if(note.length > 20){
+              alert('超出长度')
+          }
+          this.$router.push({
+              name : 'SearchView',
+              query : {
+                  type : this.curType
+              },
+              params : {
+                  str : note
+              }
           })
+          searchInp.value = '';
       },
       changeCurType : function(key){
           this.curType = this.options[key].type;
