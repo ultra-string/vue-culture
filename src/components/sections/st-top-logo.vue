@@ -10,7 +10,7 @@
                 style="marginLeft:19px,lineHeight:38px;padding:0 8px"
                 :selectValue="selectValue"
                 :options="options"
-                :width="46"
+                :width="70"
                 @changeCurType="changeCurType"
                 ></cm-select>
                 <span class="fl"></span>
@@ -31,15 +31,15 @@ export default {
     return {
         options: [{
           value: '选项1',
-          label: '作者',
+          name: '作者',
           type : '0'
         }, {
           value: '选项2',
-          label: '标题',
+          name: '标题',
           type : '1'
         }, {
           value: '选项3',
-          label: '关键词',
+          name: '关键词',
           type : '2'
         }],
         selectValue: '作者',
@@ -73,7 +73,7 @@ export default {
       },
       changeCurType : function(key){
           this.curType = this.options[key].type;
-          this.selectValue = this.options[key].label;
+          this.selectValue = this.options[key].name;
       },
   }
 }

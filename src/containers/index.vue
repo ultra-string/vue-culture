@@ -404,15 +404,15 @@ export default {
       },
       baseData: [
         {
-          IMG_URL: require('@/common/images/index/modelbg.png'),
+          url: require('@/common/images/index/modelbg.png'),
           link: 'https://www.baidu.com'
         },
         {
-          IMG_URL: require('@/common/images/index/newUserAlert.png'),
+          url: require('@/common/images/index/newUserAlert.png'),
           link: 'https://www.taobao.com'
         },
         {
-          IMG_URL: require('@/common/images/index/oldAlert.png'),
+          url: require('@/common/images/index/oldAlert.png'),
           link: 'https://www.souhu.com'
         }
       ],

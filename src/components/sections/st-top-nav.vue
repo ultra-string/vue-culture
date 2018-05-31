@@ -10,6 +10,7 @@
         :selectValue="selectValue"
         :options="options"
         :width="70"
+        @changeCurType="changeCurType"
         ></cm-select>
       </div>
       <div class="fr clearfix">
@@ -30,23 +31,9 @@ export default {
   data () {
     return {
       newMediaListShow: false,
-      options: [{
-          value: '选项1',
-          label: '黄金糕'
-        }, {
-          value: '选项2',
-          label: '双皮奶'
-        }, {
-          value: '选项3',
-          label: '蚵仔煎'
-        }, {
-          value: '选项4',
-          label: '龙须面'
-        }, {
-          value: '选项5',
-          label: '北京烤鸭'
-        }],
-        selectValue: '新媒体',
+      options: [],
+      selectValue: '新媒体',
+      resData : '',
     }
   },
   components: {
@@ -58,16 +45,11 @@ export default {
     ])
   },
   created() {
+    this.$get('/index').then(res => {
+        this.resData = res.data;
+        this.options = this.resData.titleLinkMap[0];
+    })
   },
-  // beforeRouteLeave(to, from, next) {
-  //   alert(2)
-  //   next({
-  //     path: "/login",
-  //     query: {
-  //       to : from
-  //     }
-  //   });
-  // },
   methods: {
     newMediaList: function() {
       this.newMediaListShow = !this.newMediaListShow;
@@ -90,6 +72,11 @@ export default {
           to : encodeURIComponent(this.$route.fullPath)
         }
       })
+    },
+    changeCurType : function(key){
+      // console.log('https://' + this.options[key].url)
+      window.open('https://' + this.options[key].url)
+      // window.location.href = 'https://' + this.options[key].url
     },
   }
 }

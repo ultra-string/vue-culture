@@ -5,7 +5,7 @@
         <span class="fr" :class="newMediaListShow ? 'icon-top' : 'icon-bottom' "></span> 
         <transition name="fade">
         <ul class="list" v-show="newMediaListShow">
-            <li v-for="(val, key) in options" :key="key" @click="changeCurType(key)">{{val.label}}</li>
+            <li v-for="(val, key) in options" :key="key" @click="changeCurType(key)">{{val.name}}</li>
         </ul>
         </transition>
     </div>
@@ -21,6 +21,10 @@ export default {
       propswidth: String,
       width: Number,
       marginLeft: Number,
+      toOthers : {
+          type : Boolean,
+          default : false
+      }
   },
   data () {
     return {
@@ -33,7 +37,11 @@ export default {
       this.newMediaListShow = !this.newMediaListShow;
     },
     changeCurType : function(key){
-        this.$emit('changeCurType',key)
+        if(this.toOthers){
+
+        }else{
+            this.$emit('changeCurType',key)
+        }
     }
   }
 }

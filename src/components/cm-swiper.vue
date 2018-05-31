@@ -3,7 +3,7 @@
     <section class="swiper-container BCindex_container">
       <section class="swiper-wrapper">
         <section v-for="(item,key) in baseData" :key="key" class="swiper-slide">
-          <a :href="item.link"><img :style="{height: height+'px'}" :src="item.IMG_URL"></a>
+          <a :href="item.link"><img :style="{height: height+'px'}" :src="item.url"></a>
         </section>
       </section>
       <section v-if="showPagination" class="swiper-pagination BCindex_page"></section>
