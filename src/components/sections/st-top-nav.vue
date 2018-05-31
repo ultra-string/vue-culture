@@ -16,7 +16,7 @@
       <div class="fr clearfix">
         <div class="fl" @click="toLogin">登录</div>
         <div class="fl" @click="toRegister">注册</div>
-        <div class="fl">网站导航</div>
+        <!-- <div class="fl">网站导航</div> -->
       </div>
     </div>
   </div>
@@ -75,6 +75,7 @@ export default {
     },
     changeCurType : function(key){
       // console.log('https://' + this.options[key].url)
+      // window.open(this.options[key].url)
       window.open('https://' + this.options[key].url)
       // window.location.href = 'https://' + this.options[key].url
     },

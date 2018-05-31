@@ -3,11 +3,11 @@
       <div class="clearfix fr">
         <div class="fl">
             <span>目前在第</span>
-            <span class="hot">{{data.pageNum}}</span>
+            <span class="hot">{{data.pageNum ? data.pageNum : 1}}</span>
             <span>页，共有</span>
-            <span class="hot">{{data.pages}}</span>
+            <span class="hot">{{data.pages ? data.pages : 0}}</span>
             <span>页，共有</span>
-            <span class="hot">{{data.total}}</span>
+            <span class="hot">{{data.total ? data.total : 0}}</span>
             <span>条记录</span>
         </div>
         <div class="fl to-page">

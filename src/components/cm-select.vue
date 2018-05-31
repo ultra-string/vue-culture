@@ -37,11 +37,7 @@ export default {
       this.newMediaListShow = !this.newMediaListShow;
     },
     changeCurType : function(key){
-        if(this.toOthers){
-
-        }else{
-            this.$emit('changeCurType',key)
-        }
+        this.$emit('changeCurType',key)
     }
   }
 }

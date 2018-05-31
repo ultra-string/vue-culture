@@ -14,7 +14,8 @@
     <el-menu ref="elmentItem" :default-active="activeIndex" :collapse-transition="false" class="el-menu-demo" mode="horizontal" @select="handleSelect" :unique-opened="true">
         <el-submenu v-for="(item,key) in titleList" :key="key" :index="key+''">
             <template slot="title">{{item.oneTitleName}}</template>
-            <el-menu-item v-for="(val , k) in item.twoTitleVOs" :key="k" index="key+'-'+k">{{val.twoTitleName}}</el-menu-item>
+            <el-menu-item index="key+'-'+0">{{item.oneTitleName}}</el-menu-item>
+            <el-menu-item v-for="(val , k) in item.twoTitleVOs" :key="k" index="key+'-'+(k+1)">{{val.twoTitleName}}</el-menu-item>
             </el-submenu>
         </el-submenu>
     </el-menu>
@@ -181,17 +182,15 @@ export default{
     .el-menu--horizontal > .el-submenu .el-submenu__title{
         padding : 0 10px;
         margin : 0px;
-    }
-    .el-menu--horizontal > .el-submenu:hover{
-        
-        border-bottom : 1px solid $font-hot;
-        
+        font-size : 16px;
+        border : none !important;
     }
     .el-menu--horizontal > .el-submenu:hover .el-submenu__title{
         color : $font-hot;
+        border-bottom : 1px solid $font-hot !important;
     }
     .el-menu--horizontal > .el-submenu{
-        border-bottom : 1px solid #ccc;
+        border-bottom : none;
     }
     .el-menu--horizontal{
         border-bottom : none;

@@ -81,8 +81,8 @@ export default {
                     color : '#eeeeee',
                 },
                 {
-                    name : '使用条款',
-                    path : '',
+                    name : '公告',
+                    path : '/Index/Notice',
                     style : {
                         padding : '0 4px',
                         borderRight : '1px solid #eee',
@@ -94,7 +94,7 @@ export default {
                     color : '#eeeeee',
                 },
                 {
-                    name : '设计师入驻',
+                    name : '使用条款',
                     path : '',
                     style : {
                         padding : '0 4px',
