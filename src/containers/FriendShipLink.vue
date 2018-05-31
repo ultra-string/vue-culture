@@ -7,7 +7,7 @@
         ></cm-bradcrumb> -->
         <h2 class="friend-title">合作伙伴</h2>
         <div class="content">
-            <img :src="item.path" alt="" v-for="(item , index) in dataList" :key="index">
+            <img :src="item.imgUrl" alt="" v-for="(item , index) in dataList" :key="index" @click="toPath(item.url)">
         </div>
     </div>
 </template>
@@ -19,51 +19,22 @@ export default{
     data(){
         return {
             navTree: [{
-                name: '首页',
+                    name: '首页',
                     path: 'CultureNews',
                     url: '',
                     nowPage: false,
                     isOuter: false
                 },
                 {
-                    name: '文旅资讯',
-                        path: 'CultureNews',
-                        url: '',
-                        nowPage: false,
-                        isOuter: false
+                    name: '友情链接',
+                    path: 'CultureNews',
+                    url: '',
+                    nowPage: false,
+                    isOuter: false
                 }
             ],//meta
             dataList : [
-                {
-                    path : require('./../common/images/comment/friend.jpg')
-                },
-                {
-                    path : require('./../common/images/comment/friend.jpg')
-                },
-                {
-                    path : require('./../common/images/comment/friend.jpg')
-                },
-                {
-                    path : require('./../common/images/comment/friend.jpg')
-                },
-                {
-                    path : require('./../common/images/comment/friend.jpg')
-                },
-                {
-                    path : require('./../common/images/comment/friend.jpg')
-                },
-                {
-                    path : require('./../common/images/comment/friend.jpg')
-                },
-                {
-                    path : require('./../common/images/comment/friend.jpg')
-                },
-                {
-                    path : require('./../common/images/comment/friend.jpg')
-                },
-                {
-                    path : require('./../common/images/comment/friend.jpg')
-                },
+                
             ],
         }
     },
@@ -71,20 +42,15 @@ export default{
         CmBreadCrumb,
     },
     created(){
-        // this.navTree = this.$route.meta;
-        //
-        this.$get(`/friendLink`)
-        .then( res => {
+        this.$get(`/friendLink`).then( res => {
             console.log(res)
+            this.dataList = res.data;
         })
-        // this.$post('/commentPublish?comment=1&bodyId=1')///commentDelete
-        // .then(res => {
-        // console.log(res)
-        // })
-        // this.$post('/commentDelete?id=1')///commentDelete
-        // .then(res => {
-        // console.log(res)
-        // })
+    },
+    methods : {
+        toPath : function(url){
+            window.open('https://' + url);
+        }
     }
 }
 </script>

@@ -56,7 +56,7 @@ export default {
                 },
                 {
                     name : '友情链接',
-                    path : '',
+                    path : '/index/FriendShipLink',
                     style : {
                         padding : '0 4px',
                         borderRight : '1px solid #eee',
