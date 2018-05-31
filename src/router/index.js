@@ -58,7 +58,7 @@ const SearchView = () => import('@/containers/SerchText');
 /*
 *   测试组件路由
 */
-const Test = () => import('@/components/cm-pic-list')
+const Test = () => import('@/components/cm-test')
 
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',

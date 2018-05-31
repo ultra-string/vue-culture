@@ -11,7 +11,7 @@
         <img :src="this.picPath" alt="">
 <!-- 替换标题  -->
 <div class="test">
-    <el-menu ref="elmentItem" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" :unique-opened="true">
+    <el-menu ref="elmentItem" :default-active="activeIndex" :collapse-transition="false" class="el-menu-demo" mode="horizontal" @select="handleSelect" :unique-opened="true">
         <el-submenu v-for="(item,key) in titleList" :key="key" :index="key+''">
             <template slot="title">{{item.oneTitleName}}</template>
             <el-menu-item v-for="(val , k) in item.twoTitleVOs" :key="k" index="key+'-'+k">{{val.twoTitleName}}</el-menu-item>
@@ -172,7 +172,45 @@ export default{
     }, 
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
+    .test{
+        width : 1000px;
+        min-width : 1000px;
+        margin : 0 auto;
+    }
+    .el-menu--horizontal > .el-submenu .el-submenu__title{
+        padding : 0 10px;
+        margin : 0px;
+    }
+    .el-menu--horizontal > .el-submenu:hover{
+        
+        border-bottom : 1px solid $font-hot;
+        
+    }
+    .el-menu--horizontal > .el-submenu:hover .el-submenu__title{
+        color : $font-hot;
+    }
+    .el-menu--horizontal > .el-submenu{
+        border-bottom : 1px solid #ccc;
+    }
+    .el-menu--horizontal{
+        border-bottom : none;
+    }
+    .el-menu--horizontal > .el-submenu .el-submenu__icon-arrow{
+        width : 0px;
+        height : 0px;
+        overflow: hidden;
+        padding : 0;
+        margin : 0;
+    }
+    .el-submenu__title{
+        padding : 0px;
+        margin : 0px;
+    }
+    .el-submenu{
+        padding : 0px;
+        margin : 0px;
+    }
 input{
     width : 10rem;
     height : 1rem;
