@@ -106,6 +106,18 @@ export default {
                     clickClass : '',
                     color : '#eeeeee',
                 },
+                {
+                    name : '招聘',
+                    path : '/Index/Recruit',
+                    style : {
+                        padding : '0 4px',
+                        height : '12px',
+                        lineHeight : '12px',
+                    },
+                    isClick : false,
+                    clickClass : '',
+                    color : '#eeeeee',
+                },
             ],
             listId : '',
         }

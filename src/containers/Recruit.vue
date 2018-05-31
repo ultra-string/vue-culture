@@ -1,13 +1,16 @@
 <template>
   <!-- 招聘 -->
   <div class="recruit">
-    招聘
     <cm-bradcrumb 
         style="margin:18px 0;lineHeight: 45px;height:45px;fontSize:19px" 
         :navTree="navTree"
     ></cm-bradcrumb>
-    <cm-recruit :listArr="listArr"></cm-recruit>
-    <cm-change-page></cm-change-page>
+    <cm-recruit :listArr="dataList"></cm-recruit>
+    <cm-change-page
+        :pageNum="resData.pageNum"
+        :data="resData"
+        @changePageFn="changePage"
+    ></cm-change-page>
   </div>
 </template>
 <script>
@@ -39,19 +42,9 @@
             date: new Date().getTime(),
             content: '熟练度附近抗裂砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发熟练度附近抗裂砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发'
           },
-          {
-            date: new Date().getTime(),
-            content: '熟练度附近抗裂砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发熟练度附近抗裂砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发'
-          },
-          {
-            date: new Date().getTime(),
-            content: '熟练度附近抗裂砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发熟练度附近抗裂砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发'
-          },
-          {
-            date: new Date().getTime(),
-            content: '熟练度附近抗裂砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发熟练度附近抗裂砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克砂浆的方式来拉克丝接待来访善良大方加适量的解放路上地方吉林省空间大发牢骚发'
-          },
-        ]
+        ],
+        dataList : [],
+        resData : {},
       }
     },
     components: {
@@ -59,8 +52,22 @@
       CmRecruit,
       CmChangePage,
     },
-    created() {
-      this.navTree = this.$route.meta;
+    created(){
+       this.changePage(1);
+    },
+    methods : {
+      changePage : function(page){
+          this.$post('/body/page' , {
+              "oneId": 100,
+              "pageNo": page,
+              "pageSize": 12,
+              "twoId": 1004
+          }).then(res => {
+              console.log(res);
+              this.dataList = res.data.list;
+              this.resData = res.data;
+          })
+      },
     }
   }
 
