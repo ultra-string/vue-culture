@@ -1,5 +1,5 @@
 <template>
-    <div class="Notice">
+    <div class="personal">
          <cm-bradcrumb
             style="margin:18px 0;lineHeight: 45px;fontSize:19px"
             :navTree="navTree"
@@ -23,7 +23,7 @@ import CmBradcrumb from '@/components/cm-breadcrumb';
 
 
 export default {
-    name : 'Notice',
+    name : 'Personal',
     data (){
         return {
             path: this.$route.meta,
@@ -38,7 +38,7 @@ export default {
                     isOuter: false
                 },
                 {
-                    name: '公告',
+                    name: '隐私政策',
                     path: 'CultureNews',
                     url: '',
                     nowPage: false,
@@ -61,7 +61,7 @@ export default {
                 "oneId": 100,
                 "pageNo": page,
                 "pageSize": 12,
-                "twoId": 1003
+                "twoId": 1001
             }).then(res => {
                 console.log(res);
                 this.dataList = res.data.list;
@@ -72,7 +72,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.notice{
+.personal{
     width : 1000px;
     min-width : 1000px;
     margin : 0 auto;

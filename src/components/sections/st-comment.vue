@@ -81,6 +81,18 @@
       CmShare
     },
     created() {
+        this.initFn();
+    },
+    watch: {  
+        '$route' (to, from) {  
+            console.log(this.$route.query) 
+            if(to.fullPath != from.fullPath){
+                this.initFn();
+            } 
+        }  
+    },
+    methods : {
+      initFn : function(){
         this.params = this.$route.query;
         this.bodyId = this.params.bodyId;
         this.$post('/commentSearch' , {
@@ -92,25 +104,7 @@
             this.dataList = res.data.list;
             this.resData = res.data;
         })
-
-
-    },
-    // beforeRouteLeave : ((to, from, next) => {
-    //   next({
-    //     path: "/login",
-    //     query: {
-    //       redirect: to.fullPath
-    //     }
-    //   });
-      
-    // }),
-    methods : {
-      //跳登录
-      // toLogin : function(){
-      //   this.$router.push({
-      //     path : '/login'
-      //   })
-      // },
+      },
       postCommentFn : function(){
         let val = note.value;
           // 发布

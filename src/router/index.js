@@ -44,6 +44,12 @@ const FriendShipLink = () => import('@/containers/FriendShipLink');
 const Recruit = () => import('@/containers/Recruit');
 
 /*
+*   隐私政策  路由
+*/
+const Personal = () => import('@/containers/Personal');
+
+
+/*
 *   登录路由
 */
 const LoginView = () => import('@/containers/LoginView');
@@ -130,6 +136,12 @@ export default new Router({
           path : 'Recruit',
           meta : ['首页' , '招聘'],
           component : Recruit
+        },
+        {
+          name : 'Personal',
+          path : 'Personal',
+          meta : ['首页' , '隐私政策'],
+          component : Personal
         },
         // 详情页
         {

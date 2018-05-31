@@ -71,20 +71,31 @@ export default {
         CmShare
     },
     created() {
-        console.log('aaa=>',this.$route.params.id)
-        // let id = this.$route.params.id ? this.$route.params.id : 1;
-        this.params = this.$route.query;
-        let params = this.params;
-        let id = params.id;
-        let oneTitleId = params.oneTitleId;
-        let twoTitleId = params.twoTitleId ? twoTitleId : '';
-        this.$get(`/body/${id}`)
-        .then( res => {
-            this.detialMsg = Object.assign({}, res.data);
-            console.log(this.detialMsg)
-            //test
-            this.detialMsg.videoUrl = 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm';
-        })
+        this.initFn();
+    },
+    watch: {  
+        '$route' (to, from) {  
+            console.log(this.$route.query) 
+            if(to.fullPath != from.fullPath){
+                this.initFn();
+            } 
+        }  
+    },
+    methods : {
+        initFn : function(){
+            this.params = this.$route.query;
+            let params = this.params;
+            let id = params.id;
+            let oneTitleId = params.oneTitleId;
+            let twoTitleId = params.twoTitleId ? twoTitleId : '';
+            this.$get(`/body/${id}`)
+            .then( res => {
+                this.detialMsg = Object.assign({}, res.data);
+                console.log(this.detialMsg)
+                //test
+                this.detialMsg.videoUrl = 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm';
+            })
+        }
     }
 }
 </script>

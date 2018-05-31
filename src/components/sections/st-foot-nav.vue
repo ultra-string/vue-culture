@@ -69,7 +69,7 @@ export default {
                 },
                 {
                     name : '隐私政策',
-                    path : '',
+                    path : '/index/Personal',
                     style : {
                         padding : '0 4px',
                         borderRight : '1px solid #eee',
