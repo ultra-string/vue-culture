@@ -48,6 +48,11 @@ const Recruit = () => import('@/containers/Recruit');
 */
 const Personal = () => import('@/containers/Personal');
 
+/*
+*   使用条款  路由
+*/
+const UserRule = () => import('@/containers/UserRule');
+
 
 /*
 *   登录路由
@@ -137,11 +142,19 @@ export default new Router({
           meta : ['首页' , '招聘'],
           component : Recruit
         },
+        // 隐私政策
         {
           name : 'Personal',
           path : 'Personal',
           meta : ['首页' , '隐私政策'],
           component : Personal
+        },
+        // 使用条款
+        {
+          name : 'UserRule',
+          path : 'UserRule',
+          meta : ['首页' , '使用条款'],
+          component : UserRule
         },
         // 详情页
         {

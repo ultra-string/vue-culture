@@ -95,7 +95,7 @@ export default {
                 },
                 {
                     name : '使用条款',
-                    path : '',
+                    path : '/Index/UserRule',
                     style : {
                         padding : '0 4px',
                         borderRight : '1px solid #eee',
