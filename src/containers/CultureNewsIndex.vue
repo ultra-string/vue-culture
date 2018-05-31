@@ -80,33 +80,6 @@ export default {
               isOuter: false
         }
       ],
-      ClutureNewsTree: [
-        {
-            name: '文旅资讯',
-            path: 'CultureNews',
-            url: '',
-            nowPage: false,
-            isOuter: false
-        },{
-            name: '要闻',
-            path: 'ImportantNews',
-            url: '',
-            nowPage: true,
-            isOuter: false
-        },{
-            name: '展讯',
-            path: 'ExhibitionNews',
-            url: '',
-            nowPage: true,
-            isOuter: false
-        },{
-            name: '政治法规',
-            path: 'Policy',
-            url: '',
-            nowPage: true,
-            isOuter: false
-        }
-      ],
       params : '',//query
       oneTitleId : '',//一级标题
       showType : '',
@@ -146,7 +119,7 @@ export default {
           oneId: oneId,
           twoId: twoId
       }).then(res => {
-          // console.log(res);
+          console.log(res);
           this.resData = res.data;
           this.dataList = res.data.list;
           // console.log(this.dataList)

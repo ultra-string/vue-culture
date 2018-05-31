@@ -1,5 +1,19 @@
 <template>
   <div class="indexPage">
+    <!-- <img :src="totalList.titleLinkMap[4][0].url" alt=""> -->
+    <cm-swiper
+      class="swiper"
+      :baseData="baseData"
+      :height="220"
+      :width="1000"
+    ></cm-swiper>
+    <div class="top-new-line clearfix" v-if="totalList.titleLinkMap[1] && totalList.titleLinkMap[1].length != 0" :key="k">
+      <h1 v-if="totalList.titleLinkMap[1][0]">{{totalList.titleLinkMap[1][0].name}}</h1>
+      <!-- <p class="fl"  v-if="totalList.titleLinkMap[1][1]">{{totalList.titleLinkMap[1][1].name}}</p>
+      <p class="fr"  v-if="totalList.titleLinkMap[1][2]">{{totalList.titleLinkMap[1][2].name}}</p> -->
+      <p class="fl"  v-if="totalList.titleLinkMap[1][1]">{{totalList.titleLinkMap[1][1].name}}</p>
+      <p class="fr"  v-if="totalList.titleLinkMap[1][2]">{{totalList.titleLinkMap[1][2].name}}</p>
+    </div>
     <!-- 头部swiper的行 -->
     <div class="clearfix swiper-line">
       <cm-swiper
@@ -692,6 +706,9 @@ export default {
       }
       return arr;
       console.log(arr)
+    },
+    toUrlFn : function(url){
+      window.open('https://' + url);
     }
   }
 
@@ -702,6 +719,25 @@ export default {
 <style lang="scss" scoped>
 .indexPage{
   position: relative;
+  margin-top : 60px;
+  .top-new-line{
+    width : 100%;
+    height : 70px;
+    margin : 20px auto;
+    background : #f2f6f8;
+    padding-top : 30px;
+    text-align : center;
+    color : #0b3c6c;
+    h1{
+      line-height : 30px;
+      font-size : 30px;
+    }
+    p{
+      line-height : 14px;
+      font-size : 14px;
+      margin-top : 10px;
+    }
+  }
   .swiper-line {
     margin: 42px 0 49px 0;
     .swiper{

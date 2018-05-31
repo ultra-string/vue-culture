@@ -3,9 +3,9 @@
     <st-top-nav></st-top-nav>
     <div class="root-view">
       <st-top-logo></st-top-logo>
-      <cm-top-nav
+      <cm-top-nav-ele
       :options="options"
-      ></cm-top-nav>
+      ></cm-top-nav-ele>
       <router-view></router-view>
     </div>
     <st-foot-qrcode></st-foot-qrcode>
@@ -17,7 +17,7 @@
 <script>
 import StTopNav from '@/components/sections/st-top-nav';
 import StTopLogo from '@/components/sections/st-top-logo';
-import CmTopNav from '@/components/cm-top-nav';
+import CmTopNavEle from '@/components/cm-top-nav-ele';
 import StFootQrcode from '@/components/sections/st-foot-qrcode';
 import StFootNav from '@/components/sections/st-foot-nav';
 import StRightAdv from '@/components/sections/st-right-adv';
@@ -34,7 +34,7 @@ export default {
   components: {
     StTopNav,
     StTopLogo,
-    CmTopNav,
+    CmTopNavEle,
     StFootNav,
     StFootQrcode,
     StRightAdv,
@@ -43,7 +43,12 @@ export default {
     //获取标题
     this.$get('/index').then(res => {
       console.log(res.data);
-      this.options = res.data.titleVOs;
+      // this.options = res.data.titleVOs;
+      // this.options
+      let _this = this;
+      res.data.titleVOs.forEach(function(item, index){
+        if(!item.isLink)_this.options.push(item)
+      })
     })
     // this.options = sessionStorage.getItem("TITLE_NAV").split('-');
     // this.options.map(function(item,index){
