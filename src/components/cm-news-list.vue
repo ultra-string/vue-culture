@@ -1,10 +1,14 @@
 <template>
   <div>
-      <div class="cm-news-list clearfix" :class="hasDashBorder ? 'hasDashBorder' : ''" v-for="(val, key) in newsList" :key="key" @click="toDetail(val)">
+      <div class="cm-news-list no-data" v-if="!newsList.length">
+          暂无数据
+      </div>
+      <div v-else class="cm-news-list point clearfix" :class="hasDashBorder ? 'hasDashBorder' : ''" v-for="(val, key) in newsList" :key="key" @click="toDetail(val)">
           <i v-if="hasHotPoint" class="fl"></i>
           <h3 class="fl">{{val.bodyTitle}}</h3>
           <div v-if="hasDate" class="fr">{{val.updateTime | getTimeYMDWord}}</div>
       </div>
+      
   </div>
 </template>
 
@@ -93,6 +97,7 @@ export default {
   width: 100%;
   line-height: 36px;
   font-size: 14px;
+
   // @include display-flex;
   // @include justify-content-space;
   i {
@@ -100,12 +105,22 @@ export default {
     height: 6px;
     border-radius: 100%;
     background: $font-hot;
-    margin: 15px 8px 0 0;
+    margin: 15px 8px 0 0; 
   }
   h3 {
     vertical-align: top;
     max-width: 80%;
     @include nowrap-ellipsis;
   }
+}
+.no-data{
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 18px;
+}
+.point{
+  cursor:pointer;
 }
 </style>

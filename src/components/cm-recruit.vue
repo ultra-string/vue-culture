@@ -58,6 +58,7 @@ export default{
     margin : 0 auto;
 
     .list{
+        cursor:pointer;
         width : 100%;
         margin-bottom : 42px;
 

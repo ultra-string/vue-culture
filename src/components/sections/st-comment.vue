@@ -47,7 +47,7 @@
             v-for="(item , k) in dataList"
             :key='k' 
             :userName="item.userName" 
-            :commentContent="item.commentContent" 
+            :commentContent="item.comment" 
             :createTime="item.createTime" 
             :lastBorder="k==dataList.length-1?true:false"
         ></cm-comment>

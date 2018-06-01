@@ -7,7 +7,7 @@
         <div class="news-detail">
             <h2>{{detialMsg.bodyTitle}}</h2>
             <div class="detail-info clearfix">
-                <div>
+                <div v-if="detialMsg.createTime">
                     {{detialMsg.createTime | getTimeYMD}}
                 </div>
                 <div v-if="detialMsg.auther == null">
@@ -28,10 +28,10 @@
                     :width="'754px'"
                     :height="'426px'"
                 ></cm-video-player>
-                <div>{{detialMsg.body}}</div>
+                <div v-html="detialMsg.body"></div>
                 <st-comment></st-comment>
             </div>
-            <div class="conent-adv fr"></div>
+            <!-- <div class="conent-adv fr"></div> -->
         </div>
 
     </div>
@@ -93,7 +93,7 @@ export default {
                 this.detialMsg = Object.assign({}, res.data);
                 console.log(this.detialMsg)
                 //test
-                this.detialMsg.videoUrl = 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm';
+                // this.detialMsg.videoUrl = 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm';
             })
         }
     }
