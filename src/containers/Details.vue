@@ -107,18 +107,18 @@ export default {
                 console.log(this.detialMsg)
                 console.log(res)
                 this.wordArr = res.data.relatedBodys;
-                res.data.currentTitles.forEach(function(item,index){
-                    switch(index){
-                    case 0:
-                    this.oneTitle = item;
-                    console.log(this.oneTitle)
-                    break;
-                    case 1:
-                    this.twoTitle = item;
-                    console.log(this.twoTitle)
-                    break;
-                    }
-                },this)
+                // res.data.currentTitles.forEach(function(item,index){
+                //     switch(index){
+                //     case 0:
+                //     this.oneTitle = item;
+                //     console.log(this.oneTitle)
+                //     break;
+                //     case 1:
+                //     this.twoTitle = item;
+                //     console.log(this.twoTitle)
+                //     break;
+                //     }
+                // },this)
                 //test
                 // this.detialMsg.videoUrl = 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm';
             })

@@ -94,7 +94,6 @@ export default {
     this.initFn();
   },
   updated(){
-    console.log(this.oneTitle,this.twoTitle)
     this.$refs.breadcrumb.getTree(this.oneTitle,this.twoTitle);
   },
   watch: {
