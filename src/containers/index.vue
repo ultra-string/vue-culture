@@ -11,13 +11,13 @@
       <div class="fl">
         <cm-title-nav :oneTitle="'文旅资讯'" :secondTitle="cultureTitleArr.twoTitleVOs.length > 3 ? [cultureTitleArr.twoTitleVOs[0],cultureTitleArr.twoTitleVOs[1],cultureTitleArr.twoTitleVOs[2]] : cultureTitleArr.twoTitleVOs"
           :showType="cultureTitleArr.showType" :treeType="'cultureTitleArr'"></cm-title-nav>
-        <div class="clearfix flex-box">
+        <div class="clearfix flex-box swiper-line-box">
           <cm-thumbnail v-if="totalList.travelConsultings[0]" :width="230" :height="135" :title="totalList.travelConsultings[0].bodyTitle"
             :isTitle="true" :src="totalList.travelConsultings[0].thumbnailUrl"></cm-thumbnail>
           <cm-thumbnail v-if="totalList.travelConsultings[1]" :width="230" :height="135" :title="totalList.travelConsultings[1].bodyTitle"
             :isTitle="true" :src="totalList.travelConsultings[1].thumbnailUrl"></cm-thumbnail>
           <div v-if="cultureList && cultureList.length" class="cm-news-list hand-point clearfix" v-for="(val, key) in cultureList"
-            :key="key" @click="toDetail(val)">
+            :key="key" @click="toDetail(val)" :style="{'margin-left':(key==cultureList.length-1)?'32px':0}">
             <i class="fl"></i>
             <h3 class="fl font-color">{{val.bodyTitle}}</h3>
           </div>
@@ -385,6 +385,10 @@
   .indexPage {
     position: relative;
     margin-top: 60px;
+    .swiper-line-box{
+      height : 100%;
+      width : 100%;
+    }
     .top-new-line {
       width: 100%;
       height: 70px;
@@ -432,6 +436,11 @@
       .swiper {
         width: 488px;
         margin-right: 20px;
+      }
+      .cm-news-list{
+        width : 230px;
+        line-height : 34px;
+        height : 34px;
       }
       >div {
         width: 492px;

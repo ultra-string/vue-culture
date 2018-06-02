@@ -5,7 +5,7 @@
                 <p>中华人民共和国和旅游部主管 / 中国文化传媒集团主办</p>
             </div>
             <div class="pic">
-                <img src="@/common/images/foot/login-logo.jpg" alt="">
+                <img src="@/common/images/foot/login-logo.jpg" alt="" @click="toIndexfn" class="hand-point">
             </div>
         </div>
         <div class="login">
@@ -27,6 +27,11 @@ export default {
     methods : {
         chooseTypeFn : function(index){
             this.$router.push({name: index});
+        },
+        toIndexfn : function(){
+            this.$router.push({
+                path : '/Index'
+            })
         }
     }
 }

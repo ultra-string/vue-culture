@@ -143,7 +143,7 @@
                     ></cm-short-content>
                 </div>
                 <div v-if="touchHeritage && touchHeritage.length" class="cm-news-list hand-point clearfix" v-for="(val, key) in touchHeritage"
-                    :key="key" @click="toDetail(val)">
+                    :key="key" @click="toDetail(val)" :style="{'margin-left':(key==touchHeritage.length-1)?'50px':0}">
                     <i class="fl"></i>
                     <h3 class="fl font-color">{{val.bodyTitle}}</h3>
                 </div>

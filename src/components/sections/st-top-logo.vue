@@ -1,6 +1,6 @@
 <template>
   <div class="st-top-logo clearfix">
-    <h1 class="fl">中国手艺网</h1>
+    <h1 class="fl hand-point" @click="toIndexfn">中国手艺网</h1>
     <div class="fr">
         <div class="clearfix">
             <div class="clearfix serchInput fl">
@@ -75,6 +75,11 @@ export default {
           this.curType = this.options[key].type;
           this.selectValue = this.options[key].name;
       },
+      toIndexfn : function(){
+          this.$router.push({
+              path : '/Index'
+          })
+      }
   }
 }
 </script>
