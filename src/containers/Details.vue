@@ -31,7 +31,14 @@
                 <div v-html="detialMsg.body"></div>
                 <st-comment></st-comment>
             </div>
-            <!-- <div class="conent-adv fr"></div> -->
+            <div class="conent-adv fr">
+                <h1>相关文章</h1>
+                <div v-if="wordArr && wordArr.length" class="cm-news-list hand-point clearfix font-color" v-for="(val, key) in wordArr"
+                    :key="key" @click="toDetail(val)">
+                    <i class="fl"></i>
+                    <h3 class="fl font-color">{{val.bodyTitle}}</h3>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -62,6 +69,7 @@ export default {
                 isOuter: false
             }],
             params : '',
+            wordArr : [],
         }
     },
     components: {
@@ -92,9 +100,25 @@ export default {
             .then( res => {
                 this.detialMsg = Object.assign({}, res.data);
                 console.log(this.detialMsg)
+                console.log(res)
+                this.wordArr = res.data.relatedBodys;
                 //test
                 // this.detialMsg.videoUrl = 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm';
             })
+        },
+        //跳文章详情
+        toDetail: function (obj) {
+            this.$router.push({
+            query: {
+                oneTitleId: obj.oneTitleId,
+                twoTitleId: obj.twoTitleId,
+                id: obj.id
+            },
+            params: {
+                id: obj.id
+            },
+            name: 'Details',
+            });
         }
     }
 }
@@ -130,8 +154,35 @@ export default {
         .conent-adv{
             width : 208px;
             height :100px;
-            background : red;
+            // background : red;
+            h1{
+                font-size :22px;
+                color : $font-hot;
+                line-height : 30px;
+                border-bottom : 3px solid $font-hot;
+                margin-bottom : 10px;
+            }
         }
+    }
+    .cm-news-list{
+        // width : 472px;
+        line-height : 34px;
+        // height : 34px;
+        i {
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            background: $font-hot;
+            margin: 15px 8px 0 0; 
+        }
+        h3 {
+            vertical-align: top;
+            max-width: 90%;
+            @include nowrap-ellipsis;
+        }
+    }
+    .font-color{
+      color : #4c6f95;
     }
 }
 </style>

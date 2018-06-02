@@ -2,7 +2,7 @@
   <div class="cm-part-nav">
       <ul>
         <li class="marginBot" :class="0 == selectedKey ? 'active' : '' " @click.stop="chooseNav(0 , navTree.id , '' , navTree.showType)">{{navTree.oneTitleName}}</li>
-        <li class="marginBot" v-for="(val,key) in navTree.twoTitleVOs" :key="key" :class="key+1 == selectedKey ? 'active' : '' " @click.stop="chooseNav(key+1 , val.oneTitleId , val.id , val.showType)">{{val.twoTitleName}}</li>
+        <li class="marginBot" v-for="(val,key) in navTree.twoTitleVOs" :key="key" :class="key+1 == selectedKey ? 'active' : '' " @click.stop="chooseNav(key+1 , val.oneTitleId , val.id , val.showType )">{{val.twoTitleName}}</li>
       </ul>
   </div>
 
@@ -54,7 +54,7 @@ export default {
         pageSize,
         oneId,
         twoId,
-        showType
+        showType,
       );
       this.selectedKey = key;
       //   this.$router.push({name: this.navTree[key].path});

@@ -113,6 +113,7 @@ export default {
         ~img {
             padding: 2px 0;
             background: rgb(178,48,35);
+            height : 36px;
         }
     }
 }

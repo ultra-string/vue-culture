@@ -138,7 +138,7 @@ export default {
           // console.log(this.opations)
       })
     },
-    getBodyTitlePartProps : function(pageNo , pageSize , oneId , twoId , showType){
+    getBodyTitlePartProps : function(pageNo , pageSize , oneId , twoId , showType ){
       //pageNo:第几页;pageSize:一页几条数据;twoId二级标题id;oneId一级标题id
       this.$post('/body/page', {
           pageNo:  +pageNo,
@@ -146,11 +146,16 @@ export default {
           oneId: +oneId,
           twoId: twoId?+twoId:''
       }).then(res => {
-        // console.log(res);
+        console.log(res);
           this.resData = res.data.pageInfo;
           this.dataList = res.data.pageInfo.list;
           // console.log(this.dataList)
           this.showType = showType;
+          res.data.currentTitles.forEach(function(item,index){
+            this.navTree[index] = {};
+            this.navTree[index].name = item;
+          },this)
+          console.log(this.navTree)
       })
     },
     changePageFn : function(page){
