@@ -4,8 +4,8 @@
       <h3>{{oneTitle}}</h3>
       <span></span>
       <div class="clearfix">
-        <div class="fl hand-point" v-for="(value, key) in secondTitle" :key="key" @click="toCulureFn" v-if="secondTitle && secondTitle.length">
-          <h4>{{value.twoTitleName}}</h4>
+        <div class="fl hand-point" v-for="(value, key) in secondTitle" :key="key" v-if="secondTitle && secondTitle.length">
+          <h4 @click="toCulureFn(value)">{{value.twoTitleName}}</h4>
           <span v-if="key != secondTitle.length - 1"></span>
         </div>
         <div class="hand-point fr more" @click="toCulureFn">更多>></div>
@@ -45,20 +45,45 @@ export default {
     };
   },
   methods: {
-    //跳转文旅资讯
-    toCulureFn : function(){
+    // //跳转文旅资讯
+    toCulureFn : function(obj){
       // console.log(this.specialPath)
-      if(this.specialPath){
+     if(this.specialPath){
         this.$router.push({
           path : this.specialPath
         });
-      }else{
+        return;
+      }
+      if(!obj){
         this.$router.push({
           path : '/CultureNewsIndex',
           query : {
             oneTitleId : this.secondTitle[0].oneTitleId,
             showType : this.showType,
             treeType : this.treeType
+          }
+        })
+        return;
+      }
+      if(obj.twoTitleVOs){
+        if(obj.oneTitleName == '首页'){
+          return;
+        }
+        this.$router.push({
+          path : '/CultureNewsIndex',
+          query : {
+            oneTitleId : obj.id,
+            twoTitleId : '',
+            showType : obj.showType,
+          }
+        })
+      }else{
+        this.$router.push({
+          path : '/CultureNewsIndex',
+          query : {
+            oneTitleId : obj.oneTitleId,
+            twoTitleId : obj.id,
+            showType : obj.showType,
           }
         })
       }

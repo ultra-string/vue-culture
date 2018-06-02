@@ -18,17 +18,15 @@ export default {
           default : function(){
               return {}
           }
+      },
+      selectedKeyProp : {
+          type : Number,
+          default : 0
       }
   },
   data() {
       return {
           selectedKey: 0,
-      }
-  },
-  props : {
-      selectedKeyProp : {
-          type : Number,
-          default : 0
       }
   },
   created(){

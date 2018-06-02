@@ -6,11 +6,11 @@
     ></cm-bradcrumb>
     <div class="clearfix">
       <div class="culture-nav fl">
-        <!-- <cm-part-nav
+        <cm-part-nav
         :navTree="opations"
         @getBodyTitlePartProps="getBodyTitlePartProps"
         :selectedKeyProp="selectedKeyProp"
-        ></cm-part-nav> -->
+        ></cm-part-nav>
       </div>
       <div class="culture-view fl">
         <!-- 测试 -->
@@ -68,9 +68,10 @@ export default {
       navTree: [],
       params : '',//query
       oneTitleId : '',//一级标题
+      twoTitleId : '',
       showType : '',
       firstType : '',//投的样式
-      opations : '',
+      opations : {},
       selectedKeyProp : 0
     }
   },
@@ -90,11 +91,12 @@ export default {
   created(){
     this.params = this.$route.query;
     this.oneTitleId = this.params.oneTitleId;//获取一级标题
+    this.twoTitleId = this.params.twoTitleId ? this.params.twoTitleId : '';//获取一级标题
     this.showType = this.params.showType;
     this.firstType = this.params.showType;
     //pageNo:第几页;pageSize:一页几条数据;twoId二级标题id;oneId一级标题id
     this.getBodyTitle(1 , 12 , this.oneTitleId , '');
-    this.chooseTree();
+    // this.chooseTree();
     // console.log(this.resData)
   },
   methods : {
@@ -104,7 +106,7 @@ export default {
           pageNo:  +pageNo,
           pageSize: +pageSize,
           oneId: +oneId,
-          twoId: +twoId
+          twoId: twoId?+twoId:''
           // pageNo:  +pageNo,
           // pageSize: +pageSize,
           // oneId: 2,
@@ -113,13 +115,14 @@ export default {
           console.log(res);
           this.resData = res.data.pageInfo;
           this.dataList = res.data.pageInfo.list;
-          res.data.titles.forEach(function(item,index){
+          res.data.currentTitles.forEach(function(item,index){
             this.navTree[index] = {};
             this.navTree[index].name = item;
           },this)
-          this.opations = [];
+          this.opations = res.data.titleVOs[0];
           // console.log(this.navTree)
-          console.log(this.dataList)
+          // console.log(this.dataList)
+          // console.log(this.opations)
       })
     },
     getBodyTitlePartProps : function(pageNo , pageSize , oneId , twoId , showType){
@@ -128,7 +131,7 @@ export default {
           pageNo:  +pageNo,
           pageSize: +pageSize,
           oneId: +oneId,
-          twoId: +twoId
+          twoId: twoId?+twoId:''
       }).then(res => {
         // console.log(res);
           this.resData = res.data.pageInfo;
@@ -150,7 +153,7 @@ export default {
           pageNo:  +pageNo,
           pageSize: +pageSize,
           oneId: +oneId,
-          twoId: +twoId
+          twoId: twoId?+twoId:''
       }).then(res => {
         console.log(res);
           this.resData = res.data.pageInfo;
@@ -159,8 +162,17 @@ export default {
       })
     },
     chooseTree : function(){
-      this.opations = [];
-      console.log(this.opations)
+      let oneId = this.params.oneTitleId;
+      let twoId = this.params.twoTitleId;
+      if(!twoId){
+        this.selectedKeyProp = 0;
+      }else{
+        this.opations.twoTitleVOs.forEach(function(item,index){
+          if(item.id == twoId){
+            this.selectedKeyProp = index;
+          }
+        },this);
+      }
     }
   }
 }
