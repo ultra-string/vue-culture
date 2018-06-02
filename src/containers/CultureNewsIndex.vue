@@ -1,5 +1,5 @@
 <template>
-  <div class="culture-news-view">
+  <div class="culture-news-view" v-if="beReady">
     <cm-bradcrumb
     style="margin:18px 0;lineHeight: 45px;fontSize:19px"
     :navTree="navTree"
@@ -9,7 +9,6 @@
         <cm-part-nav
         :navTree="opations"
         @getBodyTitlePartProps="getBodyTitlePartProps"
-        :selectedKeyProp="selectedKeyProp"
         ></cm-part-nav>
       </div>
       <div class="culture-view fl">
@@ -72,7 +71,8 @@ export default {
       showType : '',
       firstType : '',//投的样式
       opations : {},
-      selectedKeyProp : 0
+      selectedKeyProp : 0,
+      beReady : false,
     }
   },
   components: {
@@ -89,17 +89,28 @@ export default {
     Policy
   },
   created(){
-    this.params = this.$route.query;
-    this.oneTitleId = this.params.oneTitleId;//获取一级标题
-    this.twoTitleId = this.params.twoTitleId ? this.params.twoTitleId : '';//获取一级标题
-    this.showType = this.params.showType;
-    this.firstType = this.params.showType;
-    //pageNo:第几页;pageSize:一页几条数据;twoId二级标题id;oneId一级标题id
-    this.getBodyTitle(1 , 12 , this.oneTitleId , '');
-    this.chooseTree();
-    // console.log(this.resData)
+    this.initFn();
+  },
+  watch: {
+    $route(to, from) {
+      console.log(this.$route.query);
+      if (to.fullPath != from.fullPath) {
+        this.initFn();
+      }
+    }
   },
   methods : {
+    initFn : function(){
+      this.params = this.$route.query;
+      this.oneTitleId = this.params.oneTitleId;//获取一级标题
+      this.twoTitleId = this.params.twoTitleId ? this.params.twoTitleId : '';//获取一级标题
+      this.showType = this.params.showType;
+      this.firstType = this.params.showType;
+      //pageNo:第几页;pageSize:一页几条数据;twoId二级标题id;oneId一级标题id
+      this.getBodyTitle(1 , 12 , this.oneTitleId , '');
+      
+      // console.log(this.resData)
+    },
     getBodyTitle : function(pageNo , pageSize , oneId , twoId){
       //pageNo:第几页;pageSize:一页几条数据;twoId二级标题id;oneId一级标题id
       this.$post('/body/page', {
@@ -120,7 +131,9 @@ export default {
             this.navTree[index].name = item;
           },this)
           this.opations = res.data.titleVOs[0];
-          // console.log(this.navTree)
+          // this.chooseTree();
+          console.log(this.navTree)
+          this.beReady = true;
           // console.log(this.dataList)
           // console.log(this.opations)
       })
@@ -164,14 +177,18 @@ export default {
     chooseTree : function(){
       let oneId = this.params.oneTitleId;
       let twoId = this.params.twoTitleId;
+      console.log(oneId,twoId)
       if(!twoId){
         this.selectedKeyProp = 0;
       }else{
+        console.log(this.opations)
         this.opations.twoTitleVOs.forEach(function(item,index){
           if(item.id == twoId){
             this.selectedKeyProp = index;
           }
+
         },this);
+        console.log(this.selectedKeyProp)
       }
     }
   }

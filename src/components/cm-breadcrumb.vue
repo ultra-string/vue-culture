@@ -2,9 +2,9 @@
   <div class="cm-breadcrumb clearfix">
 
     <div class="left-breadcrumb clearfix fl">
-      <div class="fl hot">首页
+      <!-- <div class="fl hot">首页
         <span>></span>
-      </div>
+      </div> -->
       <div class="fl" v-for="(val, k) in navTree" :key="k" :class="k != navTree.length-1 ? 'hot' : '' ">{{val.name}}
         <span v-if="!k == navTree.length-1">></span>
       </div>
@@ -14,9 +14,9 @@
     <div class="right-breadcrumb clearfix fr">
 
       <div class="fl">您当前的位置：</div>
-      <div class="fl">首页
+      <!-- <div class="fl">首页
         <span>></span>
-      </div>
+      </div> -->
       <div class="fl" v-for="(val, key) in navTree" :key="key">{{val.name}}
         <span v-if="key != navTree.length-1">></span>
       </div>

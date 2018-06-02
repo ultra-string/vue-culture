@@ -1,5 +1,5 @@
 <template>
-    <div class="special-scheme">
+    <div class="special-scheme" v-if="beReady">
         <!-- 图片广告 -->
         <div class="top-new-line top-new-line-one clearfix" v-if="this.newsData[0].SpecPlanHeadOne">
             <h1 v-if="this.newsData[0].SpecPlanHeadOne[0]" class="hand-point" @click="toUrlFn(this.newsData[0].SpecPlanHeadOne[0].url)">{{this.newsData[0].SpecPlanHeadOne[0].name}}</h1>
@@ -233,6 +233,7 @@ export default {
             listenHeritage : [],//聆听非遗
             touchHeritage : [],//触摸非遗
             tasteHeritage : [],//品味非遗
+            beReady : false,
         }
     },
     components: {
@@ -249,6 +250,7 @@ export default {
             console.log(res)
             this.resData = res.data;
             this.changeListByType();
+            this.beReady = true;
         })
         this.$get('/SpecPlanHeadSearch ').then(res => {
             console.log(res)
@@ -256,6 +258,10 @@ export default {
             this.advOne = this.changeArr(1,0,4,this.newsData[0].SpecPlanHeadOne);
             console.log(this.advOne)
             this.advTwo = this.changeArr(1,0,4,this.newsData[1].SpecPlanHeadTwo);
+        })
+        this.$get('/getBanner').then(res => {
+            console.log(res);
+            this.baseData = this.changeArr(0,0,5,res.data);
         })
     },
     methods : {
@@ -297,6 +303,20 @@ export default {
           this.tasteHeritage = this.changeArr(2,0,10,resData['1009']);
           console.log(this.tasteHeritage)
       },
+      //跳文章详情
+      toDetail: function (obj) {
+        this.$router.push({
+          query: {
+            oneTitleId: obj.oneTitleId,
+            twoTitleId: obj.twoTitleId,
+            id: obj.id
+          },
+          params: {
+            id: obj.id
+          },
+          name: 'Details',
+        });
+      }
     }
 }
 </script>

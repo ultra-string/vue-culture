@@ -1,5 +1,5 @@
 <template>
-  <div class="indexPage">
+  <div class="indexPage" v-if="beReady">
     <div class="top-new-line clearfix" v-if="totalList.titleLinkMap[1] && totalList.titleLinkMap[1].length != 0">
       <h1 v-if="totalList.titleLinkMap[1][0]" class="hand-point" @click="toUrlFn(totalList.titleLinkMap[1][0].url)">{{totalList.titleLinkMap[1][0].name}}</h1>
       <p class="fl top-new-line-left hand-point" v-if="totalList.titleLinkMap[1][1]" @click="toUrlFn(totalList.titleLinkMap[1][1].url)">{{totalList.titleLinkMap[1][1].name}}</p>
@@ -187,6 +187,7 @@
     name: "Index",
     data() {
       return {
+        beReady : false,
         bannerAmry: [], //文旅轮播
         bannerAdv: [], //广告轮播
         //res.data
@@ -242,6 +243,8 @@
           this.changeListByType();
           //处理一二级标题
           this.chooseTitleNameFn();
+
+          this.beReady = true;
         })
         .catch(err => {
           console.log(err);
@@ -299,7 +302,6 @@
             case "特别策划":
               _this.specialTitleArr = item;
               //存标题导航
-              console.log();
               sessionStorage.setItem("specialTitleArr", JSON.stringify(item));
               break;
               // case "中国手艺网电商":
@@ -330,7 +332,7 @@
         this.foodListLeft = this.changeArr(1,0,4,this.totalList.gourmetWorlds);
         //非遗中国
         this.chinaListOne = this.changeArr(0,0,4,this.totalList.inheritanceChinas);
-        console.log(this.chinaListOne)
+        // console.log(this.chinaListOne)
         this.chinaListTwo = this.changeArr(4,0,12,this.totalList.inheritanceChinas);
         //研培
         this.studyList = this.changeArr(2, 0, 3, this.totalList.studyMatchs);
@@ -354,7 +356,7 @@
           arr.push(newArr[i]);
         }
         return arr;
-        console.log(arr);
+        // console.log(arr);
       },
       toUrlFn: function (url) {
         window.open(url);
