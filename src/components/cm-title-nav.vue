@@ -4,11 +4,11 @@
       <h3>{{oneTitle}}</h3>
       <span></span>
       <div class="clearfix">
-        <div class="fl" v-for="(value, key) in secondTitle" :key="key">
+        <div class="fl hand-point" v-for="(value, key) in secondTitle" :key="key" @click="toCulureFn" v-if="secondTitle && secondTitle.length">
           <h4>{{value.twoTitleName}}</h4>
           <span v-if="key != secondTitle.length - 1"></span>
         </div>
-        <div class="fr more" @click="toCulureFn">更多>></div>
+        <div class="hand-point fr more" @click="toCulureFn">更多>></div>
       </div>
   </div>
 </template>
@@ -34,6 +34,10 @@ export default {
     treeType : {
       type : String,
       default : 'cultureTitleArr'
+    },
+    specialPath : {
+      type : String,
+      default : ''
     }
   },
   data() {
@@ -43,14 +47,21 @@ export default {
   methods: {
     //跳转文旅资讯
     toCulureFn : function(){
-      this.$router.push({
-        path : '/CultureNewsIndex',
-        query : {
-          oneTitleId : this.secondTitle[0].oneTitleId,
-          showType : this.showType,
-          treeType : this.treeType
-        }
-      })
+      // console.log(this.specialPath)
+      if(this.specialPath){
+        this.$router.push({
+          path : this.specialPath
+        });
+      }else{
+        this.$router.push({
+          path : '/CultureNewsIndex',
+          query : {
+            oneTitleId : this.secondTitle[0].oneTitleId,
+            showType : this.showType,
+            treeType : this.treeType
+          }
+        })
+      }
     }
   }
 };
@@ -107,12 +118,12 @@ export default {
     border-radius: 2px;
     flex-grow:1;
     margin-top: 4px;
-    padding-left: 30px;
+    padding-left: 20px;
     >div {
-      margin-left:18px;
+      margin-left:15px;
       h4{
         display: inline-block;
-        margin-right:18px;
+        margin-right:15px;
       }
       span{
         display: inline-block;
@@ -124,7 +135,7 @@ export default {
     .more {
       background: $font-hot;
       color: #fff;
-      width: 60px;
+      width: 50px;
       line-height: 16px;
       font-size: 12px;
       margin-top: 6px;

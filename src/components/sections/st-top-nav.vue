@@ -5,12 +5,12 @@
         <div class="home-page fl">设置为首页</div>
         <!-- 下拉框组件 -->
         <cm-select 
-        class="fl"
-        style="marginLeft:19px"
-        :selectValue="selectValue"
-        :options="options"
-        :width="70"
-        @changeCurType="changeCurType"
+          class="fl"
+          style="marginLeft:19px"
+          :selectValue="selectValue"
+          :options="options"
+          :width="70"
+          @changeCurType="changeCurType"
         ></cm-select>
       </div>
       <div class="fr clearfix">

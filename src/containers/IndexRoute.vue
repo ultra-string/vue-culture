@@ -5,10 +5,13 @@
       <st-top-logo></st-top-logo>
       <cm-top-nav-ele
       :options="options"
+      :bannerHead="bannerHead"
       ></cm-top-nav-ele>
       <router-view></router-view>
     </div>
-    <st-foot-qrcode></st-foot-qrcode>
+    <st-foot-qrcode
+      :mark="mark"
+    ></st-foot-qrcode>
     <st-foot-nav></st-foot-nav>
     <st-right-adv></st-right-adv>
   </div>
@@ -29,6 +32,8 @@ export default {
   data() {
     return {
       options: [],
+      bannerHead : [],
+      mark : [],
     }
   },
   components: {
@@ -43,11 +48,16 @@ export default {
     //获取标题
     this.$get('/index').then(res => {
       console.log(res.data);
-      // this.options = res.data.titleVOs;
-      // this.options
+      //处理轮播数据
+      let bannerArr = res.data.titleLinkMap[4];
+      this.bannerHead = this.changeArr(0,0,5,bannerArr);
+      //二维码
+      this.mark = res.data.titleLinkMap[3];
+
       let _this = this;
       res.data.titleVOs.forEach(function(item, index){
-        if(!item.isLink)_this.options.push(item)
+        if(!item.isLink)_this.options.push(item);
+        
       })
     })
     // this.options = sessionStorage.getItem("TITLE_NAV").split('-');
@@ -56,11 +66,6 @@ export default {
     //   return item;
     // })
     // console.log(this.options)
-
-
-
-
-
 
     // let aaa = Lib.changeCase('aaaaa',1);
     // console.log(aaa)
@@ -84,6 +89,87 @@ export default {
     // .catch( err => {
     //   console.log(err);
     // })
+  },
+  methods : {
+    //处理一二级标题
+    chooseTitleNameFn : function(){
+      var titleOv = this.totalList.titleVOs;
+      let _this = this;
+      titleOv.forEach(function(item , index){
+        switch (item.oneTitleName){
+          case "首页":
+            _this.indexTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("indexTitleArr", JSON.stringify(item));
+          break;
+          case "文旅咨询":
+            _this.cultureTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("cultureTitleArr", JSON.stringify(item));
+          break;
+          case "匠人匠心":
+            _this.workerTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("workerTitleArr", JSON.stringify(item));
+          break;
+          case "艺迷社区":
+            _this.arrTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("arrTitleArr", JSON.stringify(item));
+          break;
+          case "美食天下":
+            _this.foodTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("foodTitleArr", JSON.stringify(item));
+          break;
+          case "非遗中国":
+            _this.chinaTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("chinaTitleArr", JSON.stringify(item));
+          break;
+          case "非遗研培":
+            _this.studyTitleArr = item;
+            //存标题导航
+            sessionStorage.setItem("studyTitleArr", JSON.stringify(item));
+          break;
+          case "特别策划":
+            _this.specialTitleArr = item;
+            //存标题导航
+            console.log()
+            sessionStorage.setItem("specialTitleArr", JSON.stringify(item));
+          break;
+          // case "中国手艺网电商":
+          //   this.indexTitleArr = item;
+          // break;
+          // case "传统工艺振兴":
+          //   this.indexTitleArr = item;
+          // break;
+          // case "研修研培":
+          //   this.indexTitleArr = item;
+          // break;
+        }
+      })
+    },
+    //根据格式处理数组方法
+    changeArr: function(del, from, to, newArr) {
+      var arr = [];
+      //去掉删除的
+      to += del;
+      //test
+      if (to > newArr.length) {
+        to = newArr.length;
+      }
+      from += del;
+      if (from > newArr.length) {
+        return arr;
+      }
+      //取值
+      for (var i = from; i < to; i++) {
+        arr.push(newArr[i]);
+      }
+      return arr;
+      console.log(arr);
+    },
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
-  <div class="cm-thumbnail" :style="{width: width+'px',height: height+'px' }">
-      <img :style="{width: width+'px',height: height+'px' }" :src="src" alt="">
+  <div class="cm-thumbnail hand-point" :style="{width: width+'px',height: height+'px' }">
+      <img :style="{width: width+'px',height: height+'px' }" :src="src" alt="图片加载失败">
       <div v-if="isTitle" :style="{width: width+'px', 'line-height': height*0.3 + 'px'}">&nbsp;&nbsp;{{title}}&nbsp;&nbsp;</div>
-      <img v-if="isVideo" class="video-btn" :src="src" alt="" @click.stop="watchVideo">
+      <img v-if="isVideo" class="video-btn" :src="src" alt="图片加载失败" @click.stop="watchVideo">
   </div>
 </template>
 

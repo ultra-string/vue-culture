@@ -34,6 +34,24 @@
     display: -ms-flexbox;   /* 混合版本语法: IE 10 */
     display: flex;          /* 新版本语法: Opera 12.1, Firefox 22+ */
 }
+
+/*
+*   flex 布局，换行
+*/
+@mixin flex-wrap-wrap{
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    flex-wrap:wrap;
+}
+@mixin flex-direction{
+    -webkit-flex-wrap: column;
+    -moz-flex-wrap: column;
+    -ms-flex-wrap: column;
+    -o-flex-wrap: column;
+    flex-direction : column;
+}
 /*
 *   flex布局 justify-content: space-between;兼容性
 */

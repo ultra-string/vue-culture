@@ -3,7 +3,7 @@
     <section class="swiper-container BCindex_container">
       <section class="swiper-wrapper">
         <section v-for="(item,key) in baseData" :key="key" class="swiper-slide">
-          <a :href="item.link"><img :style="{height: height+'px'}" :src="item.url"></a>
+          <a :href="item.url"><img :style="{height: height+'px',width:width+'px'}" :src="item.name" alt="图片加载失败" class="pic"></a>
         </section>
       </section>
       <section v-if="showPagination" class="swiper-pagination BCindex_page"></section>
@@ -26,6 +26,10 @@ export default {
     height: {
         type: Number,
         default: 300
+    },
+    width : {
+      type : Number,
+      default : 1000
     }
   },
   data() {
@@ -91,5 +95,8 @@ export default {
 }
 .BCindex_container .swiper-pagination-bullet-active {
     background-color: rgb(178,47,36); 
+}
+.pic{
+  display : block;
 }
 </style>

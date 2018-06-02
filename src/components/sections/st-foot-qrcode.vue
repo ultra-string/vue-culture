@@ -1,29 +1,9 @@
 <template>
     <div class="st-foot-qrcode">
         <img class="attention" src="@/common/images/foot/attention.jpg">
-        <div class="qr">
-            <img class="qr-pic" src="@/common/images/foot/weichart.jpg" alt="">
-            <p class="qr-name">中国手艺网微信</p>
-        </div>
-        <div class="qr">
-            <img class="qr-pic" src="@/common/images/foot/plan.jpg" alt="">
-            <p class="qr-name">非遗研培计划</p>
-        </div>
-        <div class="qr">
-            <img class="qr-pic" src="@/common/images/foot/online.jpg" alt="">
-            <p class="qr-name">中国手艺网电商</p>
-        </div>
-        <div class="qr">
-            <img class="qr-pic" src="@/common/images/foot/rejuvenation.jpg" alt="">
-            <p class="qr-name">传统工艺振兴</p>
-        </div>
-        <div class="qr">
-            <img class="qr-pic" src="@/common/images/foot/study.jpg" alt="">
-            <p class="qr-name">研修研培</p>
-        </div>
-        <div class="qr">
-            <img class="qr-pic" src="@/common/images/foot/weibo.jpg" alt="">
-            <p class="qr-name">中国手艺网微博</p>
+        <div class="qr" v-for="(item , k) in mark" :key="k">
+            <img class="qr-pic" :src="item.url" alt="图片加载失败">
+            <p class="qr-name">{{item.name}}</p>
         </div>
     </div>
 </template>
@@ -33,6 +13,15 @@ export default {
     data (){
         return {}
     },
+    props : {
+        mark : {
+            type : Array,
+            default : function(){
+                return []
+            }
+        }
+    },
+
 }
 </script>
 <style lang="scss" scoped>
@@ -60,6 +49,8 @@ export default {
         .qr-pic{
             width : 84px;
             height : 84px;
+            display : block;
+            margin : 0 auto;
         }
 
         .qr-word{

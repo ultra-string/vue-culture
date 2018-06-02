@@ -1,6 +1,6 @@
 <template>
     <div class="use-rule">
-         <cm-bradcrumb
+        <cm-bradcrumb
             style="margin:18px 0;lineHeight: 45px;fontSize:19px"
             :navTree="navTree"
         ></cm-bradcrumb>
