@@ -1,7 +1,19 @@
 <template>
     <div class="special-scheme">
         <!-- 图片广告 -->
+        <div class="top-new-line clearfix">
+            <h1 v-if="advOne && advOne[0]" class="hand-point" @click="toUrlFn(advOne[0].url)">{{advOne[0].name}}</h1>
+            <div class="flex-box top-new-box">
+                <p class="hand-point" v-if="advOne && advOne.length" v-for="(item , index) in advOne" :key="index" @click="toUrlFn(item.url)">{{item.name}}</p>
+            </div>
+        </div>
         <!-- 图片广告2 -->
+        <div class="top-new-line clearfix">
+            <h1 v-if="advOne && advOne[0]" class="hand-point" @click="toUrlFn(advOne[0].url)">{{advOne[0].name}}</h1>
+            <div class="flex-box top-new-box">
+                <p class="hand-point" v-if="advOne && advOne.length" v-for="(item , index) in advOne" :key="index" @click="toUrlFn(item.url)">{{item.name}}</p>
+            </div>
+        </div>
         <!-- swiper -->
         <div class="swiper-line clearfix">
             <cm-swiper
@@ -13,11 +25,9 @@
                 <cm-title 
                 title="活动讯息"
                 ></cm-title>
-                <cm-short-content
-                class="short-content"
-                ></cm-short-content>
+                <cm-short-content class="fr list short-content" v-if="resData['活动讯息'] && resData['活动讯息'].length" :msg="resData['活动讯息']['0']"></cm-short-content>
                 <cm-news-list
-                :newsList="newsList"
+                :newsList="activeMsg"
                 :hasHotPoint="true"
                 ></cm-news-list>
             </div>
@@ -154,16 +164,23 @@ export default {
                     link: 'https://www.souhu.com'
                 }
             ],
-            newsList: [{
-                title: '我是政策法规的标题啊！',
-                date: '2018-7-20'
-            },{
-                title: '我是政策法规的标题啊！',
-                date: '2018-7-20'
-            },{
-                title: '我是政策法规的标题啊！',
-                date: '2018-7-20'
-            }],
+            newsList: [
+                {
+                    title: '我是政策法规的标题啊！',
+                    date: '2018-7-20'
+                },{
+                    title: '我是政策法规的标题啊！',
+                    date: '2018-7-20'
+                },{
+                    title: '我是政策法规的标题啊！',
+                    date: '2018-7-20'
+                }
+            ],
+            resData : [],
+            newsData : [],
+            activeMsg : '',
+            advOne : [],
+            advTwo : [],
         }
     },
     components: {
@@ -176,16 +193,58 @@ export default {
         StComment
     },
     created() {
-        this.$get('/specialPlanningSearch')
-            .then(res => {
-                console.log(res)
-            })
+        this.$get('/specialPlanningSearch').then(res => {
+            console.log(res)
+            this.resData = res.data;
+            this.changeListByType();
+        })
+        this.$get('/SpecPlanHeadSearch ').then(res => {
+            console.log(res)
+            this.newsData = res.data;
+            this.advOne = this.changeArr(1,0,3,this.newsData[0]['专题策划头条一组']);
+            this.advTwo = this.changeArr(1,0,3,this.newsData[1]['专题策划头条二组']);
+        })
+    },
+    methods : {
+        //根据格式处理数组方法
+      changeArr: function (del, from, to, newArr) {
+        var arr = [];
+        //去掉删除的
+        to += del;
+        //test
+        if (to > newArr.length) {
+          to = newArr.length;
+        }
+        from += del;
+        if (from > newArr.length) {
+          return arr;
+        }
+        //取值
+        for (var i = from; i < to; i++) {
+          arr.push(newArr[i]);
+        }
+        return arr;
+        console.log(arr);
+      },
+      toUrlFn: function (url) {
+        window.open(url);
+      },
+      //根据类别处理数组
+      changeListByType: function () {
+          //活动讯息
+          this.activeMsg = this.changeArr(1,0,3,this.resData['活动讯息']);
+          console.log(this.activeMsg)
+      },
     }
 }
 </script>
 
 <style lang="scss" scoped>
 .special-scheme{
+    .top-new-box{
+        width : 810px;
+        margin : 0 auto;
+    }
     .swiper-line{
         margin: 64px 0 63px 0;
         .swiper-list{
@@ -247,6 +306,40 @@ export default {
                 width: 47.5%;
             }
         }
+    }
+    .top-new-line {
+      width: 100%;
+      padding-bottom : 20px;
+      margin: 20px auto;
+      background: #f2f6f8;
+      padding-top: 30px;
+      text-align: center;
+      color: #0b3c6c;
+      h1 {
+        line-height: 30px;
+        font-size: 30px;
+        width: 600px;
+        margin: 0 auto;
+        @include nowrap-ellipsis;
+      }
+      p {
+        line-height: 14px;
+        font-size: 14px;
+        margin-top: 10px;
+        width: 380px;
+        @include nowrap-ellipsis;
+      }
+      .top-new-line-left {
+        margin-left: 100px;
+      }
+      .top-new-line-right {
+        margin-right: 100px;
+      }
+    }
+    .flex-box {
+      @include display-flex;
+      @include justify-content-space;
+      @include flex-wrap-wrap;
     }
 
 }

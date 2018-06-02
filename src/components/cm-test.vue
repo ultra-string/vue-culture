@@ -37,7 +37,8 @@ export default{
         }
     },
     methods : {
-        handleSelect(key, keyPath) {
+        toPathFn : function(){},
+        handleSelect : function(key, keyPath) {
             console.log(key, keyPath);
         },
         getBodyTitle : function(){

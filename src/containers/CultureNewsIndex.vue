@@ -96,7 +96,7 @@ export default {
     this.firstType = this.params.showType;
     //pageNo:第几页;pageSize:一页几条数据;twoId二级标题id;oneId一级标题id
     this.getBodyTitle(1 , 12 , this.oneTitleId , '');
-    // this.chooseTree();
+    this.chooseTree();
     // console.log(this.resData)
   },
   methods : {

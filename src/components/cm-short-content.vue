@@ -46,6 +46,7 @@ export default {
         font-size : 14px;
         line-height : 24px;
         @include overflow-hidden-wrap(4);
+        text-indent:2em;
     }
 }
 </style>
