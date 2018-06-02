@@ -2,7 +2,7 @@
   <div class="culture-news-view" v-if="beReady">
     <cm-bradcrumb
     style="margin:18px 0;lineHeight: 45px;fontSize:19px"
-    :navTree="navTree"
+    ref="breadcrumb"
     ></cm-bradcrumb>
     <div class="clearfix">
       <div class="culture-nav fl">
@@ -73,6 +73,8 @@ export default {
       opations : {},
       selectedKeyProp : 0,
       beReady : false,
+      oneTitle : '',
+      twoTitle : '',
     }
   },
   components: {
@@ -90,6 +92,10 @@ export default {
   },
   created(){
     this.initFn();
+  },
+  updated(){
+    console.log(this.oneTitle,this.twoTitle)
+    this.$refs.breadcrumb.getTree(this.oneTitle,this.twoTitle);
   },
   watch: {
     $route(to, from) {
@@ -118,18 +124,27 @@ export default {
           pageSize: +pageSize,
           oneId: +oneId,
           twoId: twoId?+twoId:''
-          // pageNo:  +pageNo,
-          // pageSize: +pageSize,
-          // oneId: 2,
-          // twoId: 2
       }).then(res => {
           console.log(res);
           this.resData = res.data.pageInfo;
           this.dataList = res.data.pageInfo.list;
+          this.oneTitle = '';
+          this.twoTitle = '';
           res.data.currentTitles.forEach(function(item,index){
-            this.navTree[index] = {};
-            this.navTree[index].name = item;
+            switch(index){
+              case 0:
+              this.oneTitle = item;
+              console.log(this.oneTitle)
+              break;
+              case 1:
+              this.twoTitle = item;
+              console.log(this.twoTitle)
+              break;
+            }
           },this)
+          // console.log(this.$refs.breadcrumb)
+            // this.$refs.breadcrumb.getTree(this.navTree);
+          
           this.opations = res.data.titleVOs[0];
           // this.chooseTree();
           console.log(this.navTree)
@@ -149,13 +164,22 @@ export default {
         console.log(res);
           this.resData = res.data.pageInfo;
           this.dataList = res.data.pageInfo.list;
-          // console.log(this.dataList)
           this.showType = showType;
+          this.oneTitle = '';
+          this.twoTitle = '';
           res.data.currentTitles.forEach(function(item,index){
-            this.navTree[index] = {};
-            this.navTree[index].name = item;
+            switch(index){
+              case 0:
+              this.oneTitle = item;
+              break;
+              case 1:
+              this.twoTitle = item;
+              break;
+            }
           },this)
-          console.log(this.navTree)
+          // console.log(this.$refs)
+            // this.$refs.breadcrumb.getTree(this.navTree);
+          // console.log(this.navTree)
       })
     },
     changePageFn : function(page){

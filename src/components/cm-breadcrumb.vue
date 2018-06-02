@@ -3,23 +3,32 @@
 
     <div class="left-breadcrumb clearfix fl">
       <div class="fl hot">首页
-        <span>></span>
+        <span v-if="oneTitleName">></span>
       </div>
-      <div class="fl" v-for="(val, k) in navTree" :key="k" :class="k != navTree.length-1 ? 'hot' : '' ">{{val.name}}
-        <span v-if="!k == navTree.length-1">></span>
+      <div class="fl hot" v-if="oneTitleName">{{oneTitleName}}
+        <span v-if="twoTitleName">></span>
       </div>
+      <div class="fl hot" v-if="twoTitleName">{{twoTitleName}}</div>
+      <!-- <div class="fl" v-for="(val, k) in dataList" :key="k" :class="k != dataList.length-1 ? 'hot' : '' ">{{val}}
+        <span v-if="!k == dataList.length-1">></span>
+      </div> -->
 
     </div>
-
     <div class="right-breadcrumb clearfix fr">
 
       <div class="fl">您当前的位置：</div>
       <div class="fl">首页
+        <span v-if="oneTitleName">></span>
+      </div>
+      <div class="fl" v-if="oneTitleName">{{oneTitleName}}
+        <span v-if="twoTitleName">></span>
+      </div>
+      <div class="fl" v-if="twoTitleName">{{twoTitleName}}
         <span>></span>
       </div>
-      <div class="fl" v-for="(val, key) in navTree" :key="key">{{val.name}}
-        <span v-if="key != navTree.length-1">></span>
-      </div>
+      <!-- <div class="fl" v-for="(val, k) in dataList" :key="k">{{val}}
+        <span v-if="key != dataList.length-1">></span>
+      </div> -->
 
     </div>
 
@@ -29,30 +38,21 @@
 <script>
 export default {
   name: "CmBreadcrumb",
-
-  props: {
-    navTree: {
-      type: Array,
-      default: function() {
-        return [];
-      }
-    }
-  },
-  
-  watch: {
-    navTree: {
-      handler(newValue, oldValue) {
-        for (let i = 0; i < newValue.length; i++) {
-          if (oldValue[i] != newValue[i]) {
-            console.log(newValue);
-          }
-        }
-      },
-      deep: true
+  data (){
+    return {
+      oneTitleName : '',
+      twoTitleName : '',
     }
   },
   created() {
-    console.log(this.navTree);
+    // this.oneTitleName = this.oneTitle;
+    // this.twoTitleName = this.twoTitle;
+  },
+  methods : {
+    getTree : function(one,two){
+      this.oneTitleName = one;
+      this.twoTitleName = two;
+    }
   }
 };
 </script>

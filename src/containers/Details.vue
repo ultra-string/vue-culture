@@ -2,7 +2,7 @@
     <div class="detail">
         <cm-bradcrumb
         style="margin:18px 0;lineHeight: 45px;fontSize:19px"
-        :navTree="navTree"
+        ref="breadcrumb"
         ></cm-bradcrumb>
         <div class="news-detail">
             <h2>{{detialMsg.bodyTitle}}</h2>
@@ -70,6 +70,8 @@ export default {
             }],
             params : '',
             wordArr : [],
+            oneTitle : '',
+            twoTitle : '',
         }
     },
     components: {
@@ -80,6 +82,9 @@ export default {
     },
     created() {
         this.initFn();
+    },
+    updated(){
+        this.$refs.breadcrumb.getTree(this.oneTitle,this.twoTitle);
     },
     watch: {  
         '$route' (to, from) {  
@@ -102,6 +107,18 @@ export default {
                 console.log(this.detialMsg)
                 console.log(res)
                 this.wordArr = res.data.relatedBodys;
+                res.data.currentTitles.forEach(function(item,index){
+                    switch(index){
+                    case 0:
+                    this.oneTitle = item;
+                    console.log(this.oneTitle)
+                    break;
+                    case 1:
+                    this.twoTitle = item;
+                    console.log(this.twoTitle)
+                    break;
+                    }
+                },this)
                 //test
                 // this.detialMsg.videoUrl = 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm';
             })
