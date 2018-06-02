@@ -25,8 +25,15 @@ export default {
           selectedKey: 0,
       }
   },
+  props : {
+      selectedKeyProp : {
+          type : Number,
+          default : 0
+      }
+  },
   created(){
     //   console.log(this.navTree)
+    this.selectedKey = this.selectedKeyProp;
   },
   methods: {
       chooseNav: function(key , oneId , twoId , showType) {

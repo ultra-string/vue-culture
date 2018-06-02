@@ -1,8 +1,11 @@
 <!-- zp列表 -->
 <template>
     <div class="cm-recruit">
+        <div class="list" v-if="!listArr.length">
+            暂无数据
+        </div>
         <!-- 列表 -->
-        <div class="list clearfix" v-for="(item , index) in listArr" :key="index" @click="toDetail(item)">
+        <div v-else class="list clearfix" v-for="(item , index) in listArr" :key="index" @click="toDetail(item)">
             <div class="fl date">
                 <h5>{{item.updateTime | getTimeDayWord}}</h5>
                 <h6>{{item.updateTime | getTimeYMWord}}</h6>

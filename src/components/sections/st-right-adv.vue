@@ -1,5 +1,9 @@
 <template>
     <div class="st-right-adv">
+        <div class="adv flex-box">
+            <cm-thumbnail v-if="advArr && advArr.length" v-for="(item,k) in advArr" :key="k" :width="202" :height="128" :title="item.oneTitleName"
+            :isTitle="true" :src="item.imgUrl" class="adv-box"></cm-thumbnail>
+        </div>
         <div class="go-top" @click="goTopFn" v-show="showReturnBtn">
             <span class="go-top-arow">^</span>
             <p class="go-top-word">返回顶部</p>
@@ -7,6 +11,7 @@
     </div>
 </template>
 <script>
+import CmThumbnail from "@/components/cm-thumbnail";
 export default {
     name : 'RtRightAdv',
     data (){
@@ -22,6 +27,17 @@ export default {
     beforeDestroy(){
       window.removeEventListener("scroll",this.handleScroll);
     },
+    props : {
+        advArr : {
+            type : Array,
+            default : function(){
+                return [];
+            }
+        }
+    },
+    components: {
+      CmThumbnail,
+    },
     methods : {
         goTopFn : function(){
             let topDis = 0;
@@ -36,6 +52,7 @@ export default {
             this.jump(topDis);
         },
         handleScroll : function(){
+            // this.showReturnBtn = true;
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
             if(scrollTop > this.pageHeight * 3){
                 this.showReturnBtn = true;
@@ -70,11 +87,21 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.flex-box {
+    width :100%;
+    @include display-flex;
+    @include justify-content-space;
+    @include flex-wrap-wrap;
+}
+.adv-box{
+    margin-bottom : 10px;
+}
 .st-right-adv{
     width : 202px;
     position : fixed;
     top : 50%;
     right : 140px;
+    z-index : 999;
     @include transform-translate-y;
 
     .go-top{

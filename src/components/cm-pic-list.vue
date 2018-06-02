@@ -3,9 +3,16 @@
         <ul class="pic-list clearfix">
             <li 
                 class="pic-list-box clearfix" 
+                v-if="!dataList.length"
+            >
+                暂无数据
+            </li>
+            <li 
+                class="pic-list-box clearfix" 
                 v-for="(item , index) in dataList" 
                 :key="index"
                 @click="toDetail(item)"
+                v-else
             >
                 <img :src="item.thumbnailUrl" alt="" class="adv-pic">
                 <p class="text">{{item.bodyTitle}}</p>

@@ -6,10 +6,11 @@
     ></cm-bradcrumb>
     <div class="clearfix">
       <div class="culture-nav fl">
-        <cm-part-nav
+        <!-- <cm-part-nav
         :navTree="opations"
         @getBodyTitlePartProps="getBodyTitlePartProps"
-        ></cm-part-nav>
+        :selectedKeyProp="selectedKeyProp"
+        ></cm-part-nav> -->
       </div>
       <div class="culture-view fl">
         <!-- 测试 -->
@@ -64,27 +65,13 @@ export default {
     return {
       resData : {},
       dataList : [],
-      navTree: [
-        {
-          name: '首页',
-              path: 'CultureNews',
-              url: '',
-              nowPage: false,
-              isOuter: false
-        },
-        {
-          name: '文旅资讯',
-              path: 'CultureNews',
-              url: '',
-              nowPage: false,
-              isOuter: false
-        }
-      ],
+      navTree: [],
       params : '',//query
       oneTitleId : '',//一级标题
       showType : '',
       firstType : '',//投的样式
       opations : '',
+      selectedKeyProp : 0
     }
   },
   components: {
@@ -114,28 +101,38 @@ export default {
     getBodyTitle : function(pageNo , pageSize , oneId , twoId){
       //pageNo:第几页;pageSize:一页几条数据;twoId二级标题id;oneId一级标题id
       this.$post('/body/page', {
-          pageNo:  pageNo,
-          pageSize: pageSize,
-          oneId: oneId,
-          twoId: twoId
+          pageNo:  +pageNo,
+          pageSize: +pageSize,
+          oneId: +oneId,
+          twoId: +twoId
+          // pageNo:  +pageNo,
+          // pageSize: +pageSize,
+          // oneId: 2,
+          // twoId: 2
       }).then(res => {
           console.log(res);
-          this.resData = res.data;
-          this.dataList = res.data.list;
-          // console.log(this.dataList)
+          this.resData = res.data.pageInfo;
+          this.dataList = res.data.pageInfo.list;
+          res.data.titles.forEach(function(item,index){
+            this.navTree[index] = {};
+            this.navTree[index].name = item;
+          },this)
+          this.opations = [];
+          // console.log(this.navTree)
+          console.log(this.dataList)
       })
     },
     getBodyTitlePartProps : function(pageNo , pageSize , oneId , twoId , showType){
       //pageNo:第几页;pageSize:一页几条数据;twoId二级标题id;oneId一级标题id
       this.$post('/body/page', {
-        pageNo:  pageNo,
-          pageSize: pageSize,
-          oneId: oneId,
-          twoId: twoId
+          pageNo:  +pageNo,
+          pageSize: +pageSize,
+          oneId: +oneId,
+          twoId: +twoId
       }).then(res => {
         // console.log(res);
-          this.resData = res.data;
-          this.dataList = res.data.list;
+          this.resData = res.data.pageInfo;
+          this.dataList = res.data.pageInfo.list;
           // console.log(this.dataList)
           this.showType = showType;
       })
@@ -150,45 +147,19 @@ export default {
       //oneId一级标题id
       let oneId = this.oneTitleId;
       this.$post('/body/page', {
-        pageNo:  pageNo,
-          pageSize: pageSize,
-          oneId: oneId,
-          twoId: twoId
+          pageNo:  +pageNo,
+          pageSize: +pageSize,
+          oneId: +oneId,
+          twoId: +twoId
       }).then(res => {
         console.log(res);
-          this.resData = res.data;
-          this.dataList = res.data.list;
+          this.resData = res.data.pageInfo;
+          this.dataList = res.data.pageInfo.list;
           // console.log(this.dataList)
       })
     },
     chooseTree : function(){
-      console.log(this.params.treeType)
-      switch (this.params.treeType){
-        case "indexTitleArr":
-          this.opations = JSON.parse(sessionStorage.getItem("indexTitleArr"));
-        break;
-        case "cultureTitleArr":
-          this.opations = JSON.parse(sessionStorage.getItem("cultureTitleArr"));
-        break;
-        case "workerTitleArr":
-          this.opations = JSON.parse(sessionStorage.getItem("workerTitleArr"));
-        break;
-        case "arrTitleArr":
-          this.opations = JSON.parse(sessionStorage.getItem("arrTitleArr"));
-        break;
-        case "foodTitleArr":
-          this.opations = JSON.parse(sessionStorage.getItem("foodTitleArr"));
-        break;
-        case "chinaTitleArr":
-          this.opations = JSON.parse(sessionStorage.getItem("chinaTitleArr"));
-        break;
-        case "studyTitleArr":
-          this.opations = JSON.parse(sessionStorage.getItem("studyTitleArr"));
-        break;
-        case "specialTitleArr":
-          this.opations = JSON.parse(sessionStorage.getItem("specialTitleArr"));
-        break;
-      }
+      this.opations = [];
       console.log(this.opations)
     }
   }

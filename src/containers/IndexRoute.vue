@@ -13,7 +13,9 @@
       :mark="mark"
     ></st-foot-qrcode>
     <st-foot-nav></st-foot-nav>
-    <st-right-adv></st-right-adv>
+    <!-- <st-right-adv
+      :advArr="advArr"
+    ></st-right-adv> -->
   </div>
 </template>
 
@@ -34,6 +36,7 @@ export default {
       options: [],
       bannerHead : [],
       mark : [],
+      advArr : [],
     }
   },
   components: {
@@ -56,9 +59,13 @@ export default {
 
       let _this = this;
       res.data.titleVOs.forEach(function(item, index){
-        if(!item.isLink)_this.options.push(item);
-        
+        if(!item.isLink){
+          _this.options.push(item);
+        }else{
+          _this.advArr.push(item);
+        }
       })
+      // console.log('==',this.advArr)
     })
     // this.options = sessionStorage.getItem("TITLE_NAV").split('-');
     // this.options.map(function(item,index){
