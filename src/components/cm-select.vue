@@ -77,10 +77,14 @@ export default {
         top: 40px;
         padding: 0 10px;
         left: -5px;
-        width: 100px;
+        width: 120px;
         z-index:10;
         border: 1px solid #ccc;
         background: #fff;
+        li{
+            width : 100%;
+            @include nowrap-ellipsis;
+        }
     }
 }
 </style>

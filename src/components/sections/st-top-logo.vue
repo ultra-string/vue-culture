@@ -16,7 +16,8 @@
                 <span class="fl"></span>
                 <input type="text" value="" class="fl" placeholder="我是输入框" id="searchInp">
             </div>
-            <img src="@/common/images/index/search-hot.png" alt="搜索按钮" @click="toSerachFn">
+            <!-- <img src="@/common/images/index/search-hot.png" alt="搜索按钮" @click="toSerachFn" class="hand-point"> -->
+            <el-button type="primary" icon="el-icon-search" @click="toSerachFn" class="search-inp">搜索</el-button>
         </div>
     </div>
   </div>
@@ -90,6 +91,12 @@ export default {
     width: 100%;
     margin: 43px 0;
     line-height: 38px;
+    .search-inp{
+        width : 70px;
+        height : 40px;
+        border-radius : 0;
+        // background : '@/common/images/index/search-hot.png';
+    }
     >h1{
         width: 361px;
         height: 38px;
@@ -102,6 +109,7 @@ export default {
             border: 1px solid $color-border-input;
             border-radius: 2px 0 0 2px;
             padding-left: 6px;
+            margin-top : 1px;
             >span{
                 width:1px;
                 height:34px;

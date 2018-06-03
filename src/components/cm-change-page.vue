@@ -14,10 +14,10 @@
             <span>跳转</span>
             <input type="text" v-bind="toPage" id="jumpnote" v-model="mobile" @keyup="log">
             <span>页</span>
-            <span class="point" @click="changePageFn('')">Go</span>
-            <i @click="changePageFn(-1)">上一页</i>
-            <i class="middle" @click="changePageFn(1)">下一页</i>
-            <i @click="changePageFn(data.total)">最后一页</i>
+            <span class="point to-btn click-btn" @click="changePageFn('')">Go</span>
+            <i @click="changePageFn(-1)" class="to-btn click-btn">上一页</i>
+            <i class="middle to-btn click-btn" @click="changePageFn(1)">下一页</i>
+            <i @click="changePageFn(data.total)" class="to-btn click-btn">最后一页</i>
         </div>
       </div>
   </div>
@@ -81,6 +81,9 @@ export default {
   }
   .to-page {
     margin-left: 45px;
+    .to-btn:hover{
+      color: $font-hot;
+    }
     input {
       width: 32px;
       height: 11px;
