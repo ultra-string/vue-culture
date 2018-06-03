@@ -53,6 +53,11 @@ export default {
     },
     //跳转文旅资讯
     toCulureFn : function(obj,isSpecialPath){
+      if(obj.oneTitleName == '首页'){
+        this.$router.push({
+          path : '/Index'
+        })
+      }
       // console.log(this.specialPath)
       if(isSpecialPath){
         this.$router.push({

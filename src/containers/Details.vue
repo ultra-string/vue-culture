@@ -25,9 +25,11 @@
                 <cm-video-player
                     v-if="detialMsg.videoUrl"
                     :src="detialMsg.videoUrl"
-                    :width="'754px'"
-                    :height="'426px'"
+                    :width="'400px'"
+                    :height="'300px'"
+                    style="margin:'0 auto'"
                 ></cm-video-player>
+
                 <div v-html="detialMsg.body"></div>
                 <st-comment></st-comment>
             </div>
@@ -90,6 +92,7 @@ export default {
         '$route' (to, from) {  
             console.log(this.$route.query) 
             if(to.fullPath != from.fullPath){
+                console.log(to.fullPath,from.fullPath)
                 this.initFn();
             } 
         }  
@@ -103,9 +106,11 @@ export default {
             let twoTitleId = params.twoTitleId ? twoTitleId : '';
             this.$get(`/body/${id}`)
             .then( res => {
+                console.log(res.data)
                 this.detialMsg = Object.assign({}, res.data);
-                console.log(this.detialMsg)
-                console.log(res)
+                // console.log(this.detialMsg)
+                // console.log(res)
+                // console.log(this.detialMsg.body)
                 this.wordArr = res.data.relatedBodys;
                 // res.data.currentTitles.forEach(function(item,index){
                 //     switch(index){

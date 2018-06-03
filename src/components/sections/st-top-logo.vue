@@ -32,18 +32,18 @@ export default {
     return {
         options: [{
           value: '选项1',
-          name: '作者',
+          name: '标题',
           type : '0'
         }, {
           value: '选项2',
-          name: '标题',
+          name: '作者',
           type : '1'
         }, {
           value: '选项3',
           name: '关键词',
           type : '2'
         }],
-        selectValue: '作者',
+        selectValue: '标题',
         curType : '0'
     }
   },

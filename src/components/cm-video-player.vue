@@ -85,7 +85,16 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
+.video-js{
+    margin : 0 auto;
+}
+.video-js .vjs-big-play-button{
+    top : 50%;
+    left : 50%;
+    /*transform: translate(-50%,-50%);*/
+    @include center;
+}
 .cm-video-player{
     width : 100%;
     .video-player-box{

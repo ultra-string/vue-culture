@@ -46,13 +46,14 @@
                         class="fl"
                         :width="230"
                         :height="135"
-                        :title="resData['1007'][0].bodyTitle"
+                        :title="resData['1006'][0].bodyTitle"
                         :isTitle="true"
-                        :src="resData['1007'][0].thumbnailLink"
+                        :src="resData['1006'][0].thumbnailLink" 
+                        :msg="resData['1006'][0]"
                         ></cm-thumbnail>
                         <cm-short-content
                         class="short-content fr"
-                        :msg="resData['1007'][0]"
+                        :msg="resData['1006'][1]"
                         ></cm-short-content>
                     </div>
                 </div>
@@ -82,6 +83,7 @@
                     :title="resData['1007'][0].bodyTitle"
                     :isTitle="true"
                     :src="resData['1007'][0].thumbnailLink"
+                    :msg="resData['1007'][0]"
                     ></cm-thumbnail>
                     <cm-short-content
                     style="width:230px;"
@@ -97,6 +99,7 @@
                     :title="resData['1007'][2].bodyTitle"
                     :isTitle="true"
                     :src="resData['1007'][2].thumbnailLink"
+                    :msg="resData['1007'][2]"
                     ></cm-thumbnail>
                     <cm-short-content
                     style="width:230px;"
@@ -117,14 +120,15 @@
                     class="fl"
                     :width="230"
                     :height="135"
-                    :title="resData['1008'][2].bodyTitle"
+                    :title="resData['1008'][0].bodyTitle"
                     :isTitle="true"
-                    :src="resData['1008'][2].thumbnailLink"
+                    :src="resData['1008'][0].thumbnailLink"
+                    :msg="resData['1008'][0]"
                     ></cm-thumbnail>
                     <cm-short-content
                     style="width:230px;"
                     class="short-content fr"
-                    :msg="resData['1008'][3]"
+                    :msg="resData['1008'][1]"
                     ></cm-short-content>
                 </div>
                 <div class="clearfix video-line">
@@ -135,6 +139,7 @@
                     :title="resData['1008'][2].bodyTitle"
                     :isTitle="true"
                     :src="resData['1008'][2].thumbnailLink"
+                    :msg="resData['1008'][2]"
                     ></cm-thumbnail>
                     <cm-short-content
                     style="width:230px;"
@@ -163,6 +168,7 @@
                     :title="resData['1009'][0].bodyTitle"
                     :isTitle="true"
                     :src="resData['1009'][0].thumbnailLink"
+                    :msg="resData['1009'][0]"
                     ></cm-thumbnail>
                     <cm-short-content
                     style="width:230px;"

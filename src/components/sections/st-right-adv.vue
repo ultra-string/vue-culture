@@ -1,7 +1,8 @@
 <template>
-    <div class="st-right-adv">
+    <div class="st-right-adv" id="rightAdv">
         <div class="adv flex-box">
-            <cm-thumbnail v-if="advArr && advArr.length" v-for="(item,k) in advArr" :key="k" :width="202" :height="128" :title="item.oneTitleName"
+            <cm-thumbnail v-if="advArr && advArr.length" v-for="(item,k) in advArr" :key="k" :width="140" :height="70" :title="item.oneTitleName" 
+            :msg="item"
             :isTitle="true" :src="item.imgUrl" class="adv-box"></cm-thumbnail>
         </div>
         <div class="go-top" @click="goTopFn" v-show="showReturnBtn">
@@ -18,11 +19,19 @@ export default {
         return {
             pageHeight : 0,
             showReturnBtn : false,
+            advWidth : 1,
+            advHeight : 1,
         }
+    },
+    created(){
+        // var clientWidth = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
+        // this.advWidth = Math.floor((clientWidth - 1000) / 2 -5);
+        // this.advHeight = Math.floor(this.advWidth / 202 * 128);
     },
     mounted(){
         window.addEventListener('scroll', this.handleScroll);
         this.pageHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        // rightAdv.style.width = (this.advWidth - 5) + 'px';
     },
     beforeDestroy(){
       window.removeEventListener("scroll",this.handleScroll);
@@ -56,6 +65,8 @@ export default {
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
             if(scrollTop > this.pageHeight * 3){
                 this.showReturnBtn = true;
+            }else{
+                this.showReturnBtn = false;
             }
         },
         jump: function (total) {
@@ -97,15 +108,15 @@ export default {
     margin-bottom : 10px;
 }
 .st-right-adv{
-    width : 202px;
+    width : 140px;
     position : fixed;
     top : 50%;
-    right : 140px;
+    right : 1%;
     z-index : 999;
     @include transform-translate-y;
 
     .go-top{
-        width : 202px;
+        width : 100%;
         height : 38px;
         background : #d7d4ce;
         color : #ffffff;

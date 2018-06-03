@@ -13,9 +13,9 @@
       :mark="mark"
     ></st-foot-qrcode>
     <st-foot-nav></st-foot-nav>
-    <!-- <st-right-adv
+    <st-right-adv
       :advArr="advArr"
-    ></st-right-adv> -->
+    ></st-right-adv>
   </div>
 </template>
 
