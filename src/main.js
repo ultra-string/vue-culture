@@ -24,6 +24,11 @@ Vue.prototype.$get = fetch;
 // 用户登录的借口 auth
 Vue.prototype.$auth = auth;
 
+
+router.afterEach((to,from,next) => {
+    window.scrollTo(0,0);
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -32,6 +37,10 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+
+
+
 /*
 *   补位toDouble方法
 */
