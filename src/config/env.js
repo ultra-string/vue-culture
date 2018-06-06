@@ -13,7 +13,11 @@ let baseImgPath;
 if (process.env.NODE_ENV == 'development') {
 	// baseUrl = 'http://118.190.152.1:8083';
 	baseUrl = 'http://118.190.152.1:8081';
+<<<<<<< HEAD
     baseImgPath = 'http://118.190.152.1:8084/imageVali/';
+=======
+    baseImgPath = '';
+>>>>>>> 6b7251992554d9be17ba7555e969e42e7cc45d98
 }else{
 	baseUrl = 'http://118.190.152.1:8081';
     baseImgPath = 'http://118.190.152.1:8084/imageVali/';

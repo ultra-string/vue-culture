@@ -5,7 +5,7 @@
             <!-- <template slot="title" @row-click="toPath">{{item.name}}</template> -->
             <el-menu-item index="key+''" slot="title" @click="toPath(item)" class="title-xxx-box">{{item.name}}</el-menu-item>
             <el-menu-item v-for="(val , k) in item.childVos" :key="k" index="key+'-'+k" @click="toCulureFn(val,item.id)">{{val.name}}</el-menu-item>
-            </el-submenu>
+            <!-- </el-submenu> -->
         </el-submenu>
       </el-menu>
       <cm-swiper

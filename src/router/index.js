@@ -199,7 +199,11 @@ export default new Router({
       ]
     },
     {
+<<<<<<< HEAD
       path: '/404',
+=======
+      path: '404',
+>>>>>>> 6b7251992554d9be17ba7555e969e42e7cc45d98
       name: '404',
       component: Page404
     }
