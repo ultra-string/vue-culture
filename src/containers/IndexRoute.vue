@@ -13,9 +13,9 @@
       :mark="mark"
     ></st-foot-qrcode>
     <st-foot-nav></st-foot-nav>
-    <!-- <st-right-adv
+    <st-right-adv
       :advArr="advArr"
-    ></st-right-adv> -->
+    ></st-right-adv>
   </div>
 </template>
 
@@ -59,12 +59,15 @@ export default {
 
       let _this = this;
       res.data.titleVOs.forEach(function(item, index){
-        if(!item.isLink){
-          _this.options.push(item);
-        }else{
-          _this.advArr.push(item);
+        if(item.isLink==1){
+           _this.advArr.push(item);
         }
       })
+      // res.data.daohangList.forEach(function(item,index){
+      //   console.log(this)
+      // },this);
+      this.options = res.data.daohangList;
+      console.log(this.options)
       // console.log('==',this.advArr)
     })
     // this.options = sessionStorage.getItem("TITLE_NAV").split('-');

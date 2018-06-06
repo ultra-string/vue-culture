@@ -13,8 +13,10 @@
           :showType="cultureTitleArr.showType" :treeType="'cultureTitleArr'"></cm-title-nav>
         <div class="clearfix flex-box swiper-line-box">
           <cm-thumbnail v-if="totalList.travelConsultings[0]" :width="230" :height="135" :title="totalList.travelConsultings[0].bodyTitle"
+          :msg="totalList.travelConsultings[0]"
             :isTitle="true" :src="totalList.travelConsultings[0].thumbnailUrl"></cm-thumbnail>
           <cm-thumbnail v-if="totalList.travelConsultings[1]" :width="230" :height="135" :title="totalList.travelConsultings[1].bodyTitle"
+          :msg="totalList.travelConsultings[1]"
             :isTitle="true" :src="totalList.travelConsultings[1].thumbnailUrl"></cm-thumbnail>
           <div v-if="cultureList && cultureList.length" class="cm-news-list hand-point clearfix" v-for="(val, key) in cultureList"
             :key="key" @click="toDetail(val)" :style="{'margin-left':(key==cultureList.length-1)?'32px':0}">
@@ -42,6 +44,7 @@
             :title="totalList.specialPlannings[0].bodyTitle"
             :isTitle="true"
             :src="totalList.specialPlannings[0].thumbnailUrl"
+          :msg="totalList.specialPlannings[0]"
             ></cm-thumbnail>
             <ul class="fl">
               <li>
@@ -62,6 +65,7 @@
             :title="totalList.specialPlannings[1].bodyTitle"
             :isTitle="true"
             :src="totalList.specialPlannings[1].thumbnailUrl"
+          :msg="totalList.specialPlannings[1]"
             ></cm-thumbnail>
             <ul class="fl">
               <li>
@@ -81,7 +85,8 @@
         :showType="workerTitleArr.showType" :treeType="'workerTitleArr'"></cm-title-nav>
       <div class="clearfix">
         <div class="left fl clearfix">
-          <cm-thumbnail v-if="totalList.craftsmans[0]" :width="230" :height="135" :isTitle="true" :title="totalList.craftsmans[0].bodyTitle" class="fl" :src="totalList.craftsmans[0].thumbnailUrl"></cm-thumbnail>
+          <cm-thumbnail v-if="totalList.craftsmans[0]" :width="230" :height="135" :isTitle="true" :title="totalList.craftsmans[0].bodyTitle"
+          :msg="totalList.craftsmans[0]" class="fl" :src="totalList.craftsmans[0].thumbnailUrl"></cm-thumbnail>
           <cm-short-content class="fr list" v-if="totalList.craftsmans[1]" :msg="totalList.craftsmans[1]"></cm-short-content>
         </div>
         <div class="fr">
@@ -94,7 +99,7 @@
       <cm-title-nav oneTitle="艺迷社区" :secondTitle="arrTitleArr.twoTitleVOs.length > 3 ? [arrTitleArr.twoTitleVOs[0],arrTitleArr.twoTitleVOs[1],arrTitleArr.twoTitleVOs[2]] : arrTitleArr.twoTitleVOs"
         :showType="arrTitleArr.showType" :treeType="'arrTitleArr'"></cm-title-nav>
       <div class="flex-box">
-          <cm-thumbnail v-for="(item , tag) in arrtListLeft" :key="tag" :width="230" :height="135" :isTitle="true" class="fl left" :title="item.bodyTitle" :src="item.thumbnailUrl"></cm-thumbnail>
+          <cm-thumbnail v-for="(item , tag) in arrtListLeft" :key="tag" :width="230" :height="135" :msg="item" :isTitle="true" class="fl left" :title="item.bodyTitle" :src="item.thumbnailUrl"></cm-thumbnail>
       </div>
       <div class="flex-direction">
         <div v-if="arrtListRight && arrtListRight.length" class="cm-news-list hand-point clearfix" v-for="(val, key) in arrtListRight"
@@ -124,9 +129,10 @@
       <cm-title-nav oneTitle="美食天下" :secondTitle="foodTitleArr.twoTitleVOs.length > 3 ? [foodTitleArr.twoTitleVOs[0],foodTitleArr.twoTitleVOs[1],foodTitleArr.twoTitleVOs[2]] : foodTitleArr.twoTitleVOs"
         :showType="foodTitleArr.showType" :treeType="'foodTitleArr'"></cm-title-nav>
       <div class="clearfix">
-        <cm-thumbnail :width="480" :height="270" :isTitle="true" class="fl" :title="totalList.gourmetWorlds[0].bodyTitle" :src="totalList.gourmetWorlds[0].thumbnailUrl"></cm-thumbnail>
+        <cm-thumbnail :width="480" :height="270" :isTitle="true" class="fl" :title="totalList.gourmetWorlds[0].bodyTitle" 
+          :msg="totalList.gourmetWorlds[0]" :src="totalList.gourmetWorlds[0].thumbnailUrl"></cm-thumbnail>
         <div class="fr right">
-          <cm-thumbnail v-for="(item , k) in foodListLeft" :key="k" :width="235" :height="127" :isTitle="true" class="fl right-item" :title="item.bodyTitle"
+          <cm-thumbnail v-for="(item , k) in foodListLeft" :key="k" :width="235" :height="127" :isTitle="true" :msg="item" class="fl right-item" :title="item.bodyTitle"
             :src="item.thumbnailUrl"></cm-thumbnail>
         </div>
       </div>
@@ -136,7 +142,7 @@
       <cm-title-nav oneTitle="非遗中国" :secondTitle="chinaTitleArr.twoTitleVOs.length > 3 ? [chinaTitleArr.twoTitleVOs[0],chinaTitleArr.twoTitleVOs[1],chinaTitleArr.twoTitleVOs[2]] : chinaTitleArr.twoTitleVOs"
         :showType="chinaTitleArr.showType" :treeType="'chinaTitleArr'"></cm-title-nav>
       <div class="flex-box">
-        <cm-thumbnail v-for="(item , k) in chinaListOne" :key="k" :width="230" :height="135" :isTitle="true" :title="item.bodyTitle" :src="item.thumbnailUrl"></cm-thumbnail>
+        <cm-thumbnail v-for="(item , k) in chinaListOne" :key="k" :width="230" :height="135" :isTitle="true" :msg="item" :title="item.bodyTitle" :src="item.thumbnailUrl"></cm-thumbnail>
       </div>
       <div class="flex-direction" style="height:106px;">
         <div v-if="chinaListTwo && chinaListTwo.length" class="cm-news-list hand-point clearfix" v-for="(val, key) in chinaListTwo"
@@ -153,7 +159,7 @@
         :showType="studyTitleArr.showType" :treeType="'studyTitleArr'"></cm-title-nav>
         <div>
           <div class="clearfix">
-            <cm-thumbnail class="fl" :width="230" :height="135" :isTitle="true" :title="totalList.studyMatchs[0].bodyTitle" :src="totalList.studyMatchs[0].thumbnailUrl"></cm-thumbnail>
+            <cm-thumbnail class="fl" :width="230" :height="135" :isTitle="true" :title="totalList.studyMatchs[0].bodyTitle" :msg="totalList.studyMatchs[0]" :src="totalList.studyMatchs[0].thumbnailUrl"></cm-thumbnail>
             <!-- <cm-short-content class="fr content"></cm-short-content> -->
             <cm-short-content class="fr content" v-if="totalList.studyMatchs[1]" :msg="totalList.studyMatchs[1]"></cm-short-content>
           </div>

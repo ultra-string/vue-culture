@@ -1,5 +1,5 @@
 <template>
-    <div class="cm-short-content hand-point">
+    <div class="cm-short-content hand-point" @click="toDetail">
         <h1>{{msg.bodyTitle}}</h1>
         <p>{{msg.summary}}</p>
     </div>
@@ -24,6 +24,23 @@ export default {
               }
           }
       }
+  },
+  methods : {
+    //跳转
+    toDetail : function(){
+      let obj = this.msg;
+      this.$router.push({
+          query : {
+              oneTitleId : obj.oneTitleId,
+              twoTitleId : obj.twoTitleId,
+              id : obj.id
+          },
+          params : {
+              id : obj.id
+          },
+          name : 'Details',
+      });
+    }
   }
 }
 </script>

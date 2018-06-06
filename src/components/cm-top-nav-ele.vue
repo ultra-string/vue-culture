@@ -1,10 +1,10 @@
 <template>
   <div class="cm-top-nav-ele">
-      <el-menu ref="elmentItem" :default-active="activeIndex" :collapse-transition="false" class="el-menu-demo hand-point" mode="horizontal" @select="handleSelect" :unique-opened="true">
+      <el-menu ref="elmentItem" :default-active="activeIndex" menu-trigger="hover" :collapse-transition="false" class="el-menu-demo hand-point" mode="horizontal" @select="handleSelect" :unique-opened="true">
         <el-submenu v-for="(item,key) in options" :key="key" :index="key+''">
-            <template slot="title">{{item.oneTitleName}}</template>
-            <el-menu-item index="key+'-'+0" @click="toCulureFn(item,(item.oneTitleName=='特别策划'?true:false))">{{item.oneTitleName}}</el-menu-item>
-            <el-menu-item v-for="(val , k) in item.twoTitleVOs" :key="k" index="key+'-'+(k+1)" @click="toCulureFn(val)">{{val.twoTitleName}}</el-menu-item>
+            <!-- <template slot="title" @row-click="toPath">{{item.name}}</template> -->
+            <el-menu-item index="key+''" slot="title" @click="toPath(item)" class="title-xxx-box">{{item.name}}</el-menu-item>
+            <el-menu-item v-for="(val , k) in item.childVos" :key="k" index="key+'-'+k" @click="toCulureFn(val,item.id)">{{val.name}}</el-menu-item>
             </el-submenu>
         </el-submenu>
       </el-menu>
@@ -44,45 +44,49 @@ export default {
     };
   },
   created(){
-    console.log(this.options)
+    // console.log(this.options)
   },
   methods: {
-    toPathFn: function() {},
     handleSelect: function(key, keyPath) {
-      console.log(key, keyPath);
+      // console.log(key, keyPath);
     },
     //跳转文旅资讯
-    toCulureFn : function(obj,isSpecialPath){
-      // console.log(this.specialPath)
-      if(isSpecialPath){
-        this.$router.push({
-          path : '/Index/SpecialScheme'
-        });
+    toCulureFn : function(obj,id){
+      console.log(obj.showType)
+      this.$router.push({
+        path : '/CultureNewsIndex',
+        query : {
+          oneTitleId : id,
+          twoTitleId : obj.id,
+          showType : obj.showType,
+          // showType : 1,
+        }
+      })
+
+    },
+    toPath : function(item){
+      if(item.isLink == 0){
+        //二级界面
+        this.toOnePath(item);
+      }else if(item.isLink == 1){
+        if(!item.url)return;
+        window.open(item.url);
+      }else if(item.isLink == 2){
+        //首页
         return;
       }
-      if(obj.twoTitleVOs){
-        if(obj.oneTitleName == '首页'){
-          return;
+    },
+    toOnePath : function(obj){
+      this.$router.push({
+        path : '/CultureNewsIndex',
+        query : {
+          oneTitleId : obj.id,
+          twoTitleId : '',
+          showType : obj.showType,
+          // showType : 1,
         }
-        this.$router.push({
-          path : '/CultureNewsIndex',
-          query : {
-            oneTitleId : obj.id,
-            twoTitleId : '',
-            showType : obj.showType,
-          }
-        })
-      }else{
-        this.$router.push({
-          path : '/CultureNewsIndex',
-          query : {
-            oneTitleId : obj.oneTitleId,
-            twoTitleId : obj.id,
-            showType : obj.showType,
-          }
-        })
-      }
-    }
+      })
+    },
   },
   components: {
     CmSwiper,
@@ -92,17 +96,36 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+.cm-top-nav-ele{
+  width : 100%;
+}
+.el-submenu__title .title-xxx-box{
+  padding : 0;
+  min-width : 50px;
+  color : #000;
+  background : #fff;
+  font-size : 16px;
+}
+.el-menu-demo{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  // @include display-flex;
+  // @include justify-content-space
+}
 .swiper{
   margin-top : 30px;
 }
 .cm-top-nav-ele {
   margin-bottom: 20px;
 }
-.el-menu-demo{  
-  margin-left: -20px;
+.el-menu{  
+  // margin-left: -15px;
+  padding : 0;
 }
 .el-menu--horizontal > .el-submenu .el-submenu__title {
-  padding: 0 20px;
+  // padding: 0 16px;
+  padding : 0;
   margin: 0px;
   font-size: 16px;
   border: none !important;
@@ -111,6 +134,9 @@ export default {
 .el-menu--horizontal > .el-submenu:hover .el-submenu__title {
   color: $font-hot;
   border-bottom: 1px solid $font-hot !important;
+}
+.el-menu--horizontal > .el-submenu:hover .title-xxx-box{
+  color : $font-hot;
 }
 .el-menu--horizontal > .el-submenu {
   border-bottom: none;

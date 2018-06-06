@@ -52,12 +52,12 @@
             :lastBorder="k==dataList.length-1?true:false"
         ></cm-comment>
       </div>
-      <cm-change-page
+      <!-- <cm-change-page
         style="padding-right:20px;"
         :pageNum="resData.pageNum"
         :data="resData"
         @changePageFn="changePageFn"
-      ></cm-change-page>
+      ></cm-change-page> -->
     </div>
   </div>
 </template>
@@ -83,6 +83,12 @@
     created() {
         this.initFn();
     },
+    props : {
+      id : {
+        type : Number,
+        default : 0
+      }
+    },
     watch: {  
         '$route' (to, from) {  
             console.log(this.$route.query) 
@@ -94,7 +100,7 @@
     methods : {
       initFn : function(){
         this.params = this.$route.query;
-        this.bodyId = this.params.bodyId;
+        this.bodyId = this.params.id;
         this.$post('/commentSearch' , {
             "pageNo" : 1,
             "pageSize" : 10,

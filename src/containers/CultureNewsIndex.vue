@@ -15,7 +15,7 @@
         <!-- 测试 -->
         <div class="style-type" v-if="showType==0"></div>
         <!-- 横向专题 -->
-        <div class="style-type" v-if="showType==1">
+        <div class="style-type" v-if="showType==0 || showType==1">
             <!-- <cm-arrow-list></cm-arrow-list> -->
             <cm-news-list
               :hasDate="true"
@@ -112,7 +112,7 @@ export default {
       this.showType = this.params.showType;
       this.firstType = this.params.showType;
       //pageNo:第几页;pageSize:一页几条数据;twoId二级标题id;oneId一级标题id
-      this.getBodyTitle(1 , 12 , this.oneTitleId , '');
+      this.getBodyTitle(1 , 12 , this.oneTitleId , this.twoTitleId);
       
       // console.log(this.resData)
     },

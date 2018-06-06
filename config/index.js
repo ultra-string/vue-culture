@@ -20,8 +20,8 @@ module.exports = {
           '^/apis': ''  //需要rewrite的,
         }       
       }
-  },
-
+    },
+    // env: require('./dev.env'),
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 7000, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
@@ -48,6 +48,7 @@ module.exports = {
 
   build: {
     // Template for index.html
+    // env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
 
     // Paths

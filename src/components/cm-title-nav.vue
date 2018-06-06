@@ -8,7 +8,7 @@
           <h4 @click="toCulureFn(value)">{{value.twoTitleName}}</h4>
           <span v-if="key != secondTitle.length - 1"></span>
         </div>
-        <div class="hand-point fr more" @click="toCulureFn">更多>></div>
+        <div class="hand-point fr more" @click="toCulureFn('')">更多>></div>
       </div>
   </div>
 </template>
@@ -48,6 +48,7 @@ export default {
     // //跳转文旅资讯
     toCulureFn : function(obj){
       // console.log(this.specialPath)
+      console.log(this.secondTitle[0].oneTitleId)
      if(this.specialPath){
         this.$router.push({
           path : this.specialPath
@@ -65,6 +66,7 @@ export default {
         })
         return;
       }
+      console.log(obj)
       if(obj.twoTitleVOs){
         if(obj.oneTitleName == '首页'){
           return;

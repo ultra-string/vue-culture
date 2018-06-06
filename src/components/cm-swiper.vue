@@ -14,6 +14,7 @@
 <script>
 import Swiper from './../../static/swiper.min.js';
 require('./../../static/swiper.min.css');
+// import './../../static/swiper.min.css'
 
 export default {
   name: 'ListSwiper',

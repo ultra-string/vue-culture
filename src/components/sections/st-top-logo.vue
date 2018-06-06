@@ -32,18 +32,18 @@ export default {
     return {
         options: [{
           value: '选项1',
-          name: '作者',
+          name: '标题',
           type : '0'
         }, {
           value: '选项2',
-          name: '标题',
+          name: '作者',
           type : '1'
         }, {
           value: '选项3',
           name: '关键词',
           type : '2'
         }],
-        selectValue: '作者',
+        selectValue: '标题',
         curType : '0'
     }
   },
@@ -91,6 +91,10 @@ export default {
     width: 100%;
     margin: 43px 0;
     line-height: 38px;
+    #searchInp{
+        height : 38px;
+        line-height : 38px;
+    }
     .search-inp{
         width : 70px;
         height : 40px;
@@ -101,7 +105,8 @@ export default {
         width: 361px;
         height: 38px;
         text-indent: -999em;
-        background: url(~@/common/images/index/culture-logo.png);
+        // background: url(~@/common/images/index/culture-logo.png);
+        background: url('./../../common/images/index/culture-logo.png');
         background-size:100% 100%;
     }
     div {

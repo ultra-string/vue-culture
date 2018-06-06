@@ -12,13 +12,32 @@
 <!-- 替换标题  -->
 <div class="test">
     <el-menu ref="elmentItem" :default-active="activeIndex" :collapse-transition="false" class="el-menu-demo" mode="horizontal" @select="handleSelect" :unique-opened="true">
+        <el-menu-item index="1" @click="toPathFn">11111111</el-menu-item>
         <el-submenu v-for="(item,key) in titleList" :key="key" :index="key+''">
-            <template slot="title">{{item.oneTitleName}}</template>
-            <el-menu-item index="key+'-'+0">{{item.oneTitleName}}</el-menu-item>
+            <!-- <template slot="title">{{item.oneTitleName}}</template> -->
+            <el-menu-item index="key" slot="title" @click="toPathFn">{{item.oneTitleName}}</el-menu-item>
+            <!-- <el-menu-item index="key+'-'+0">{{item.oneTitleName}}</el-menu-item> -->
             <el-menu-item v-for="(val , k) in item.twoTitleVOs" :key="k" index="key+'-'+(k+1)">{{val.twoTitleName}}</el-menu-item>
             </el-submenu>
         </el-submenu>
     </el-menu>
+<!-- <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+  <el-menu-item index="1">处理中心</el-menu-item>
+  <el-submenu index="2">
+    <template slot="title">我的工作台</template>
+    <el-menu-item index="2-1">选项1</el-menu-item>
+    <el-menu-item index="2-2">选项2</el-menu-item>
+    <el-menu-item index="2-3">选项3</el-menu-item>
+    <el-submenu index="2-4">
+      <template slot="title">选项4</template>
+      <el-menu-item index="2-4-1">选项1</el-menu-item>
+      <el-menu-item index="2-4-2">选项2</el-menu-item>
+      <el-menu-item index="2-4-3">选项3</el-menu-item>
+    </el-submenu>
+  </el-submenu>
+  <el-menu-item index="3" disabled>消息中心</el-menu-item>
+  <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+</el-menu> -->
 </div>
     </div>
 </template>
@@ -37,7 +56,9 @@ export default{
         }
     },
     methods : {
-        toPathFn : function(){},
+        toPathFn : function(){
+            alert(111)
+        },
         handleSelect : function(key, keyPath) {
             console.log(key, keyPath);
         },
@@ -174,7 +195,7 @@ export default{
     }, 
 }
 </script>
-<style lang="scss" >
+<style lang="scss" scoped>
     .test{
         width : 1000px;
         min-width : 1000px;

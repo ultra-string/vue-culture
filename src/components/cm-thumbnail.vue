@@ -1,5 +1,5 @@
 <template>
-  <div class="cm-thumbnail hand-point" :style="{width: width+'px',height: height+'px' }">
+  <div @click="toDetail" class="cm-thumbnail hand-point" :style="{width: width+'px',height: height+'px' }">
       <img :style="{width: width+'px',height: height+'px' }" :src="src" alt="图片加载失败">
       <div v-if="isTitle" :style="{width: width+'px', 'line-height': height*0.3 + 'px'}">&nbsp;&nbsp;{{title}}&nbsp;&nbsp;</div>
       <img v-if="isVideo" class="video-btn" :src="src" alt="图片加载失败" @click.stop="watchVideo">
@@ -42,6 +42,12 @@ export default {
       isVideo: {
         type: Boolean,
         default: false,
+      },
+      msg : {
+        type : Object,
+        default : function(){
+          return {}
+        }
       }
   },
   data () {
@@ -52,6 +58,21 @@ export default {
   methods: {
     watchVideo: function() {
       this.$router.push(path)
+    },
+    //跳转
+    toDetail : function(){
+      let obj = this.msg;
+      this.$router.push({
+          query : {
+              oneTitleId : obj.oneTitleId,
+              twoTitleId : obj.twoTitleId,
+              id : obj.id
+          },
+          params : {
+              id : obj.id
+          },
+          name : 'Details',
+      });
     }
   }
 }
@@ -60,7 +81,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .cm-thumbnail{
-  border: 1px solid #000;
   position: relative;
   .video-btn{
     width: 30%;

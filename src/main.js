@@ -5,6 +5,7 @@ import ElementUI from 'element-ui'
 import App from './App'
 import 'element-ui/lib/theme-chalk/index.css';
 import '@/common/scss/element-variables.scss'
+// import '@/common/scss/reset.scss'
 import router from './router'
 // axios封装引入
 import { fetch, post, auth } from '@/axios/api'

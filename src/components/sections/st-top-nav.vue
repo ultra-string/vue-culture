@@ -72,10 +72,7 @@ export default {
       });
     },
     changeCurType: function(key) {
-      // console.log('https://' + this.options[key].url)
-      // window.open(this.options[key].url)
-      window.open("https://" + this.options[key].url);
-      // window.location.href = 'https://' + this.options[key].url
+      window.open(this.options[key].url);
     },
     setHomePage: function() {
       var obj = setHome;
@@ -110,7 +107,7 @@ export default {
   background: rgb(252, 252, 252);
   width: 100%;
   line-height: 40px;
-  border-top: 2px solid red;
+  // border-top: 2px solid red;
   border-bottom: 2px solid rgb(238, 238, 240);
   .nav {
     position: relative;

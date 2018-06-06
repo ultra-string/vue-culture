@@ -93,7 +93,7 @@ export default {
 				return;
             }
             console.log('dfdf')
-            this.$get('/smscode').then(res => {
+            this.$get('/smscode?phone='+mobile).then(res => {
                 console.log(res)
                 //  验证码倒计时
                 if(res.code != '111111'){

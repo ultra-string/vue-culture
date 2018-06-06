@@ -74,6 +74,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .cm-change-page {
+  width : 100%;
   line-height: 59px;
   margin-bottom: 42px;
   .hot {

@@ -33,6 +33,8 @@
   </div>
 </template>
 <script>
+// baseUrl引入： 
+import { baseImgPath } from '@/config/env'
   export default {
     name: 'Login',
     data() {
@@ -60,7 +62,8 @@
       },
       //获取图形验证码
       getPicMark: function () {
-        this.picPath = `http://118.190.152.1:8084/imageVali/?time=${new Date().getTime()}`;
+        this.picPath = baseImgPath + `?time=${new Date().getTime()}`;
+        // console.log(this.picPath)
       }
     },
     created() {

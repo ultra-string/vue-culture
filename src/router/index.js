@@ -69,7 +69,9 @@ const SearchView = () => import('@/containers/SerchText');
 /*
 *   测试组件路由
 */
-const Test = () => import('@/components/cm-test')
+const Page404 = () => import('@/components/cm-test')
+
+
 
 export default new Router({
   mode: routerMode || routerMode == '' ? routerMode : 'history',
@@ -78,11 +80,11 @@ export default new Router({
       path: '/',
       redirect: '/Index'
     },
-    {
-      path : '/test',
-      name : 'test',
-      component : Test,
-    },
+    // {
+    //   path : '/test',
+    //   name : 'test',
+    //   component : Test,
+    // },
     {
       path : '/login',
       component : LoginView,
@@ -196,5 +198,10 @@ export default new Router({
         }
       ]
     },
+    {
+      path: '/404',
+      name: '404',
+      component: Page404
+    }
   ]
 })
