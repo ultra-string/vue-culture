@@ -88,7 +88,6 @@ export default {
 <style lang="scss" >
 .video-js{
     margin : 0 auto;
-<<<<<<< HEAD
     position: relative;
 }
 .video-js .vjs-big-play-button{
@@ -101,15 +100,6 @@ export default {
 .vjs_video_1-dimensions{
     position: relative;
 }
-=======
-}
-.video-js .vjs-big-play-button{
-    top : 50%;
-    left : 50%;
-    /*transform: translate(-50%,-50%);*/
-    @include center;
-}
->>>>>>> 6b7251992554d9be17ba7555e969e42e7cc45d98
 .cm-video-player{
     width : 100%;
     .video-player-box{
