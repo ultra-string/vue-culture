@@ -8,17 +8,18 @@
             </div>
         </div>
         <!-- 图片广告2 -->
-        <div class="top-new-line clearfix" v-if="this.newsData[1].SpecPlanHeadTwo">
+        <!-- <div class="top-new-line clearfix" v-if="this.newsData[1].SpecPlanHeadTwo">
             <h1 v-if="this.newsData[1].SpecPlanHeadTwo[0]" class="hand-point" @click="toUrlFn(this.newsData[1].SpecPlanHeadTwo[0].url)">{{this.newsData[1].SpecPlanHeadTwo[0].name}}</h1>
             <div class="flex-box top-new-box">
                 <p class="hand-point" v-if="advTwo && advTwo.length" v-for="(item , index) in advTwo" :key="index" @click="toUrlFn(item.url)">{{item.name}}</p>
             </div>
-        </div>
+        </div> -->
         <!-- swiper -->
         <div class="swiper-line clearfix">
             <cm-swiper
             class="fl"
             :baseData="baseData"
+            :width="472"
             :height="330"
             ></cm-swiper>
             <div class="fr">
@@ -184,7 +185,7 @@
             </div>
         </div>
         <!-- 评论 -->
-        <st-comment></st-comment>
+        <!-- <st-comment></st-comment> -->
 
     </div>
 </template>
@@ -204,20 +205,7 @@ export default {
     data (){
         return {
             // swiper数据
-            baseData: [
-                {
-                    IMG_URL: require('@/common/images/index/modelbg.png'),
-                    link: 'https://www.baidu.com'
-                },
-                {
-                    IMG_URL: require('@/common/images/index/newUserAlert.png'),
-                    link: 'https://www.taobao.com'
-                },
-                {
-                    IMG_URL: require('@/common/images/index/oldAlert.png'),
-                    link: 'https://www.souhu.com'
-                }
-            ],
+            baseData: [],
             newsList: [
                 {
                     title: '我是政策法规的标题啊！',
@@ -263,11 +251,12 @@ export default {
             this.newsData = res.data;
             this.advOne = this.changeArr(1,0,4,this.newsData[0].SpecPlanHeadOne);
             console.log(this.advOne)
-            this.advTwo = this.changeArr(1,0,4,this.newsData[1].SpecPlanHeadTwo);
+            // this.advTwo = this.changeArr(1,0,4,this.newsData[1].SpecPlanHeadTwo);
         })
         this.$get('/getBanner').then(res => {
             console.log(res);
             this.baseData = this.changeArr(0,0,5,res.data);
+            console.log(this.baseData)
         })
     },
     methods : {

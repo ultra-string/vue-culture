@@ -66,4 +66,10 @@ export default {
         text-indent:2em;
     }
 }
+.cm-short-content:hover{
+      color : #b22f24;
+}
+.cm-short-content:hover h1{
+      color : #b22f24;
+}
 </style>

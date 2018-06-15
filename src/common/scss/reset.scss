@@ -92,3 +92,7 @@ html {
 .hand-point {
     cursor:pointer;
 }
+.el-dropdown-menu__item:not(.is-disabled):hover, .el-dropdown-menu__item:focus{
+    background :  rgb(178,47,36) !important;
+    color : #fff;
+}

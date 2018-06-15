@@ -75,8 +75,9 @@ export default {
 <style lang="scss" scoped>
 .cm-change-page {
   width : 100%;
-  line-height: 59px;
-  margin-bottom: 42px;
+  // line-height: 59px;
+  padding-top : 20px;
+  // margin-bottom: 42px;
   .hot {
     color: $font-hot;
   }
@@ -103,6 +104,6 @@ export default {
   }
 }
 .top-line {
-  border-top: 2px solid $color-border-input;
+  border-top: 2px solid #e9e9e9;
 }
 </style>

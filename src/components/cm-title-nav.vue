@@ -8,7 +8,7 @@
           <h4 @click="toCulureFn(value)">{{value.twoTitleName}}</h4>
           <span v-if="key != secondTitle.length - 1"></span>
         </div>
-        <div class="hand-point fr more" @click="toCulureFn('')">更多>></div>
+        <div class="hand-point fr more box-lvha" @click="toCulureFn('')">更多>></div>
       </div>
   </div>
 </template>
@@ -102,6 +102,9 @@ export default {
   width: 100%;
   @include display-flex;
   margin-bottom: 21px;
+  .box-lvha:hover{
+    background : #9a190e;
+  }
   i{
     display: block;
     width: 6px;

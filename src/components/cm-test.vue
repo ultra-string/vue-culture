@@ -11,16 +11,24 @@
         <img :src="this.picPath" alt="">
 <!-- 替换标题  -->
 <div class="test">
-    <el-menu ref="elmentItem" :default-active="activeIndex" :collapse-transition="false" class="el-menu-demo" mode="horizontal" @select="handleSelect" :unique-opened="true">
+    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+  <el-submenu index="2">
+    <template slot="title">新媒体</template>
+    <el-menu-item index="2-1">选项1</el-menu-item>
+    <el-menu-item index="2-2">选项2</el-menu-item>
+    <el-menu-item index="2-3">选项3</el-menu-item>
+  </el-submenu>
+</el-menu>
+    <!-- <el-menu ref="elmentItem" :default-active="activeIndex" :collapse-transition="false" class="el-menu-demo" mode="horizontal" @select="handleSelect" :unique-opened="true">
         <el-menu-item index="1" @click="toPathFn">11111111</el-menu-item>
         <el-submenu v-for="(item,key) in titleList" :key="key" :index="key+''">
             <!-- <template slot="title">{{item.oneTitleName}}</template> -->
-            <el-menu-item index="key" slot="title" @click="toPathFn">{{item.oneTitleName}}</el-menu-item>
+            <!-- <el-menu-item index="key" slot="title" @click="toPathFn">{{item.oneTitleName}}</el-menu-item>
             <!-- <el-menu-item index="key+'-'+0">{{item.oneTitleName}}</el-menu-item> -->
-            <el-menu-item v-for="(val , k) in item.twoTitleVOs" :key="k" index="key+'-'+(k+1)">{{val.twoTitleName}}</el-menu-item>
+            <!-- <el-menu-item v-for="(val , k) in item.twoTitleVOs" :key="k" index="key+'-'+(k+1)">{{val.twoTitleName}}</el-menu-item>
             </el-submenu>
-        </el-submenu>
-    </el-menu>
+        </el-submenu> -->
+    <!-- </el-menu> --> 
 <!-- <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
   <el-menu-item index="1">处理中心</el-menu-item>
   <el-submenu index="2">
@@ -201,37 +209,37 @@ export default{
         min-width : 1000px;
         margin : 0 auto;
     }
-    .el-menu--horizontal > .el-submenu .el-submenu__title{
-        padding : 0 10px;
-        margin : 0px;
-        font-size : 16px;
-        border : none !important;
-    }
-    .el-menu--horizontal > .el-submenu:hover .el-submenu__title{
-        color : $font-hot;
-        border-bottom : 1px solid $font-hot !important;
-    }
-    .el-menu--horizontal > .el-submenu{
-        border-bottom : none;
-    }
-    .el-menu--horizontal{
-        border-bottom : none;
-    }
-    .el-menu--horizontal > .el-submenu .el-submenu__icon-arrow{
-        width : 0px;
-        height : 0px;
-        overflow: hidden;
-        padding : 0;
-        margin : 0;
-    }
-    .el-submenu__title{
-        padding : 0px;
-        margin : 0px;
-    }
-    .el-submenu{
-        padding : 0px;
-        margin : 0px;
-    }
+    // .el-menu--horizontal > .el-submenu .el-submenu__title{
+    //     padding : 0 10px;
+    //     margin : 0px;
+    //     font-size : 16px;
+    //     border : none !important;
+    // }
+    // .el-menu--horizontal > .el-submenu:hover .el-submenu__title{
+    //     color : $font-hot;
+    //     border-bottom : 1px solid $font-hot !important;
+    // }
+    // .el-menu--horizontal > .el-submenu{
+    //     border-bottom : none;
+    // }
+    // .el-menu--horizontal{
+    //     border-bottom : none;
+    // }
+    // .el-menu--horizontal > .el-submenu .el-submenu__icon-arrow{
+    //     width : 0px;
+    //     height : 0px;
+    //     overflow: hidden;
+    //     padding : 0;
+    //     margin : 0;
+    // }
+    // .el-submenu__title{
+    //     padding : 0px;
+    //     margin : 0px;
+    // }
+    // .el-submenu{
+    //     padding : 0px;
+    //     margin : 0px;
+    // }
 input{
     width : 10rem;
     height : 1rem;

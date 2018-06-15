@@ -21,7 +21,7 @@
           <div v-if="cultureList && cultureList.length" class="cm-news-list hand-point clearfix" v-for="(val, key) in cultureList"
             :key="key" @click="toDetail(val)" :style="{'margin-left':(key==cultureList.length-1)?'32px':0}">
             <i class="fl"></i>
-            <h3 class="fl font-color">{{val.bodyTitle}}</h3>
+            <h3 class="fl font-color box-lvha">{{val.bodyTitle}}</h3>
           </div>
         </div>
       </div>
@@ -105,7 +105,7 @@
         <div v-if="arrtListRight && arrtListRight.length" class="cm-news-list hand-point clearfix" v-for="(val, key) in arrtListRight"
           :key="key" @click="toDetail(val)" style="width:490px;margin-right:25px;">
           <i class="fl"></i>
-          <h3 class="fl font-color">{{val.bodyTitle}}</h3>
+          <h3 class="fl font-color box-lvha">{{val.bodyTitle}}</h3>
         </div>
       </div>
     </div>
@@ -148,7 +148,7 @@
         <div v-if="chinaListTwo && chinaListTwo.length" class="cm-news-list hand-point clearfix" v-for="(val, key) in chinaListTwo"
           :key="key" @click="toDetail(val)" :style="{'margin-right':key>chinaListTwo.length-5?0:'26px'}">
           <i class="fl"></i>
-          <h3 class="fl font-color">{{val.bodyTitle}}</h3>
+          <h3 class="fl font-color box-lvha">{{val.bodyTitle}}</h3>
         </div>
       </div>
     </div>
@@ -167,7 +167,7 @@
             <div v-if="studyList && studyList.length" class="cm-news-list hand-point clearfix" v-for="(val, key) in studyList"
               :key="key" @click="toDetail(val)">
               <i class="fl"></i>
-              <h3 class="fl font-color">{{val.bodyTitle}}</h3>
+              <h3 class="fl font-color box-lvha">{{val.bodyTitle}}</h3>
             </div>
             <!-- <cm-news-list :newsList="studyList" :hasHotPoint="true" :delNum="2"></cm-news-list> -->
           </div>
@@ -197,7 +197,7 @@
         bannerAmry: [], //文旅轮播
         bannerAdv: [], //广告轮播
         //res.data
-        totalList: "",
+        totalList: Object,
         bodyList: {
           pageNo: 1,
           pageSize: 1,
@@ -239,11 +239,11 @@
     created() {
       this.$get("/index")
         .then(res => {
-          console.log(res);
           this.totalList = res.data;
           let bannerArr = this.totalList.titleLinkMap[4];
           //处理轮播数据
           this.bannerAmry = this.changeArr(0, 5, 10, bannerArr);
+          console.log(this.bannerAmry,this.bannerArr,this.totalList)
           this.bannerAdv = this.changeArr(0, 10, 15, bannerArr);
           //根据类别处理数组
           this.changeListByType();
@@ -275,7 +275,7 @@
               //存标题导航
               sessionStorage.setItem("indexTitleArr", JSON.stringify(item));
               break;
-            case "文旅咨询":
+            case "文旅资讯":
               _this.cultureTitleArr = item;
               //存标题导航
               sessionStorage.setItem("cultureTitleArr", JSON.stringify(item));
@@ -362,7 +362,6 @@
           arr.push(newArr[i]);
         }
         return arr;
-        // console.log(arr);
       },
       toUrlFn: function (url) {
         window.open(url);
@@ -388,204 +387,216 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-  .indexPage {
-    position: relative;
-    margin-top: 60px;
-    .swiper-line-box{
-      height : 100%;
-      width : 100%;
+.indexPage {
+  position: relative;
+  margin-top: 60px;
+  .swiper-line-box{
+    height : 100%;
+    width : 100%;
+  }
+  .top-new-line {
+    width: 100%;
+    height: 70px;
+    margin: 20px auto;
+    background: #f2f6f8;
+    padding-top: 30px;
+    text-align: center;
+    color: #0b3c6c;
+    h1 {
+      line-height: 30px;
+      font-size: 30px;
+      width: 600px;
+      margin: 0 auto;
+      @include nowrap-ellipsis;
     }
-    .top-new-line {
-      width: 100%;
-      height: 70px;
-      margin: 20px auto;
-      background: #f2f6f8;
-      padding-top: 30px;
-      text-align: center;
-      color: #0b3c6c;
-      h1 {
-        line-height: 30px;
-        font-size: 30px;
-        width: 600px;
-        margin: 0 auto;
-        @include nowrap-ellipsis;
-      }
-      p {
-        line-height: 14px;
-        font-size: 14px;
-        margin-top: 10px;
-        width: 380px;
-        @include nowrap-ellipsis;
-      }
-      .top-new-line-left {
-        margin-left: 100px;
-      }
-      .top-new-line-right {
-        margin-right: 100px;
-      }
+    p {
+      line-height: 14px;
+      font-size: 14px;
+      margin-top: 10px;
+      width: 380px;
+      @include nowrap-ellipsis;
     }
-    .flex-box {
-      @include display-flex;
-      @include justify-content-space;
-      @include flex-wrap-wrap;
+    .top-new-line-left {
+      margin-left: 100px;
     }
-    .flex-direction{
-      height :100px;
+    .top-new-line-right {
+      margin-right: 100px;
+    }
+  }
+  .flex-box {
+    @include display-flex;
+    @include justify-content-space;
+    @include flex-wrap-wrap;
+  }
+  .flex-direction{
+    height :100px;
+    width : 230px;
+    @include display-flex;
+    // @include justify-content-space;
+    @include flex-wrap-wrap;
+    @include flex-direction;
+  }
+  .swiper-line {
+    margin: 42px 0 49px 0;
+    .swiper {
+      width: 488px;
+      margin-right: 20px;
+    }
+    .cm-news-list{
       width : 230px;
-      @include display-flex;
-      // @include justify-content-space;
-      @include flex-wrap-wrap;
-      @include flex-direction;
+      line-height : 34px;
+      height : 34px;
+      .box-lvha:hover{
+        color : #b22f24;
+      }
     }
-    .swiper-line {
-      margin: 42px 0 49px 0;
-      .swiper {
-        width: 488px;
-        margin-right: 20px;
-      }
-      .cm-news-list{
-        width : 230px;
-        line-height : 34px;
-        height : 34px;
-      }
+    >div {
+      width: 492px;
       >div {
-        width: 492px;
-        >div {
-          >div {
-            width: 230px;
-          }
-          .left {
-            margin-right: 30px;
-          }
-        }
-      }
-    }
-    .specialPlan {
-      >div {
-        >div {
-          width: 488px;
-          ul {
-            margin-left: 30px;
-            width: 225px;
-          }
-        }
-      }
-    }
-    .craftsman {
-      margin: 42px 0 49px 0;
-      >div {
-        .left {
-          width: 488px;
-          .list {
-            width: 232px;
-          }
-        }
-        >div {
-          width: 490px;
-        }
-      }
-    }
-    .art-fan {
-      .one-row {
-        width: 50%;
-        .video-list {
-          .left {
-            margin-right: 25px;
-          }
-        }
-      }
-    }
-    .img-adv {
-      margin: 53px 0 60px 0;
-      >div {
-        position: relative;
-        img {
-          width: 490px;
-          height: 100px;
-          border: 1px solid #000;
-          display : block;
-        }
-        i {
-          position: absolute;
-          top: 11px;
-          right: 14px;
-          width: 44px;
-          line-height: 15px;
-          font-size: 12px;
-          text-align: center;
-          background: #fff;
-          color: #000;
-          border-radius: 1px;
-        }
-      }
-    }
-    .food-world {
-      .right {
-        width: 516px;
-        .right-item {
-          margin: 0 0 15px 16px;
-        }
-      }
-    }
-    .heritage {
-      margin: 60px 0 55px 0;
-      .list {
         >div {
           width: 230px;
-          margin-right: 26px;
         }
-        .last {
-          margin-right: 0;
+        .left {
+          margin-right: 30px;
         }
-      }
-      .cm-news-list{
-        width : 230px;
-        line-height : 34px;
-        height : 34px;
-      }
-    }
-    .research {
-      .list {
-        width: 490px;
-        div {
-          .content {
-            width: 237px;
-          }
-        }
-      }
-      .swiper {
-        width: 490px;
-        height: 264px;
-      }
-      .cm-news-list{
-        width : 490px;
-        height : 36px;
-        line-height :36px;
-        font-size :16px;
-        
-      }
-    }
-    .font-color{
-      color : #4c6f95;
-    }
-    .cm-news-list {
-      width: 100%;
-      line-height: 36px;
-      font-size: 14px;
-
-      i {
-        width: 6px;
-        height: 6px;
-        border-radius: 100%;
-        background: $font-hot;
-        margin: 15px 8px 0 0; 
-      }
-      h3 {
-        vertical-align: top;
-        max-width: 80%;
-        @include nowrap-ellipsis;
       }
     }
   }
+  .specialPlan {
+    >div {
+      >div {
+        width: 488px;
+        ul {
+          margin-left: 30px;
+          width: 225px;
+        }
+      }
+    }
+  }
+  .craftsman {
+    margin: 42px 0 49px 0;
+    >div {
+      .left {
+        width: 488px;
+        .list {
+          width: 232px;
+        }
+      }
+      >div {
+        width: 490px;
+      }
+    }
+  }
+  .art-fan {
+    .one-row {
+      width: 50%;
+      .video-list {
+        .left {
+          margin-right: 25px;
+        }
+      }
+    }
+  }
+  .img-adv {
+    margin: 53px 0 60px 0;
+    >div {
+      position: relative;
+      img {
+        width: 490px;
+        height: 100px;
+        border: 1px solid #000;
+        display : block;
+      }
+      i {
+        position: absolute;
+        top: 11px;
+        right: 14px;
+        width: 44px;
+        line-height: 15px;
+        font-size: 12px;
+        text-align: center;
+        background: #fff;
+        color: #000;
+        border-radius: 1px;
+      }
+    }
+  }
+  .food-world {
+    .right {
+      width: 516px;
+      .right-item {
+        margin: 0 0 15px 16px;
+      }
+    }
+  }
+  .heritage {
+    margin: 60px 0 55px 0;
+    .list {
+      >div {
+        width: 230px;
+        margin-right: 26px;
+      }
+      .last {
+        margin-right: 0;
+      }
+    }
+    .cm-news-list{
+      width : 230px;
+      line-height : 34px;
+      height : 34px;
+      .box-lvha:hover{
+        color : #b22f24;
+      }
+    }
+  }
+  .research {
+    .list {
+      width: 490px;
+      div {
+        .content {
+          width: 237px;
+        }
+      }
+    }
+    .swiper {
+      width: 490px;
+      height: 264px;
+    }
+    .cm-news-list{
+      width : 490px;
+      height : 36px;
+      line-height :36px;
+      font-size :14px;
+      
+      .box-lvha:hover{
+        color : #b22f24;
+      }
+    }
+  }
+  .font-color{
+    color : #4c6f95;
+  }
+  .cm-news-list {
+    width: 100%;
+    line-height: 36px;
+    font-size: 14px;
+    .box-lvha:hover{
+      color : #b22f24;
+    }
+
+    i {
+      width: 6px;
+      height: 6px;
+      border-radius: 100%;
+      background: $font-hot;
+      margin: 15px 8px 0 0; 
+    }
+    h3 {
+      vertical-align: top;
+      max-width: 80%;
+      @include nowrap-ellipsis;
+    }
+  }
+}
 
 </style>

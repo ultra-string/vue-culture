@@ -5,7 +5,7 @@
       </div>
       <div v-else class="cm-news-list point clearfix" :class="hasDashBorder ? 'hasDashBorder' : ''" v-for="(val, key) in newsList" :key="key" @click="toDetail(val)">
           <i v-if="hasHotPoint" class="fl"></i>
-          <h3 class="fl">{{val.bodyTitle}}</h3>
+          <h3 class="fl box-lvha">{{val.bodyTitle}}</h3>
           <div v-if="hasDate" class="fr">{{val.updateTime | getTimeYMDWord}}</div>
       </div>
       
@@ -111,6 +111,9 @@ export default {
     vertical-align: top;
     max-width: 80%;
     @include nowrap-ellipsis;
+  }
+  .box-lvha:hover{
+    color : #b22f24;
   }
 }
 .no-data{

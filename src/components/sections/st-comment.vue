@@ -52,12 +52,11 @@
             :lastBorder="k==dataList.length-1?true:false"
         ></cm-comment>
       </div>
-      <!-- <cm-change-page
-        style="padding-right:20px;"
+      <cm-change-page
         :pageNum="resData.pageNum"
         :data="resData"
         @changePageFn="changePageFn"
-      ></cm-change-page> -->
+      ></cm-change-page>
     </div>
   </div>
 </template>
@@ -253,6 +252,7 @@
       width: 100%;
       border: 1px solid #e5e5e5;
       background: #fcfcfb;
+      padding-bottom : 10px;
     }
     .show-content-title {
       width: 100%;
@@ -275,7 +275,7 @@
       }
     }
     .cm-box-comment {
-      padding: 0 22px;
+      padding: 0 22px 10px;
     }
   }
 

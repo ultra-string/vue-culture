@@ -14,8 +14,10 @@
         ></cm-select>
       </div>
       <div class="fr clearfix">
-        <div class="fl hand-point" @click="toLogin">登录</div>
-        <div class="fl hand-point" @click="toRegister">注册</div>
+        <div class="fl hand-point" @click="toLogin" v-if="!userName">登录</div>
+        <div class="fl hand-point" v-else>{{userName}}</div>
+        <div class="fl hand-point" v-if="!userName" @click="toRegister">注册</div>
+        <div class="fl hand-point" v-else @click="outFn">退出</div>
         <!-- <div class="fl">网站导航</div> -->
       </div>
     </div>
@@ -33,22 +35,52 @@ export default {
       newMediaListShow: false,
       options: [],
       selectValue: "新媒体",
-      resData: ""
+      resData: '',
+      userName : '',
     };
   },
   components: {
     CmSelect
   },
   computed: {
-    ...mapGetters(["sessionId"])
+    ...mapGetters(["sessionId","token"])
   },
   created() {
     this.$get("/index").then(res => {
       this.resData = res.data;
       this.options = this.resData.titleLinkMap[0];
     });
+    this.getUser();
+  },
+  watch: {  
+    '$route' (to, from) {  
+        // console.log(this.$route.query) 
+        if(to.fullPath != from.fullPath){
+            // console.log(to.fullPath,from.fullPath)
+            if(!this.userName && this.token){
+              this.getUser();
+            }
+        } 
+    }  
   },
   methods: {
+    getUser : function(){
+      // console.log('========')
+      // console.log(this.token)
+      this.$get('/user').then(res => {
+        // console.log('dfdfdf')
+        // console.log(res)
+        if(res.code == '000000' && res.data){
+          //成功
+          this.userName = res.data.username;
+        }else if(res.code == '111111'){
+          alert(res.msg);
+          this.userName = '';
+          return;
+        }
+      })
+      // console.log('========')
+    },
     newMediaList: function() {
       this.newMediaListShow = !this.newMediaListShow;
     },
@@ -73,6 +105,16 @@ export default {
     },
     changeCurType: function(key) {
       window.open(this.options[key].url);
+    },
+    outFn : function(){
+      this.$authored('/user/logout').then(res => {
+        if(res.code == '000000'){
+          sessionStorage.removeItem('token');
+          this.$store.dispatch('STORE_TOKEN', '');
+          this.userName = '';
+          location.reload();
+        }
+      })
     },
     setHomePage: function() {
       var obj = setHome;

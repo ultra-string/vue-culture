@@ -2,7 +2,7 @@
     <div class="login-view">
         <div class="top">
             <div class="title">
-                <p>中华人民共和国和旅游部主管 / 中国文化传媒集团主办</p>
+                <p>中华人民共和国文化和旅游部主管 / 中国文化传媒集团主办</p>
             </div>
             <div class="pic">
                 <img src="@/common/images/foot/login-logo.jpg" alt="" @click="toIndexfn" class="hand-point">
@@ -15,14 +15,25 @@
             </div>
             <router-view></router-view>
         </div>
+        <st-foot-qrcode
+        :mark="mark"
+        ></st-foot-qrcode>
+        <st-foot-nav></st-foot-nav>
     </div>
 </template>
 <script>
+import StFootQrcode from '@/components/sections/st-foot-qrcode';
+import StFootNav from '@/components/sections/st-foot-nav';
 export default {
     name : 'LoginView',
     data (){
         return {
+            mark : [],
         }
+    },
+    components: {
+      StFootNav,
+      StFootQrcode,
     },
     methods : {
         chooseTypeFn : function(index){
@@ -33,6 +44,12 @@ export default {
                 path : '/Index'
             })
         }
+    },
+    created(){
+      this.$get('/index').then(res => {
+        //二维码
+        this.mark = res.data.titleLinkMap[3];
+      })
     }
 }
 </script>
@@ -56,6 +73,7 @@ export default {
                 color : $font-white;
                 margin : 0 auto;
                 text-align : left;
+                font-family : '楷体'
             }
         }
 
@@ -85,6 +103,12 @@ export default {
                 border-left : 1px solid $color-login-font;
                 border-right : 1px solid $color-login-font;
                 float : left;
+            }
+            .login-button-login:hover{
+                color : #b22f24;
+            }
+            .login-button-register:hover{
+                color : #b22f24;
             }
             .login-button-login{
                 margin-right : 72px;

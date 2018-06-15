@@ -1,7 +1,7 @@
 import * as types from '@/store/types';
 
 const state = {
-    token: ''
+    token: sessionStorage.getItem('token') ? sessionStorage.getItem('token') : ''
 }
 
 const getters = {
@@ -10,6 +10,7 @@ const getters = {
 
 const actions = {
     STORE_TOKEN({commit}, res) {
+        sessionStorage.setItem('token', res)
         commit(types.STORE_TOKEN, res);
     }
 }

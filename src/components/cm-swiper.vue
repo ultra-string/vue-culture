@@ -46,7 +46,8 @@ export default {
       // loop: true,
       autoplay: 3000,
       observer: true,
-      observeParents: true
+      observeParents: true,
+      paginationClickable :true,
     });
   }
 }

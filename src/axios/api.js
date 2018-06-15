@@ -11,7 +11,13 @@ import { baseUrl } from '@/config/env'
 // 工具函数引入
 import Lib from '@/common/lib/lib'
 
-console.log(baseUrl)
+var Env;
+
+if (process.env.NODE_ENV == 'development') {
+	Env = '/apis'
+}else{
+	Env = baseUrl
+}
 
 // axios.defaults.headers.post['Content-Type'] = 'Content-Type: application/json'
 // baseURL配置
@@ -19,12 +25,21 @@ console.log(baseUrl)
 
 
 const server = axios.create({
-  baseURL: `${baseUrl}/backend`,
+  baseURL: baseUrl,
   timeout: 10000,
   // headers: {'Content-Type': 'Content-Type: application/json'}
-  headers: {
-    Authorization:`Bearer ${store.state.user.token}`
-  }
+  // headers: {
+  //   Authorization:`Bearer ${store.state.user.token}`
+  // }
+});
+
+const authServer = axios.create({
+  baseURL: baseUrl,
+  timeout: 10000
+});
+const authdServer = axios.create({
+  baseURL: 'http://118.190.152.1:8084',
+  timeout: 10000
 });
 
 
@@ -40,6 +55,10 @@ axios.interceptors.request.use(function(config) {
 axios.interceptors.response.use(function(response) {
     // 在相应中拦截 sessionId 
     // store.dispatch('SESSION_ID', response.data.head.SESSION_ID)
+    // console.log(response)
+    // if(response.config.headers.Authorization && response.config.headers.Authorization.length> 7) {
+    //   store.dispatch('STORE_TOKEN', response.data.data);
+    // }
     return response
 }, function(error) {
     return Promise.reject(error)
@@ -57,8 +76,10 @@ export function fetch(url, params = {}) {
     // get 请求
     
     // url = `${url}${Lib.json2url(params)}`
-    axios.get(`${baseUrl}/backend${url}`, {
-      params
+    server.get(`/backend${url}`, {
+      headers: {
+        Authorization:`Bearer ${store.state.user.token}`
+      }
     })
     .then(response => {
       resolve(response.data);
@@ -84,9 +105,9 @@ export function post(url, params = {}) {
       method: 'post',
       url: `${baseUrl}/backend${url}`,
       data: params,
-      // headers: {
-      //   Authorization:`Bearer ${store.state.user.token}`
-      // }
+      headers: {
+        Authorization:`Bearer ${store.state.user.token}`
+      }
     })
     // axios.post(url, request)
       .then(response => {
@@ -112,11 +133,8 @@ export function auth(url, params = {}) {
     // post请求
     axios({
       method: 'post',
-      url: `/apis${url}`,
-      data: params,
-      headers: {
-        Authorization:`Bearer ${store.state.user.token}`
-      }
+      url: `${Env}${url}`,
+      data: params
     })
     // axios.post(url, request)
       .then(response => {
@@ -128,23 +146,38 @@ export function auth(url, params = {}) {
       })
   })
 }
-  
-  
-// 处理params的函数
-// function handleParams(params) {
-//     let json = {
-//       "head": {
-//         "SESSION_ID": "",
-//         "TOKEN": "",
-//         "DEVICE_ID": "",
-//         "SYSTEM_TYPE": "h5",
-//         "VERSION": ""
-//       },
-//       "param": {}
-//     }
-//     json.head.TYPE = params.head.TYPE;
-//     for (let name in params.param) {
-//       json.param[name] = params.param[name];
-//     }
-//     return 'param_key=' + JSON.stringify(json);
-// }
+
+export function author(url, params = {}) {
+  return new Promise((resolve, reject) => {
+    // get 请求
+    
+    authServer.get(`/backend${url}`, {
+      headers: {
+        Authorization:`Bearer ${store.state.user.token}`
+      }
+    })
+    .then(response => {
+      resolve(response.data);
+    })
+    .catch((error) => {
+      reject(error);
+    })
+  })
+}
+
+export function authored(url, params = {}) {
+  return new Promise((resolve, reject) => {
+    // get 请求
+    authdServer.get(`${url}`, {
+      headers: {
+        Authorization:`Bearer ${store.state.user.token}`
+      }
+    })
+    .then(response => {
+      resolve(response.data);
+    })
+    .catch((error) => {
+      reject(error);
+    })
+  })
+}

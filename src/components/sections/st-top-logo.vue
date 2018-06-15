@@ -1,7 +1,7 @@
 <template>
   <div class="st-top-logo clearfix">
     <h1 class="fl hand-point" @click="toIndexfn">中国手艺网</h1>
-    <div class="fr">
+    <div class="fl" style="margin-left:50px;">
         <div class="clearfix">
             <div class="clearfix serchInput fl">
                 <!-- 下拉框组件 -->
@@ -17,7 +17,7 @@
                 <input type="text" value="" class="fl" placeholder="我是输入框" id="searchInp">
             </div>
             <!-- <img src="@/common/images/index/search-hot.png" alt="搜索按钮" @click="toSerachFn" class="hand-point"> -->
-            <el-button type="primary" icon="el-icon-search" @click="toSerachFn" class="search-inp">搜索</el-button>
+            <el-button type="primary" @click="toSerachFn" class="search-inp"></el-button>
         </div>
     </div>
   </div>
@@ -99,6 +99,11 @@ export default {
         width : 70px;
         height : 40px;
         border-radius : 0;
+        background : url('./../../common/images/index/search-hot.png') no-repeat;
+        background-size : contain;
+        background-color : $font-hot;
+        margin-top : 1px;
+        // background
         // background : '@/common/images/index/search-hot.png';
     }
     >h1{

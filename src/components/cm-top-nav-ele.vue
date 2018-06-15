@@ -1,11 +1,11 @@
 <template>
   <div class="cm-top-nav-ele">
-      <el-menu ref="elmentItem" :default-active="activeIndex" menu-trigger="hover" :collapse-transition="false" class="el-menu-demo hand-point" mode="horizontal" @select="handleSelect" :unique-opened="true">
-        <el-submenu v-for="(item,key) in options" :key="key" :index="key+''">
+      <el-menu ref="elmentItem" :default-active="activeIndex" menu-trigger="hover" :collapse-transition="false" class="el-menu-demo clearfix hand-point" mode="horizontal" @select="handleSelect" :unique-opened="true">
+        <el-submenu v-for="(item,key) in options" :key="key" :index="key+''" class="fl" :style="{'padding-left':key==0?0:key==1?'14px':'35px'}">
             <!-- <template slot="title" @row-click="toPath">{{item.name}}</template> -->
             <el-menu-item index="key+''" slot="title" @click="toPath(item)" class="title-xxx-box">{{item.name}}</el-menu-item>
             <el-menu-item v-for="(val , k) in item.childVos" :key="k" index="key+'-'+k" @click="toCulureFn(val,item.id)">{{val.name}}</el-menu-item>
-            <!-- </el-submenu> -->
+            </el-submenu>
         </el-submenu>
       </el-menu>
       <cm-swiper
@@ -13,13 +13,14 @@
         :baseData="bannerHead"
         :height="220"
         :width="1000"
-        :showPagination="false"
+        :showPagination="true"
       ></cm-swiper>
   </div>
 </template>
 
 <script>
 import CmSwiper from "@/components/cm-swiper";
+import { mapGetters } from "vuex";
 
 export default {
   name: "CmTopNavEle",
@@ -52,7 +53,7 @@ export default {
     },
     //跳转文旅资讯
     toCulureFn : function(obj,id){
-      console.log(obj.showType)
+      // console.log(obj.showType)
       this.$router.push({
         path : '/CultureNewsIndex',
         query : {
@@ -72,7 +73,9 @@ export default {
         if(!item.url)return;
         window.open(item.url);
       }else if(item.isLink == 2){
-        //首页
+        this.$router.push({
+          path : '/'
+        });
         return;
       }
     },
@@ -108,8 +111,8 @@ export default {
 }
 .el-menu-demo{
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  // display: flex;
+  // justify-content: space-between;
   // @include display-flex;
   // @include justify-content-space
 }
@@ -130,6 +133,8 @@ export default {
   font-size: 16px;
   border: none !important;
   color: #4e4e4e;
+  line-height : 30px !important;
+  height : 30px !important;
 }
 .el-menu--horizontal > .el-submenu:hover .el-submenu__title {
   color: $font-hot;
@@ -157,6 +162,7 @@ export default {
 }
 .el-submenu {
   padding: 0px;
+  padding-right : 2px;
   margin: 0px;
 }
 </style>

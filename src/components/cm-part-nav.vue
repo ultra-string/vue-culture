@@ -94,6 +94,10 @@ export default {
   .marginBot {
     margin-bottom: 1px;
   }
+  .marginBot:hover{
+    background : #b22f24;
+    color : #fff;
+  }
   .active {
     font-size: 22px;
     background: $font-hot;

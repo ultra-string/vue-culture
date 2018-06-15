@@ -75,6 +75,7 @@ export default {
       beReady : false,
       oneTitle : '',
       twoTitle : '',
+      emitTwoId : '',
     }
   },
   components: {
@@ -162,6 +163,7 @@ export default {
       }).then(res => {
         console.log(res);
           this.resData = res.data.pageInfo;
+          this.emitTwoId = twoId;
           this.dataList = res.data.pageInfo.list;
           this.showType = showType;
           this.oneTitle = '';
@@ -187,14 +189,14 @@ export default {
       //pageSize:一页几条数据
       let pageSize = 12;
       //twoId二级标题id
-      let twoId = '';
+      // let twoId = '';
       //oneId一级标题id
       let oneId = this.oneTitleId;
       this.$post('/body/page', {
           pageNo:  +pageNo,
           pageSize: +pageSize,
           oneId: +oneId,
-          twoId: twoId?+twoId:''
+          twoId: this.emitTwoId?+this.emitTwoId:''
       }).then(res => {
         console.log(res);
           this.resData = res.data.pageInfo;

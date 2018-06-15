@@ -174,7 +174,6 @@ export default {
         }
         .conent-adv{
             width : 208px;
-            height :100px;
             // background : red;
             h1{
                 font-size :22px;

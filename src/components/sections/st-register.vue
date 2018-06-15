@@ -50,7 +50,7 @@
         <!-- <div class="select">
             <p>同意</p>
         </div> -->
-        <div class="submission">提交</div>
+        <div class="submission" @click="registerFn">提交</div>
     </div>
 </template>
 <script>
@@ -108,7 +108,9 @@ export default {
                             clearInterval(_this.timer);
                         }
                         _this.countTime--;
-                        noteCode.value = '收到验证码(' + _this.countTime + ')';
+                        if(noteCode){
+                            noteCode.value = '收到验证码(' + _this.countTime + ')';
+                        }
                     }, 1000);
                 }else{
                     alert(res.msg)
@@ -145,15 +147,18 @@ export default {
                 "smscode": this.smscode
             }).then(res => {
                 console.log(res);
-                this.$router.push({
-                    path: decodeURIComponent(this.$route.query.to),
-                })
+                if(res.data.code == "000000"){
+                    alert('注册成功')
+                    this.$router.push({
+                        path: decodeURIComponent(this.$route.query.to),
+                    })
+                }else if(res.data.code == '111111'){
+                    alert(res.data.msg);
+                    return;
+                }
             })
         },
     },
-    created(){
-        
-    }
 }
 </script>
 <style lang="scss" scoped>
@@ -215,12 +220,15 @@ export default {
 
             h5{
                 font-size : 18px;
+                text-align : center;
                 height : 18px;
                 line-height : 18px;
+                margin-left : 110px;
             }
             
             .register-discription-top{
                 margin-bottom : 34px;
+                text-align : center;
             }
         }
     }
@@ -232,7 +240,12 @@ export default {
         border-radius : 5px;
         line-height : 32px;
         text-align : center;
-        margin : 0 auto;
+        margin-left : 480px;
+    }
+    .submission:hover{
+        background: $font-hot;
+        color: #fff;
+        border : 1px solid rgba(0,0,0,0);
     }
 }
 </style>

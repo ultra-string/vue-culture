@@ -50,25 +50,30 @@ export default {
   created() {
     //获取标题
     this.$get('/index').then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       //处理轮播数据
       let bannerArr = res.data.titleLinkMap[4];
       this.bannerHead = this.changeArr(0,0,5,bannerArr);
       //二维码
       this.mark = res.data.titleLinkMap[3];
 
-      let _this = this;
-      res.data.titleVOs.forEach(function(item, index){
-        if(item.isLink==1){
-           _this.advArr.push(item);
-        }
-      })
+      // let _this = this;
+      // res.data.titleVOs.forEach(function(item, index){
+      //   if(item.isLink==1){
+      //      _this.advArr.push(item);
+      //   }
+      // })
       // res.data.daohangList.forEach(function(item,index){
       //   console.log(this)
       // },this);
       this.options = res.data.daohangList;
-      console.log(this.options)
-      // console.log('==',this.advArr)
+      this.options.forEach(function(item,index){
+        if(item.isLink == 1){
+          this.advArr.push(item);
+        }
+      },this)
+      // console.log(this.options)
+      console.log('==',this.advArr)
     })
     // this.options = sessionStorage.getItem("TITLE_NAV").split('-');
     // this.options.map(function(item,index){

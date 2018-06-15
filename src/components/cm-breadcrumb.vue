@@ -60,7 +60,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .cm-breadcrumb {
-  border-bottom: 2px solid $color-breadcrumb;
+  // border-bottom: 2px solid $color-breadcrumb;
 
   .hot {
     color: $font-hot;
@@ -69,9 +69,9 @@ export default {
   .left-breadcrumb {
     margin-bottom: -2px;
 
-    padding: 0 20px 0 6px;
+    padding: 0 20px 0 0;
 
-    border-bottom: 2px solid $font-hot;
+    // border-bottom: 2px solid $font-hot;
   }
 
   .right-breadcrumb {

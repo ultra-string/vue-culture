@@ -70,6 +70,7 @@ const SearchView = () => import('@/containers/SerchText');
 *   测试组件路由
 */
 const Page404 = () => import('@/components/cm-test')
+const Test = () => import('@/components/cm-test')
 
 
 
@@ -80,11 +81,11 @@ export default new Router({
       path: '/',
       redirect: '/Index'
     },
-    // {
-    //   path : '/test',
-    //   name : 'test',
-    //   component : Test,
-    // },
+    {
+      path : '/test',
+      name : 'test',
+      component : Test,
+    },
     {
       path : '/login',
       component : LoginView,

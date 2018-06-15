@@ -75,6 +75,7 @@ export default{
             h5{
                 font-size : 20px;
                 padding : 20px 0;
+                font-weight : bold;
             }
 
             h6{
@@ -85,10 +86,10 @@ export default{
             width : calc(100% - 110px);
             height : 99px;
             font-size : 14px;
-            border-bottom : 1px solid #ccc;
+            // border-bottom : 1px solid #ccc;
             p{
                 @include overflow-hidden-wrap(3);
-                min-height : 60px;
+                height : 80px;
                 line-height : 24px;
             }
         

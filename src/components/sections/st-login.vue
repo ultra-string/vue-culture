@@ -34,27 +34,47 @@
 </template>
 <script>
 // baseUrl引入： 
-import { baseImgPath } from '@/config/env'
+import { baseImgPath } from '@/config/env';
+// import { mapGetters } from "vuex";
+
   export default {
     name: 'Login',
     data() {
       return {
         picPath: '',
+        mark : [],
       }
     },
+    // computed: {
+    //   ...mapGetters([ 
+    //     "token",
+    //   ]),
+    // },
     methods: {
       login: function () {
         let usernameValue = username.value;  
         let passwordValue = password.value; 
         let picwordValue = picword.value; 
-        this.$auth('/auth', {
+        this.$auth('/user/auth', {
             username : usernameValue,
             password : passwordValue,
             code : picwordValue
           })
           .then(res => {
             console.log(res)
-            this.$store.dispatch('STORE_TOKEN', res.token)
+            if(res.data.code == "111111"){
+              alert(res.data.msg);
+              return;
+            }
+            this.$store.dispatch('STORE_TOKEN', res.data);
+            // console.log(this.token)
+            // this.$get('/user').then(res => {
+            //   console.log('sdsdsdsdsd')
+            //   console.log(res)
+            //   if(res.code == '000000'){
+            //     //成功
+            //   }
+            // })
             this.$router.push({
               path: decodeURIComponent(this.$route.query.to),
             })
@@ -136,14 +156,18 @@ import { baseImgPath } from '@/config/env'
     }
 
     .go-login {
-      margin: 0 auto;
+      margin-left: 374px;
       width: 370px;
       height: 38px;
-      background: $font-hot;
-      color: #fff;
+      border : 1px solid $color-login-font;
       text-align: center;
       line-height: 38px;
       font-size: 18px;
+    }
+    .go-login:hover{
+      background: $font-hot;
+      color: #fff;
+      border : 1px solid rgba(0,0,0,0);
     }
   }
 

@@ -8,7 +8,7 @@ import '@/common/scss/element-variables.scss'
 // import '@/common/scss/reset.scss'
 import router from './router'
 // axios封装引入
-import { fetch, post, auth } from '@/axios/api'
+import { fetch, post, auth, author ,authored } from '@/axios/api'
 // vuex 模块仓库
 import store from './store/index'
 
@@ -24,6 +24,8 @@ Vue.prototype.$post = post;
 Vue.prototype.$get = fetch;
 // 用户登录的借口 auth
 Vue.prototype.$auth = auth;
+Vue.prototype.$author = author;
+Vue.prototype.$authored = authored;
 
 
 router.afterEach((to,from,next) => {

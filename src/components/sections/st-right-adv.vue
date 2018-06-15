@@ -1,9 +1,10 @@
 <template>
     <div class="st-right-adv" id="rightAdv">
         <div class="adv flex-box">
-            <cm-thumbnail v-if="advArr && advArr.length" v-for="(item,k) in advArr" :key="k" :width="140" :height="70" :title="item.oneTitleName" 
+            <cm-thumbnail v-if="advArr && advArr.length" v-for="(item,k) in advArr" :key="k" :width="140" :height="70" :title="item.name" 
             :msg="item"
-            :isTitle="true" :src="item.imgUrl" class="adv-box"></cm-thumbnail>
+            :isFn="true"
+            :isTitle="true" :src="item.url" class="adv-box"></cm-thumbnail>
         </div>
         <div class="go-top" @click="goTopFn" v-show="showReturnBtn">
             <span class="go-top-arow">^</span>
