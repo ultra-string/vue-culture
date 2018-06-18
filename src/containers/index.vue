@@ -329,6 +329,7 @@
         //特别策划
         this.specialListLeft = this.changeArr(2,0,4,this.totalList.specialPlannings);
         this.specialListRight = this.changeArr(2,4,8,this.totalList.specialPlannings);
+        console.log('special====>>>>',this.totalList.specialPlannings)
         //匠人匠心
         this.workerList = this.changeArr(2, 0, 4, this.totalList.craftsmans);
         //艺迷社区
@@ -429,7 +430,7 @@
     @include flex-wrap-wrap;
   }
   .flex-direction{
-    height :100px;
+    height :110px;
     width : 230px;
     @include display-flex;
     // @include justify-content-space;

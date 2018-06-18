@@ -38,7 +38,7 @@ const authServer = axios.create({
   timeout: 10000
 });
 const authdServer = axios.create({
-  baseURL: 'http://118.190.152.1:8084',
+  baseURL: 'http://192.168.110.78:8081',
   timeout: 10000
 });
 

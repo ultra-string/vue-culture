@@ -8,7 +8,10 @@
       <div class="fl hot" v-if="oneTitleName">{{oneTitleName}}
         <span v-if="twoTitleName">></span>
       </div>
-      <div class="fl hot" v-if="twoTitleName">{{twoTitleName}}</div>
+      <div class="fl hot" v-if="twoTitleName">{{twoTitleName}}
+        <span v-if="threeTitleName">></span>
+      </div>
+      <div class="fl hot" v-if="threeTitleName">{{threeTitleName}}</div>
       <!-- <div class="fl" v-for="(val, k) in dataList" :key="k" :class="k != dataList.length-1 ? 'hot' : '' ">{{val}}
         <span v-if="!k == dataList.length-1">></span>
       </div> -->
@@ -24,8 +27,9 @@
         <span v-if="twoTitleName">></span>
       </div>
       <div class="fl" v-if="twoTitleName">{{twoTitleName}}
-        <span>></span>
+        <span v-if="threeTitleName">></span>
       </div>
+      <div class="fl" v-if="threeTitleName">{{threeTitleName}}</div>
       <!-- <div class="fl" v-for="(val, k) in dataList" :key="k">{{val}}
         <span v-if="key != dataList.length-1">></span>
       </div> -->
@@ -42,6 +46,7 @@ export default {
     return {
       oneTitleName : '',
       twoTitleName : '',
+      threeTitleName : '',
     }
   },
   created() {
@@ -49,9 +54,10 @@ export default {
     // this.twoTitleName = this.twoTitle;
   },
   methods : {
-    getTree : function(one,two){
+    getTree : function(one,two,three){
       this.oneTitleName = one;
       this.twoTitleName = two;
+      this.threeTitleName = three;
     }
   }
 };

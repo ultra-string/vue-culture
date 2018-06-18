@@ -9,8 +9,11 @@
         <li class="clearfix fl">
           <i>评论 &nbsp({{resData.total}})&nbsp</i>
         </li>
-        <li style="width:310px;" class="fr">
-          <cm-share></cm-share>
+        <li style="width: 292px; margin-right: -2px;" class="fr">
+          <cm-share
+            :bodyTitle="bodyTitle"
+            :summary="summary"
+          ></cm-share>
         </li>
         <!-- <li class="clearfix">
           <i>收藏 &nbsp()&nbsp</i>
@@ -86,6 +89,14 @@
       id : {
         type : Number,
         default : 0
+      },
+      bodyTitle : {
+          type : String,
+          default : '',
+      },
+      summary : {
+          type : String,
+          default : '',
       }
     },
     watch: {  

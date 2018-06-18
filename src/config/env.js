@@ -12,11 +12,11 @@ let baseImgPath;
 
 if (process.env.NODE_ENV == 'development') {
 	// baseUrl = 'http://118.190.152.1:8083';
-	baseUrl = 'http://118.190.152.1:8081';
-    baseImgPath = 'http://118.190.152.1:8084/user/imageVali/';
+	baseUrl = 'http://192.168.110.78:8081';
+    baseImgPath = 'http://192.168.110.78:8081/user/imageVali/';
 }else{
-	baseUrl = 'http://118.190.152.1:8081';
-    baseImgPath = 'http://118.190.152.1:8084/user/imageVali/';
+	baseUrl = 'http://192.168.110.78:8081';
+    baseImgPath = 'http://192.168.110.78:8081/user/imageVali/';
 }
 
 export {

@@ -10,15 +10,17 @@
         </div>
         <div class="login">
             <div class="login-button clearfix">
-                <div class="login-button-login" @click="chooseTypeFn('Login')">登 录</div>
-                <div class="login-button-register" @click="chooseTypeFn('Register')">注 册</div>
+                <div class="login-button-login" :class="curName=='Login'?'curBtnStyle':''" @click="chooseTypeFn('Login')">登 录</div>
+                <div class="login-button-register" :class="curName=='Register'?'curBtnStyle':''" @click="chooseTypeFn('Register')">注 册</div>
             </div>
             <router-view></router-view>
         </div>
-        <st-foot-qrcode
+        <!-- <st-foot-qrcode
         :mark="mark"
-        ></st-foot-qrcode>
-        <st-foot-nav></st-foot-nav>
+        ></st-foot-qrcode> -->
+        <st-foot-nav
+            style="margin-top:40px;"
+        ></st-foot-nav>
     </div>
 </template>
 <script>
@@ -28,7 +30,8 @@ export default {
     name : 'LoginView',
     data (){
         return {
-            mark : [],
+            // mark : [],
+            curName : '',
         }
     },
     components: {
@@ -37,6 +40,7 @@ export default {
     },
     methods : {
         chooseTypeFn : function(index){
+            this.curName = index;
             this.$router.push({name: index});
         },
         toIndexfn : function(){
@@ -46,10 +50,16 @@ export default {
         }
     },
     created(){
-      this.$get('/index').then(res => {
-        //二维码
-        this.mark = res.data.titleLinkMap[3];
-      })
+    //   this.$get('/index').then(res => {
+    //     //二维码
+    //     this.mark = res.data.titleLinkMap[3];
+    //   })
+        console.log(this.$route.path)
+        if(this.$route.path.indexOf('register') != -1){
+            this.curName = 'Register';
+        }else{
+            this.curName = 'Login';
+        }
     }
 }
 </script>
@@ -60,7 +70,7 @@ export default {
     .top{
         width : 100%;
         border-bottom : 2px solid $color-background;
-        margin-bottom : 32px;
+        margin-bottom : 18px;
         
         .title{
             width : 100%;
@@ -81,6 +91,9 @@ export default {
             width : 1000px;
             margin : 0 auto;
             text-align : center;
+            img{
+                margin-left : 112px;
+            }
         }
     }
     .login{
@@ -94,24 +107,31 @@ export default {
             padding-left : 378px;
 
             .login-button-login,.login-button-register{
-                width : 146px;
-                height : 20px;
-                line-height : 20px;
+                width : 147px;
+                height : 28px;
+                line-height : 28px;
                 font-size : 16px;
                 text-align : center;
-                border-top : 1px solid $color-login-font;
-                border-left : 1px solid $color-login-font;
-                border-right : 1px solid $color-login-font;
+                // border-top : 1px solid $color-login-font;
+                // border-left : 1px solid $color-login-font;
+                // border-right : 1px solid $color-login-font;
+                border-bottom : 1px solid $color-login-font;
                 float : left;
             }
             .login-button-login:hover{
                 color : #b22f24;
+                border-bottom : 1px solid $font-hot;
             }
             .login-button-register:hover{
                 color : #b22f24;
+                border-bottom : 1px solid $font-hot;
             }
             .login-button-login{
                 margin-right : 72px;
+            }
+            .curBtnStyle{
+                color : #b22f24;
+                border-bottom : 1px solid $font-hot;
             }
         }
 

@@ -95,7 +95,7 @@ export default {
     this.initFn();
   },
   updated(){
-    this.$refs.breadcrumb.getTree(this.oneTitle,this.twoTitle);
+    this.$refs.breadcrumb.getTree(this.oneTitle,this.twoTitle,'');
   },
   watch: {
     $route(to, from) {

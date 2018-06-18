@@ -41,7 +41,10 @@
                 </div>
             </div>
         </div>
-        <st-comment></st-comment>
+        <st-comment
+            :bodyTitle="''"
+            :summary="''"
+        ></st-comment>
     </div>
 </template>
 
@@ -73,6 +76,9 @@ export default {
             wordArr : [],
             oneTitle : '',
             twoTitle : '',
+            threeTitle : '',
+            bodyTitle : '',
+            summary : '',
         }
     },
     components: {
@@ -84,8 +90,8 @@ export default {
     created() {
         this.initFn();
     },
-    updated(){
-        this.$refs.breadcrumb.getTree(this.oneTitle,this.twoTitle);
+    mounted(){
+        this.$refs.breadcrumb.getTree(this.oneTitle,this.twoTitle,this.threeTitle);
     },
     watch: {  
         '$route' (to, from) {  
@@ -103,26 +109,34 @@ export default {
             let id = params.id;
             let oneTitleId = params.oneTitleId;
             let twoTitleId = params.twoTitleId ? twoTitleId : '';
-            this.$get(`/body/${id}`)
+            this.$get(`/body?id=${id}`)
             .then( res => {
                 console.log(res.data)
                 this.detialMsg = Object.assign({}, res.data);
-                // console.log(this.detialMsg)
-                // console.log(res)
-                // console.log(this.detialMsg.body)
+                this.oneTitle = '';
+                this.twoTitle = '';
+                this.threeTitle = '';
                 this.wordArr = res.data.relatedBodys;
-                // res.data.currentTitles.forEach(function(item,index){
-                //     switch(index){
-                //     case 0:
-                //     this.oneTitle = item;
-                //     console.log(this.oneTitle)
-                //     break;
-                //     case 1:
-                //     this.twoTitle = item;
-                //     console.log(this.twoTitle)
-                //     break;
-                //     }
-                // },this)
+                this.bodyTitle = res.data.bodyTitle;
+                this.summary = res.data.summary;
+                console.log(res.data.currentTitles)
+                res.data.currentTitles.forEach(function(item,index){
+                    switch(index){
+                        case 0:
+                        this.oneTitle = item;
+                        console.log(this.oneTitle)
+                        break;
+                        case 1:
+                        this.twoTitle = item;
+                        console.log(this.twoTitle)
+                        break;
+                        case 2:
+                        this.threeTitle = item;
+                        console.log(this.threeTitle)
+                        break;
+                    }
+                },this)
+                this.$refs.breadcrumb.getTree(this.oneTitle,this.twoTitle,this.threeTitle);
                 //test
                 // this.detialMsg.videoUrl = 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm';
             })

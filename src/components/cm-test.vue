@@ -11,13 +11,13 @@
         <img :src="this.picPath" alt="">
 <!-- 替换标题  -->
 <div class="test">
-    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
   <el-submenu index="2">
     <template slot="title">新媒体</template>
     <el-menu-item index="2-1">选项1</el-menu-item>
     <el-menu-item index="2-2">选项2</el-menu-item>
     <el-menu-item index="2-3">选项3</el-menu-item>
-  </el-submenu>
+</el-submenu>
 </el-menu>
     <!-- <el-menu ref="elmentItem" :default-active="activeIndex" :collapse-transition="false" class="el-menu-demo" mode="horizontal" @select="handleSelect" :unique-opened="true">
         <el-menu-item index="1" @click="toPathFn">11111111</el-menu-item>

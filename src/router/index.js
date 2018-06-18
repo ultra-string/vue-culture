@@ -81,11 +81,11 @@ export default new Router({
       path: '/',
       redirect: '/Index'
     },
-    {
-      path : '/test',
-      name : 'test',
-      component : Test,
-    },
+    // {
+    //   path : '/test',
+    //   name : 'test',
+    //   component : Test,
+    // },
     {
       path : '/login',
       component : LoginView,
@@ -199,10 +199,10 @@ export default new Router({
         }
       ]
     },
-    {
-      path: '/404',
-      name: '404',
-      component: Page404
-    }
+    // {
+    //   path: '/404',
+    //   name: '404',
+    //   component: Page404
+    // }
   ]
 })
