@@ -5,7 +5,7 @@
             <div class="introduce-in-left">
                 <div class="introduce-in-left-top clearfix">
                     <span class="contact">CONTACT US</span>
-                    <span class="phone-num">400-001-5241</span>
+                    <span class="phone-num">010-63322600</span>
                 </div>
                 <div class="introduce-in-left-bottom">
                     Copyright © 2013-2017 中传文创投资有限公司版权所有

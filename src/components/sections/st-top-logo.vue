@@ -14,7 +14,7 @@
                 @changeCurType="changeCurType"
                 ></cm-select>
                 <span class="fl"></span>
-                <input type="text" value="" class="fl" placeholder="我是输入框" id="searchInp">
+                <input type="text" value="" class="fl"  id="searchInp">
             </div>
             <!-- <img src="@/common/images/index/search-hot.png" alt="搜索按钮" @click="toSerachFn" class="hand-point"> -->
             <el-button type="primary" @click="toSerachFn" class="search-inp"></el-button>
@@ -61,6 +61,7 @@ export default {
           if(note.length > 20){
               alert('超出长度')
           }
+          console.log(this.curType)
           this.$router.push({
               name : 'SearchView',
               query : {
@@ -73,6 +74,7 @@ export default {
           searchInp.value = '';
       },
       changeCurType : function(key){
+        //   alert(key)
           this.curType = this.options[key].type;
           this.selectValue = this.options[key].name;
       },

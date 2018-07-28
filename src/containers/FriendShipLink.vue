@@ -7,7 +7,7 @@
         ></cm-bradcrumb> -->
         <h2 class="friend-title">合作伙伴</h2>
         <div class="content">
-            <img :src="item.imgUrl" alt="" v-for="(item , index) in dataList" :key="index" @click="toPath(item.url)">
+            <img class="hand-point" :src="item.imgUrl" alt="" v-for="(item , index) in dataList" :key="index" @click="toPath(item.url)">
         </div>
     </div>
 </template>
@@ -49,7 +49,7 @@ export default{
     },
     methods : {
         toPath : function(url){
-            window.open('https://' + url);
+            window.open(url);
         }
     }
 }

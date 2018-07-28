@@ -1,0 +1,2 @@
+webpackJsonp([20],{HFwt:function(t,e){},y02W:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r={render:function(){var t=this.$createElement;return(this._self._c||t)("div",{},[this._v("\n    我是要闻首页\n")])},staticRenderFns:[]};var a=n("VU/8")({name:"ImportantNews",data:function(){return{}}},r,!1,function(t){n("HFwt")},"data-v-078a4554",null);e.default=a.exports}});
+//# sourceMappingURL=20.6302e6928a11333a4e29.js.map

@@ -79,6 +79,59 @@
         </div>
       </div>
     </div>
+    <!-- 专题策划 -->
+    <div class="subjectPlan specialPlan">
+      <cm-title-nav
+      oneTitle="专题策划"
+      :secondTitle="subjectTitleArr.twoTitleVOs.length > 3 ? [subjectTitleArr.twoTitleVOs[0],subjectTitleArr.twoTitleVOs[1],subjectTitleArr.twoTitleVOs[2]] : subjectTitleArr.twoTitleVOs"
+      :showType="subjectTitleArr.showType"
+      :oneId="subjectTitleArr.id+''"
+      :treeType="'subjectTitleArr'"
+      ></cm-title-nav>
+      <div class="clearfix">
+        <div class="fl clearfix">
+          <cm-thumbnail
+            class="fl"
+            :width="230"
+            :height="135"
+            :title="totalList.monographiclans[0].bodyTitle"
+            :isTitle="true"
+            :src="totalList.monographiclans[0].thumbnailUrl"
+          :msg="totalList.monographiclans[0]"
+            ></cm-thumbnail>
+            <ul class="fl">
+              <li>
+                <cm-news-list
+                :newsList="subjectListLeft"
+                :hasHotPoint="true"
+                :delNum="2"
+                class="font-color"
+                ></cm-news-list>
+              </li>
+            </ul>
+        </div>
+        <div class="fr clearfix">
+          <cm-thumbnail
+            class="fl"
+            :width="230"
+            :height="135"
+            :title="totalList.monographiclans[1].bodyTitle"
+            :isTitle="true"
+            :src="totalList.monographiclans[1].thumbnailUrl"
+          :msg="totalList.monographiclans[1]"
+            ></cm-thumbnail>
+            <ul class="fl">
+              <li>
+                <cm-news-list
+                :newsList="subjectListRight"
+                :hasHotPoint="true"
+                class="font-color"
+                ></cm-news-list>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
     <!-- 匠人匠心 -->
     <div class="craftsman">
       <cm-title-nav oneTitle="匠人匠心" :secondTitle="workerTitleArr.twoTitleVOs.length > 3 ? [workerTitleArr.twoTitleVOs[0],workerTitleArr.twoTitleVOs[1],workerTitleArr.twoTitleVOs[2]] : workerTitleArr.twoTitleVOs"
@@ -126,8 +179,10 @@
     </div>
     <!-- 美食天下 -->
     <div class="food-world">
+      <!-- <cm-title-nav oneTitle="美食天下" :secondTitle="foodTitleArr.twoTitleVOs.length > 3 ? [foodTitleArr.twoTitleVOs[0],foodTitleArr.twoTitleVOs[1],foodTitleArr.twoTitleVOs[2]] : foodTitleArr.twoTitleVOs"
+        :showType="foodTitleArr.showType" :treeType="'foodTitleArr'"></cm-title-nav> -->
       <cm-title-nav oneTitle="美食天下" :secondTitle="foodTitleArr.twoTitleVOs.length > 3 ? [foodTitleArr.twoTitleVOs[0],foodTitleArr.twoTitleVOs[1],foodTitleArr.twoTitleVOs[2]] : foodTitleArr.twoTitleVOs"
-        :showType="foodTitleArr.showType" :treeType="'foodTitleArr'"></cm-title-nav>
+        :showType="foodTitleArr.showType" :treeType="'foodTitleArr'" :oneId="foodTitleArr.id+''"></cm-title-nav>
       <div class="clearfix">
         <cm-thumbnail :width="480" :height="270" :isTitle="true" class="fl" :title="totalList.gourmetWorlds[0].bodyTitle" 
           :msg="totalList.gourmetWorlds[0]" :src="totalList.gourmetWorlds[0].thumbnailUrl"></cm-thumbnail>
@@ -155,7 +210,7 @@
     <!-- 非遗培研 -->
     <div class="research clearfix">
       <div class="fl list">
-        <cm-title-nav oneTitle="非遗培研" :secondTitle="studyTitleArr.twoTitleVOs.length > 3 ? [studyTitleArr.twoTitleVOs[0],studyTitleArr.twoTitleVOs[1],studyTitleArr.twoTitleVOs[2]] : studyTitleArr.twoTitleVOs"
+        <cm-title-nav oneTitle="非遗研培" :secondTitle="studyTitleArr.twoTitleVOs.length > 3 ? [studyTitleArr.twoTitleVOs[0],studyTitleArr.twoTitleVOs[1],studyTitleArr.twoTitleVOs[2]] : studyTitleArr.twoTitleVOs"
         :showType="studyTitleArr.showType" :treeType="'studyTitleArr'"></cm-title-nav>
         <div>
           <div class="clearfix">
@@ -226,7 +281,8 @@
         foodTitleArr: [], //美食标题
         chinaTitleArr: [], //非遗中国标题
         studyTitleArr: [], //非遗研培标题
-        specialTitleArr: [] //特别策划标题
+        specialTitleArr: [], //特别策划标题
+        subjectTitleArr: [], //专题策划标题
       };
     },
     components: {
@@ -243,7 +299,7 @@
           let bannerArr = this.totalList.titleLinkMap[4];
           //处理轮播数据
           this.bannerAmry = this.changeArr(0, 5, 10, bannerArr);
-          console.log(this.bannerAmry,this.bannerArr,this.totalList)
+          // console.log(this.bannerAmry,this.bannerArr,this.totalList)
           this.bannerAdv = this.changeArr(0, 10, 15, bannerArr);
           //根据类别处理数组
           this.changeListByType();
@@ -269,6 +325,12 @@
         var titleOv = this.totalList.titleVOs;
         let _this = this;
         titleOv.forEach(function (item, index) {
+          //过滤二级标题
+          if(item.twoTitleVOs[0]){
+            if(item.oneTitleName == item.twoTitleVOs[0].twoTitleName){
+              item.twoTitleVOs.shift();
+            }
+          }
           switch (item.oneTitleName) {
             case "首页":
               _this.indexTitleArr = item;
@@ -310,6 +372,11 @@
               //存标题导航
               sessionStorage.setItem("specialTitleArr", JSON.stringify(item));
               break;
+            case "专题策划":
+              _this.subjectTitleArr = item;
+              //存标题导航
+              sessionStorage.setItem("subjectTitleArr", JSON.stringify(item));
+              break;
               // case "中国手艺网电商":
               //   this.indexTitleArr = item;
               // break;
@@ -329,7 +396,10 @@
         //特别策划
         this.specialListLeft = this.changeArr(2,0,4,this.totalList.specialPlannings);
         this.specialListRight = this.changeArr(2,4,8,this.totalList.specialPlannings);
-        console.log('special====>>>>',this.totalList.specialPlannings)
+        //专题策划
+        this.subjectListLeft = this.changeArr(2,0,4,this.totalList.monographiclans);
+        this.subjectListRight = this.changeArr(2,4,8,this.totalList.monographiclans);
+        console.log('subject====>>>>',this.totalList.monographiclans)
         //匠人匠心
         this.workerList = this.changeArr(2, 0, 4, this.totalList.craftsmans);
         //艺迷社区
@@ -474,6 +544,9 @@
       }
     }
   }
+  .subjectPlan{
+    margin-top : 50px;
+  }
   .craftsman {
     margin: 42px 0 49px 0;
     >div {
@@ -599,5 +672,12 @@
     }
   }
 }
-
+.cm-news-list{
+  h3{
+    font-size : 16px;
+  }
+  .box-lvha{
+    font-size : 16px;
+  }
+}
 </style>

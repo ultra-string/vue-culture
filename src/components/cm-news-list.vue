@@ -3,10 +3,15 @@
       <div class="cm-news-list no-data" v-if="!newsList.length">
           暂无数据
       </div>
+      
       <div v-else class="cm-news-list point clearfix" :class="hasDashBorder ? 'hasDashBorder' : ''" v-for="(val, key) in newsList" :key="key" @click="toDetail(val)">
-          <i v-if="hasHotPoint" class="fl"></i>
-          <h3 class="fl box-lvha">{{val.bodyTitle}}</h3>
-          <div v-if="hasDate" class="fr">{{val.updateTime | getTimeYMDWord}}</div>
+         <el-tooltip effect="light" class="item"   placement="top">
+           <div slot="content">{{val.bodyTitle}}</div>
+             <i v-if="hasHotPoint" class="fl"></i>
+            <h3 class="fl box-lvha">{{val.bodyTitle}}</h3>
+            
+            <div v-if="hasDate" class="fr">{{val.updateTime | getTimeYMDWord}}</div>
+           </el-tooltip> 
       </div>
       
   </div>
@@ -61,7 +66,7 @@ export default {
   created() {
     //处理list
     this.dataList = this.newsList;
-    // console.log(this.dataList)
+    console.log(this.dataList)
     // this.delNumFn();
   },
   methods : {
@@ -110,6 +115,7 @@ export default {
   h3 {
     vertical-align: top;
     max-width: 80%;
+    font-size : 16px;
     @include nowrap-ellipsis;
   }
   .box-lvha:hover{

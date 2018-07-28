@@ -50,7 +50,7 @@ export default {
     width: 100%;
     h1{
         line-height : 30px;
-        font-size : 18px;
+        font-size : 16px;
         margin-bottom : 10px;
         height : 30px;
         @include nowrap-ellipsis;
@@ -60,7 +60,7 @@ export default {
     }
     p{
         height : 97px;
-        font-size : 14px;
+        font-size : 12px;
         line-height : 24px;
         @include overflow-hidden-wrap(4);
         text-indent:2em;

@@ -55,10 +55,10 @@ export default {
         toPage = page + this.data.pageNum;
       }
       if (!this.data.hasPreviousPage && page == -1) {
-        alert("到头了");
+       
         return;
       } else if (!this.data.hasNextPage && page == 1) {
-        alert("到头了");
+        
         return;
       } else {
         this.$emit("changePageFn", toPage);
@@ -73,6 +73,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+#jumpnote{
+  height: 20px;
+  width: 60px;
+  position: relative;
+  top: -2px;
+}
 .cm-change-page {
   width : 100%;
   // line-height: 59px;

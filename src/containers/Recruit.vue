@@ -59,7 +59,7 @@
               "twoId": 1004
           }).then(res => {
               console.log(res);
-              this.dataList = res.data.list;
+              this.dataList = res.data.pageInfo.list;
               this.resData = res.data;
           })
       },

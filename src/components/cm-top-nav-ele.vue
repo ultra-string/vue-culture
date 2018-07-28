@@ -4,7 +4,7 @@
         <el-submenu v-for="(item,key) in options" :key="key" :index="key+''" class="fl" :style="{'padding-left':key==0?0:key==1?'14px':'35px'}">
             <!-- <template slot="title" @row-click="toPath">{{item.name}}</template> -->
             <el-menu-item index="key+''" slot="title" @click="toPath(item)" class="title-xxx-box">{{item.name}}</el-menu-item>
-            <el-menu-item v-for="(val , k) in item.childVos" :key="k" index="key+'-'+k" @click="toCulureFn(val,item.id)">{{val.name}}</el-menu-item>
+            <el-menu-item v-for="(val , k) in item.childVos" :key="k" index="key+'-'+k" @click="toCulureFn(val,item.id)" class="two-ele-box">{{val.name}}</el-menu-item>
             </el-submenu>
         </el-submenu>
       </el-menu>
@@ -164,5 +164,14 @@ export default {
   padding: 0px;
   padding-right : 2px;
   margin: 0px;
+}
+.el-menu--horizontal .el-menu .two-ele-box{
+  width : 100px !important;
+  padding-right : 0 !important;
+}
+.el-menu--horizontal .el-menu--popup{
+  width : 110px;
+  min-width : 11px;
+  padding : 0 !important;
 }
 </style>

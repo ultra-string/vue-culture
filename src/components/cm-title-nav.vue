@@ -38,6 +38,10 @@ export default {
     specialPath : {
       type : String,
       default : ''
+    },
+    oneId : {
+      type : String,
+      default : '',
     }
   },
   data() {
@@ -48,7 +52,7 @@ export default {
     // //跳转文旅资讯
     toCulureFn : function(obj){
       // console.log(this.specialPath)
-      console.log(this.secondTitle[0].oneTitleId)
+      // console.log(this.secondTitle[0].oneTitleId)
      if(this.specialPath){
         this.$router.push({
           path : this.specialPath
@@ -56,10 +60,11 @@ export default {
         return;
       }
       if(!obj){
+        let oneId = this.secondTitle.length ? this.secondTitle[0].oneTitleId : this.oneId;
         this.$router.push({
           path : '/CultureNewsIndex',
           query : {
-            oneTitleId : this.secondTitle[0].oneTitleId,
+            oneTitleId : oneId,
             showType : this.showType,
             treeType : this.treeType
           }

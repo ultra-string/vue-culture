@@ -41,7 +41,7 @@ export default {
     }
 
     .qr{
-        width : 122px;
+        width : 150px;
         height : 110px;
         padding-top : 18px;
         text-align : center;

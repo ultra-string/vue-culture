@@ -28,7 +28,7 @@ export default {
                     type: "video/mp4",
                     src: ''
                 }],
-                poster:require('./../common/images/demo.png'),
+                // poster:require('./../common/images/demo.png'),
                 width : '100%'
             }
         }
@@ -53,12 +53,17 @@ export default {
         height : {
             type : String,
             default : '100%'
+        },
+        imgUrl : {
+            type : String,
+            default : ''
         }
     },
     created(){
         this.playerOptions.sources[0].src = this.src;
         this.playerOptions.width = this.width;
         this.playerOptions.height = this.height;
+        this.playerOptions.poster = this.imgUrl;
     },
     methods: {
       // listen event

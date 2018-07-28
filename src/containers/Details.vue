@@ -10,13 +10,17 @@
                 <div v-if="detialMsg.createTime">
                     {{detialMsg.createTime | getTimeYMD}}
                 </div>
-                <div v-if="detialMsg.auther == null">
+                <div v-if="detialMsg.author">
                     <span>作者：</span>
                     <span>{{detialMsg.author}}</span>
                 </div>
+                <!-- <div v-if="detialMsg.keywords">
+                    <span>关键字：</span>
+                    <span>{{detialMsg.keywords}}</span>
+                </div> -->
                 <div>
                     <span>来源：</span>
-                    <span>中国手艺网</span>
+                    <span>{{detialMsg.articleSource}}</span>
                 </div>
             </div>
         </div>
@@ -27,8 +31,10 @@
                     :src="detialMsg.videoUrl"
                     :width="'400px'"
                     :height="'300px'"
+                    :imgUrl="detialMsg.frontViewUrl"
                     style="margin:'0 auto'"
                 ></cm-video-player>
+                <div v-if="detialMsg.videoUrl" style="text-align:center;">{{detialMsg.videoPresentation}}</div>
 
                 <div v-html="detialMsg.body"></div>
             </div>
@@ -113,6 +119,7 @@ export default {
             .then( res => {
                 console.log(res.data)
                 this.detialMsg = Object.assign({}, res.data);
+                console.log('this.detialMsg====>>>>',this.detialMsg)
                 this.oneTitle = '';
                 this.twoTitle = '';
                 this.threeTitle = '';

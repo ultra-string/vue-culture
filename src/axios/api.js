@@ -37,8 +37,14 @@ const authServer = axios.create({
   baseURL: baseUrl,
   timeout: 10000
 });
+// 打包
+// const authdServer = axios.create({
+//   baseURL: 'http://192.168.110.78:8081',
+//   timeout: 10000
+// });
+//开发
 const authdServer = axios.create({
-  baseURL: 'http://192.168.110.78:8081',
+  baseURL: 'http://118.190.152.1:8084',
   timeout: 10000
 });
 

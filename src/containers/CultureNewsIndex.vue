@@ -145,6 +145,9 @@ export default {
           // console.log(this.$refs.breadcrumb)
             // this.$refs.breadcrumb.getTree(this.navTree);
           
+          if(res.data.titleVOs[0].oneTitleName == res.data.titleVOs[0].twoTitleVOs[0].twoTitleName){
+            res.data.titleVOs[0].twoTitleVOs.shift();
+          }
           this.opations = res.data.titleVOs[0];
           // this.chooseTree();
           console.log(this.navTree)
@@ -201,6 +204,16 @@ export default {
         console.log(res);
           this.resData = res.data.pageInfo;
           this.dataList = res.data.pageInfo.list;
+          res.data.currentTitles.forEach(function(item,index){
+            switch(index){
+              case 0:
+              this.oneTitle = item;
+              break;
+              case 1:
+              this.twoTitle = item;
+              break;
+            }
+          },this)
           // console.log(this.dataList)
       })
     },

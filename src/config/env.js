@@ -9,14 +9,24 @@
 let baseUrl = ''; 
 let routerMode = 'hash';
 let baseImgPath;
-
+// 开发
+// if (process.env.NODE_ENV == 'development') {
+// 	baseUrl = 'http://118.190.152.1:8081';
+//     baseImgPath = 'http://118.190.152.1:8084/user/imageVali/';
+// }else{
+// 	baseUrl = 'http://118.190.152.1:8081';
+//     baseImgPath = 'http://118.190.152.1:8084/user/imageVali/';
+// }
+// 打包
 if (process.env.NODE_ENV == 'development') {
 	// baseUrl = 'http://118.190.152.1:8083';
-	baseUrl = 'http://192.168.110.78:8081';
+	baseUrl = 'http://118.190.152.1:8081';
     baseImgPath = 'http://192.168.110.78:8081/user/imageVali/';
 }else{
-	baseUrl = 'http://192.168.110.78:8081';
-    baseImgPath = 'http://192.168.110.78:8081/user/imageVali/';
+	// baseUrl = 'http://192.168.110.78:8081';
+	// baseImgPath = 'http://192.168.110.78:8081/user/imageVali/';
+	baseUrl = 'http://test.wodsy.com';
+    baseImgPath = 'http://test.wodsy.com/user/imageVali/';
 }
 
 export {

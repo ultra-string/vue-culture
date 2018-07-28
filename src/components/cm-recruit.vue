@@ -11,7 +11,11 @@
                 <h6>{{item.updateTime | getTimeYMWord}}</h6>
             </div>
             <div class="fr content">
-                <p>{{item.bodyTitle}}</p>
+                 <el-tooltip class="item" effect="light"  placement="top-start">
+                     <p>{{item.bodyTitle}}</p>
+                     <div slot="content">{{item.bodyTitle}}</div>
+                </el-tooltip>
+                
                 <div class="btn-line clearfix">
                     <div class="more-btn fr">查看详情</div>
                 </div>

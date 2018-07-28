@@ -24,7 +24,7 @@
             ></cm-swiper>
             <div class="fr">
                 <cm-title 
-                title="活动讯息"
+                :title="nameData[0]"
                 ></cm-title>
                 <cm-short-content class="fr list short-content" v-if="resData['1005'] && resData['1005'].length" :msg="resData['1005']['0']"></cm-short-content>
                 <cm-news-list
@@ -37,7 +37,7 @@
         <!-- 看见非遗 -->
         <div class="see-heritage">
             <cm-title 
-            title="看见非遗"
+            :title="nameData[1]"
             ></cm-title>
             <div class="clearfix flex-direction see-heritage-box">
                 <div class="video-line">
@@ -49,7 +49,7 @@
                         :height="135"
                         :title="resData['1006'][0].bodyTitle"
                         :isTitle="true"
-                        :src="resData['1006'][0].thumbnailLink" 
+                        :src="resData['1006'][0].thumbnailUrl" 
                         :msg="resData['1006'][0]"
                         ></cm-thumbnail>
                         <cm-short-content
@@ -68,7 +68,7 @@
         <!-- 聆听非遗 -->
         <div class="linsten-heritage">
             <cm-title 
-            title="聆听非遗"
+            :title="nameData[2]"
             ></cm-title>
             <div class="top clearfix flex-direction linsten-heritage-box">
                 <div v-if="listenHeritage && listenHeritage.length" class="cm-news-list hand-point clearfix" v-for="(val, key) in listenHeritage"
@@ -83,7 +83,7 @@
                     :height="135"
                     :title="resData['1007'][0].bodyTitle"
                     :isTitle="true"
-                    :src="resData['1007'][0].thumbnailLink"
+                    :src="resData['1007'][0].thumbnailUrl"
                     :msg="resData['1007'][0]"
                     ></cm-thumbnail>
                     <cm-short-content
@@ -99,7 +99,7 @@
                     :height="135"
                     :title="resData['1007'][2].bodyTitle"
                     :isTitle="true"
-                    :src="resData['1007'][2].thumbnailLink"
+                    :src="resData['1007'][2].thumbnailUrl"
                     :msg="resData['1007'][2]"
                     ></cm-thumbnail>
                     <cm-short-content
@@ -113,7 +113,7 @@
         <!-- 触摸非遗 -->
         <div class="touch-heritage">
             <cm-title 
-            title="触摸非遗"
+            :title="nameData[3]"
             ></cm-title>
             <div class="clearfix flex-box">
                 <div class="clearfix video-line">
@@ -123,7 +123,7 @@
                     :height="135"
                     :title="resData['1008'][0].bodyTitle"
                     :isTitle="true"
-                    :src="resData['1008'][0].thumbnailLink"
+                    :src="resData['1008'][0].thumbnailUrl"
                     :msg="resData['1008'][0]"
                     ></cm-thumbnail>
                     <cm-short-content
@@ -139,7 +139,7 @@
                     :height="135"
                     :title="resData['1008'][2].bodyTitle"
                     :isTitle="true"
-                    :src="resData['1008'][2].thumbnailLink"
+                    :src="resData['1008'][2].thumbnailUrl"
                     :msg="resData['1008'][2]"
                     ></cm-thumbnail>
                     <cm-short-content
@@ -158,7 +158,7 @@
         <!-- 品味非遗 -->
         <div class="taste-heritage">
             <cm-title 
-            title="品味非遗"
+            :title="nameData[4]"
             ></cm-title>
             <div class="clearfix flex-direction taste-heritage-box">
                 <div class="clearfix video-line">
@@ -168,7 +168,7 @@
                     :height="135"
                     :title="resData['1009'][0].bodyTitle"
                     :isTitle="true"
-                    :src="resData['1009'][0].thumbnailLink"
+                    :src="resData['1009'][0].thumbnailUrl"
                     :msg="resData['1009'][0]"
                     ></cm-thumbnail>
                     <cm-short-content
@@ -228,6 +228,8 @@ export default {
             touchHeritage : [],//触摸非遗
             tasteHeritage : [],//品味非遗
             beReady : false,
+            nameData : [],//自定义名字
+            aaaa : '',
         }
     },
     components: {
@@ -242,7 +244,8 @@ export default {
     created() {
         this.$get('/specialPlanningSearch').then(res => {
             console.log(res)
-            this.resData = res.data;
+            this.resData = res.data.specPlanSearch;
+            this.nameData = res.data.specPlanTitles;
             this.changeListByType();
             this.beReady = true;
         })
@@ -470,5 +473,10 @@ export default {
       @include flex-direction;
     }
 
+}
+.cm-news-list{
+    h3{
+        font-size : 16px;
+    }
 }
 </style>

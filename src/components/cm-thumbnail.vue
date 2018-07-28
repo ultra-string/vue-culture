@@ -25,7 +25,8 @@ export default {
       },
       src: {
         type: String,
-        default: require('@/common/images/demo.png')
+        // default: require('@/common/images/demo.png'),
+        default: ''
       },
       videoBtn: {
         type: String,

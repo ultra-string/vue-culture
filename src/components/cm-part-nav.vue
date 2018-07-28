@@ -48,15 +48,23 @@ export default {
       if (!twoId) {
         twoId = "";
       }
-      this.$emit(
-        "getBodyTitlePartProps",
-        pageNo,
-        pageSize,
-        oneId,
-        twoId,
-        showType,
-      );
-      this.selectedKey = key;
+      // this.$emit(
+      //   "getBodyTitlePartProps",
+      //   pageNo,
+      //   pageSize,
+      //   oneId,
+      //   twoId,
+      //   showType,
+      // );
+      // this.selectedKey = key;
+      this.$router.push({
+        path : '/CultureNewsIndex',
+        query : {
+          oneTitleId : oneId,
+          twoTitleId : twoId,
+          showType : showType
+        }
+      })
       //   this.$router.push({name: this.navTree[key].path});
     },
     chooseTree: function() {

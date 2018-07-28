@@ -44,8 +44,9 @@ export default {
     }, 
     methods : {
         loadFn : function(){
-            let params = this.params;
+            let params = this.$route.query;
             this.note = this.$route.params.str;
+            console.log('curType' , params.type)
             this.$post('/search' , {
                 "pageNo": 1,
                 "pageSize": 10,
